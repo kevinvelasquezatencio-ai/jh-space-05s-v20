@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta
 name="viewport"
 content="width=device-width, initial-scale=1.0"
 >
-
 <title>Un espacio para ti, Jhos </title>
-
 
 <!-- =========================================
      VISTA PREVIA
@@ -37,7 +32,6 @@ name="theme-color"
 content="#050505"
 >
 
-
 <style>
 
 /* =========================================================
@@ -45,7 +39,6 @@ content="#050505"
 ========================================================= */
 
 :root{
-
     --negro:#050505;
     --negro2:#0b0a07;
 
@@ -55,30 +48,20 @@ content="#050505"
 
     --blanco:#f7f2e7;
     --gris:#aaa396;
-
 }
 
-
 *{
-
     margin:0;
     padding:0;
     box-sizing:border-box;
-
 }
-
 
 html{
-
     scroll-behavior:smooth;
-
 }
 
-
 body{
-
     min-height:100vh;
-
     overflow-x:hidden;
 
     color:var(--blanco);
@@ -88,9 +71,7 @@ body{
     Arial,
     sans-serif;
 
-
     background:
-
     radial-gradient(
         circle at 18% 17%,
         rgba(229,184,70,.10),
@@ -109,37 +90,25 @@ body{
         #090805 48%,
         #020202
     );
-
 }
-
 
 /* =========================================================
    FONDO
 ========================================================= */
 
 .fondo{
-
     position:fixed;
-
     inset:0;
-
     pointer-events:none;
-
     z-index:-10;
-
 }
 
-
 .fondo::before{
-
     content:"";
-
     position:absolute;
-
     inset:0;
 
     background:
-
     radial-gradient(
         circle at 50% 35%,
         rgba(228,184,68,.055),
@@ -149,38 +118,27 @@ body{
     animation:
     respirarFondo
     6s ease-in-out infinite;
-
 }
 
-
 @keyframes respirarFondo{
-
     0%,
     100%{
-
         opacity:.45;
-
     }
 
     50%{
-
         opacity:1;
-
     }
-
 }
-
 
 /* =========================================================
    LÍNEAS DECORATIVAS
 ========================================================= */
 
 .linea{
-
     position:fixed;
 
     width:42vw;
-
     height:1px;
 
     pointer-events:none;
@@ -188,7 +146,6 @@ body{
     opacity:.55;
 
     background:
-
     linear-gradient(
         90deg,
         transparent,
@@ -197,53 +154,39 @@ body{
     );
 
     z-index:-5;
-
 }
 
-
 .linea.uno{
-
     top:16%;
     left:-10%;
 
     transform:
     rotate(-18deg);
-
 }
 
-
 .linea.dos{
-
     bottom:14%;
     right:-10%;
 
     transform:
     rotate(-18deg);
-
 }
-
 
 /* =========================================================
    PARTÍCULAS
 ========================================================= */
 
 #particulas{
-
     position:fixed;
-
     inset:0;
 
     pointer-events:none;
-
     overflow:hidden;
 
     z-index:-2;
-
 }
 
-
 .particula{
-
     position:absolute;
 
     width:3px;
@@ -251,11 +194,9 @@ body{
 
     border-radius:50%;
 
-    background:
-    #f4ce6b;
+    background:#f4ce6b;
 
     box-shadow:
-
     0 0 7px
     rgba(255,213,103,.7);
 
@@ -264,56 +205,39 @@ body{
     animation:
     flotarParticula
     linear infinite;
-
 }
 
-
 @keyframes flotarParticula{
-
     0%{
-
         transform:
         translateY(105vh)
         scale(.5);
 
         opacity:0;
-
     }
-
 
     15%{
-
         opacity:.65;
-
     }
-
 
     80%{
-
         opacity:.25;
-
     }
 
-
     100%{
-
         transform:
         translateY(-15vh)
         scale(1.1);
 
         opacity:0;
-
     }
-
 }
-
 
 /* =========================================================
    CONTROL DE MÚSICA
 ========================================================= */
 
 #botonMusica{
-
     position:fixed;
 
     top:20px;
@@ -325,15 +249,11 @@ body{
     border-radius:50%;
 
     border:
-
     1px solid
     rgba(227,187,82,.37);
 
-
     background:
-
     rgba(8,8,7,.72);
-
 
     color:#efd998;
 
@@ -342,38 +262,27 @@ body{
     backdrop-filter:
     blur(12px);
 
-
     box-shadow:
-
     0 8px 30px
     rgba(0,0,0,.45);
 
-
-    transition:
-    .3s ease;
+    transition:.3s ease;
 
     z-index:200;
-
 }
 
-
 #botonMusica:hover{
-
-    transform:
-    scale(1.07);
+    transform:scale(1.07);
 
     border-color:
     rgba(241,205,108,.7);
-
 }
-
 
 /* =========================================================
    CONTENEDOR PRINCIPAL
 ========================================================= */
 
 .pagina{
-
     width:
     min(
         1180px,
@@ -381,34 +290,26 @@ body{
     );
 
     margin:auto;
-
 }
-
 
 /* =========================================================
    PORTADA
 ========================================================= */
 
 .portada{
-
     min-height:66vh;
 
     display:flex;
 
     align-items:center;
-
     justify-content:flex-start;
 
     padding:
-
     90px 4%
     60px;
-
 }
 
-
 .portada-contenido{
-
     max-width:720px;
 
     text-align:left;
@@ -416,35 +317,25 @@ body{
     animation:
     entradaPortada
     1.5s ease;
-
 }
 
-
 @keyframes entradaPortada{
-
     from{
-
         opacity:0;
 
         transform:
         translateY(25px);
-
     }
 
     to{
-
         opacity:1;
 
         transform:
         translateY(0);
-
     }
-
 }
 
-
 .volumen{
-
     display:inline-flex;
 
     align-items:center;
@@ -460,12 +351,9 @@ body{
     letter-spacing:4px;
 
     margin-bottom:28px;
-
 }
 
-
 .volumen::before{
-
     content:"";
 
     width:35px;
@@ -473,26 +361,20 @@ body{
 
     background:
     var(--dorado);
-
 }
 
-
 .portada h1{
-
     font-family:
     Georgia,
     "Times New Roman",
     serif;
 
-
     font-size:
-
     clamp(
         48px,
         8vw,
         92px
     );
-
 
     font-weight:400;
 
@@ -503,25 +385,18 @@ body{
     color:#f7f1e5;
 
     margin-bottom:27px;
-
 }
 
-
 .portada h1 span{
-
     color:
     var(--dorado);
 
     text-shadow:
-
     0 0 30px
     rgba(231,187,68,.15);
-
 }
 
-
 .saludo{
-
     font-family:
     Georgia,
     "Times New Roman",
@@ -537,12 +412,9 @@ body{
     color:#dbccaa;
 
     margin-bottom:16px;
-
 }
 
-
 .descripcion{
-
     max-width:570px;
 
     color:#989287;
@@ -555,53 +427,39 @@ body{
     );
 
     line-height:1.85;
-
 }
 
-
 .separador{
-
     width:85px;
     height:1px;
 
     margin-top:34px;
 
     background:
-
     linear-gradient(
         90deg,
         var(--dorado),
         transparent
     );
-
 }
-
 
 /* =========================================================
    ZONA DE BOTONES
 ========================================================= */
 
 .explorar{
-
     padding:
-
     35px 0
     75px;
-
 }
 
-
 .titulo-seccion{
-
     text-align:center;
 
     margin-bottom:35px;
-
 }
 
-
 .titulo-seccion span{
-
     color:#aa925d;
 
     font-size:10px;
@@ -609,12 +467,9 @@ body{
     letter-spacing:4px;
 
     text-transform:uppercase;
-
 }
 
-
 .titulo-seccion h2{
-
     margin-top:10px;
 
     font-family:
@@ -632,62 +487,47 @@ body{
     font-weight:400;
 
     color:#eee6d5;
-
 }
-
 
 /* =========================================================
    GRID 5 BOTONES
 ========================================================= */
 
 .grid-opciones{
-
     display:grid;
 
     grid-template-columns:
     repeat(6,1fr);
 
     gap:16px;
-
 }
-
 
 /* tres arriba */
 
 .tarjeta:nth-child(1),
 .tarjeta:nth-child(2),
 .tarjeta:nth-child(3){
-
     grid-column:
     span 2;
-
 }
-
 
 /* dos abajo centradas */
 
 .tarjeta:nth-child(4){
-
     grid-column:
     2 / span 2;
-
 }
-
 
 .tarjeta:nth-child(5){
-
     grid-column:
     4 / span 2;
-
 }
-
 
 /* =========================================================
    TARJETAS
 ========================================================= */
 
 .tarjeta{
-
     position:relative;
 
     min-height:205px;
@@ -696,16 +536,12 @@ body{
     29px 23px;
 
     border:
-
     1px solid
     rgba(225,185,80,.22);
 
-
     border-radius:22px;
 
-
     background:
-
     radial-gradient(
         circle at 50% 0%,
         rgba(229,187,75,.075),
@@ -718,7 +554,6 @@ body{
         rgba(7,7,6,.94)
     );
 
-
     display:flex;
 
     flex-direction:column;
@@ -729,22 +564,17 @@ body{
 
     text-align:center;
 
-
     cursor:pointer;
 
     overflow:hidden;
 
     transition:
-
     transform .35s ease,
     border-color .35s ease,
     box-shadow .35s ease;
-
 }
 
-
 .tarjeta::before{
-
     content:"";
 
     position:absolute;
@@ -756,45 +586,33 @@ body{
     transition:.4s;
 
     background:
-
     radial-gradient(
         circle at 50% 45%,
         rgba(239,197,91,.10),
         transparent 55%
     );
-
 }
 
-
 .tarjeta:hover{
-
     transform:
     translateY(-7px);
 
     border-color:
     rgba(233,197,102,.55);
 
-
     box-shadow:
-
     0 22px 60px
     rgba(0,0,0,.48),
 
     0 0 25px
     rgba(224,176,55,.055);
-
 }
-
 
 .tarjeta:hover::before{
-
     opacity:1;
-
 }
 
-
 .icono{
-
     position:relative;
 
     font-size:34px;
@@ -802,12 +620,9 @@ body{
     margin-bottom:18px;
 
     z-index:2;
-
 }
 
-
 .tarjeta h3{
-
     position:relative;
 
     z-index:2;
@@ -821,12 +636,9 @@ body{
     font-weight:600;
 
     margin-bottom:10px;
-
 }
 
-
 .tarjeta p{
-
     position:relative;
 
     z-index:2;
@@ -836,51 +648,36 @@ body{
     font-size:13px;
 
     line-height:1.6;
-
 }
-
 
 /* =========================================================
    PRÓXIMA ACTUALIZACIÓN
 ========================================================= */
 
 .proxima{
-
     margin:
-
     15px 0
     90px;
 
-
     padding:
-
     75px 20px;
 
-
     border-top:
-
     1px solid
     rgba(222,183,78,.16);
 
-
     text-align:center;
-
 }
 
-
 .proxima .next{
-
     color:#ae9250;
 
     letter-spacing:4px;
 
     font-size:10px;
-
 }
 
-
 .proxima h2{
-
     margin-top:17px;
 
     font-family:
@@ -888,25 +685,19 @@ body{
     "Times New Roman",
     serif;
 
-
     font-size:
-
     clamp(
         39px,
         7vw,
         66px
     );
 
-
     font-weight:400;
 
     color:#e5ca79;
-
 }
 
-
 .proxima p{
-
     margin-top:12px;
 
     color:#78746c;
@@ -919,23 +710,17 @@ body{
     font-style:italic;
 
     font-size:16px;
-
 }
 
-
 .mini-linea{
-
     width:100px;
     height:1px;
 
     margin:
-
     30px auto
     0;
 
-
     background:
-
     linear-gradient(
         90deg,
         transparent,
@@ -946,29 +731,21 @@ body{
     animation:
     brilloLinea
     2.5s ease-in-out infinite;
-
 }
 
-
 @keyframes brilloLinea{
-
     50%{
-
         width:145px;
 
         opacity:.45;
-
     }
-
 }
-
 
 /* =========================================================
    MODALES
 ========================================================= */
 
 .modal{
-
     position:fixed;
 
     inset:0;
@@ -994,25 +771,18 @@ body{
 
     pointer-events:none;
 
-    transition:
-    .4s ease;
-
+    transition:.4s ease;
 }
 
-
 .modal.activo{
-
     opacity:1;
 
     visibility:visible;
 
     pointer-events:auto;
-
 }
 
-
 .modal-contenido{
-
     position:relative;
 
     width:
@@ -1026,22 +796,16 @@ body{
     overflow:auto;
 
     padding:
-
     48px 35px
     38px;
 
-
     border-radius:27px;
 
-
     border:
-
     1px solid
     rgba(230,189,78,.40);
 
-
     background:
-
     radial-gradient(
         circle at 50% 0%,
         rgba(224,179,65,.11),
@@ -1054,43 +818,30 @@ body{
         #070706
     );
 
-
     box-shadow:
-
     0 40px 110px
     rgba(0,0,0,.9),
 
     0 0 55px
     rgba(216,169,48,.07);
 
-
     text-align:center;
 
-
     transform:
-
     translateY(28px)
     scale(.94);
 
-
-    transition:
-    .45s ease;
-
+    transition:.45s ease;
 }
-
 
 .modal.activo
 .modal-contenido{
-
     transform:
     translateY(0)
     scale(1);
-
 }
 
-
 .cerrar{
-
     position:absolute;
 
     top:15px;
@@ -1108,26 +859,19 @@ body{
     font-size:29px;
 
     cursor:pointer;
-
 }
 
-
 .modal-icono{
-
     font-size:42px;
 
     margin-bottom:17px;
-
 }
 
-
 .modal h2{
-
     font-family:
     Georgia,
     "Times New Roman",
     serif;
-
 
     color:#ecd58d;
 
@@ -1141,42 +885,29 @@ body{
     font-weight:400;
 
     margin-bottom:20px;
-
 }
-
 
 .modal-texto{
-
     color:#beb8ac;
 
-    font-size:
-    15px;
+    font-size:15px;
 
     line-height:1.9;
-
 }
-
 
 .modal-texto strong{
-
     color:#f1d989;
-
 }
-
 
 .modal-texto em{
-
     color:#ddc67e;
-
 }
-
 
 /* =========================================================
    IMAGEN DEL ABRAZO
 ========================================================= */
 
 .imagen-abrazo{
-
     display:block;
 
     width:100%;
@@ -1184,32 +915,25 @@ body{
     max-width:430px;
 
     margin:
-
     10px auto
     20px;
 
     border-radius:21px;
 
     border:
-
     1px solid
     rgba(230,190,83,.26);
 
-
     box-shadow:
-
     0 20px 55px
     rgba(0,0,0,.6);
-
 }
-
 
 /* =========================================================
    HOW ARE YOU
 ========================================================= */
 
 .estados{
-
     display:flex;
 
     justify-content:center;
@@ -1219,21 +943,16 @@ body{
     gap:10px;
 
     margin-top:25px;
-
 }
 
-
 .estado{
-
     border:
-
     1px solid
     rgba(226,187,82,.32);
 
     border-radius:100px;
 
     padding:
-
     11px 17px;
 
     background:
@@ -1246,12 +965,9 @@ body{
     cursor:pointer;
 
     transition:.3s;
-
 }
 
-
 .estado:hover{
-
     transform:
     translateY(-2px);
 
@@ -1259,12 +975,9 @@ body{
 
     border-color:
     rgba(241,205,107,.65);
-
 }
 
-
 #respuestaEstado{
-
     min-height:75px;
 
     margin-top:25px;
@@ -1272,7 +985,6 @@ body{
     padding-top:20px;
 
     border-top:
-
     1px solid
     rgba(224,184,79,.13);
 
@@ -1283,34 +995,25 @@ body{
     opacity:0;
 
     transition:.5s;
-
 }
-
 
 #respuestaEstado.visible{
-
     opacity:1;
-
 }
-
 
 /* =========================================================
    VIDEO
 ========================================================= */
 
 .modal-video{
-
     width:
     min(
         760px,
         96vw
     );
-
 }
 
-
 #videoJhos{
-
     display:block;
 
     width:100%;
@@ -1324,19 +1027,15 @@ body{
     background:#000;
 
     box-shadow:
-
     0 20px 60px
     rgba(0,0,0,.7);
-
 }
-
 
 /* =========================================================
    MODAL FLOR
 ========================================================= */
 
 .modal-flor{
-
     width:
     min(
         950px,
@@ -1350,12 +1049,9 @@ body{
     );
 
     padding:12px;
-
 }
 
-
 #iframeFlor{
-
     width:100%;
     height:100%;
 
@@ -1364,27 +1060,22 @@ body{
     border-radius:18px;
 
     background:#020202;
-
 }
-
 
 /* =========================================================
    BOTÓN CERRAR NORMAL
 ========================================================= */
 
 .boton-cerrar{
-
     margin-top:28px;
 
     border:
-
     1px solid
     rgba(225,186,80,.38);
 
     border-radius:100px;
 
     padding:
-
     11px 24px;
 
     background:
@@ -1399,19 +1090,13 @@ body{
     font-size:10px;
 
     transition:.3s;
-
 }
-
 
 .boton-cerrar:hover{
-
-    border-color:
-    #d8b657;
+    border-color:#d8b657;
 
     color:#f3dc99;
-
 }
-
 
 /* =========================================================
    RESPONSIVE
@@ -1420,156 +1105,105 @@ body{
 @media(
     max-width:800px
 ){
-
     .portada{
-
         min-height:62vh;
 
         padding:
-
         95px 10px
         50px;
-
     }
-
 
     .grid-opciones{
-
         grid-template-columns:
         repeat(2,1fr);
-
     }
-
 
     .tarjeta:nth-child(n){
-
         grid-column:auto;
-
     }
 
-
     .tarjeta:nth-child(5){
-
         grid-column:
         1 / -1;
 
         width:calc(50% - 8px);
 
         justify-self:center;
-
     }
-
 }
-
 
 @media(
     max-width:560px
 ){
-
     .pagina{
-
         width:
         min(
             100% - 26px,
             1180px
         );
-
     }
 
-
     .portada{
-
         min-height:60vh;
 
         align-items:center;
 
         padding:
-
         90px 5px
         40px;
-
     }
 
-
     .portada h1{
-
         font-size:
         clamp(
             46px,
             15vw,
             67px
         );
-
     }
-
 
     .grid-opciones{
-
         grid-template-columns:1fr;
-
     }
 
-
     .tarjeta:nth-child(n){
-
         grid-column:auto;
 
         width:100%;
-
     }
-
 
     .tarjeta{
-
         min-height:155px;
-
     }
-
 
     .modal{
-
         padding:15px;
-
     }
-
 
     .modal-contenido{
-
         padding:
-
         45px 22px
         30px;
-
     }
 
-
     .modal-flor{
-
         width:98vw;
+
         height:92vh;
 
         padding:8px;
-
     }
-
 
     .proxima{
-
         padding:
-
         60px 15px;
-
     }
-
 }
 
 </style>
-
 </head>
 
-
 <body>
-
 
 <div class="fondo"></div>
 
@@ -1578,7 +1212,6 @@ body{
 <div class="linea dos"></div>
 
 <div id="particulas"></div>
-
 
 
 <!-- =========================================================
@@ -1592,7 +1225,24 @@ preload="auto"
 >
 
     <source
-    src="./musica-fondo.mp3"
+    src="./musica-mp3.mpeg"
+    type="audio/mpeg"
+    >
+
+</audio>
+
+
+<!-- =========================================================
+     MÚSICA ESPECIAL DE LA NOTA
+========================================================= -->
+
+<audio
+id="musicaNota"
+preload="auto"
+>
+
+    <source
+    src="./musica.mpeg"
     type="audio/mpeg"
     >
 
@@ -1610,7 +1260,6 @@ title="Música"
 </button>
 
 
-
 <main class="pagina">
 
 
@@ -1620,13 +1269,11 @@ title="Música"
 
 <section class="portada">
 
-
 <div class="portada-contenido">
-
 
     <div class="volumen">
 
-        25/09 
+        25/09&#x20;
 
     </div>
 
@@ -1634,8 +1281,8 @@ title="Música"
     <h1>
 
         Hola,
+
         <span>Jhoselin</span>
-        
 
     </h1>
 
@@ -1664,12 +1311,9 @@ title="Música"
 
     <div class="separador"></div>
 
-
 </div>
 
-
 </section>
-
 
 
 <!-- =========================================================
@@ -1677,7 +1321,6 @@ title="Música"
 ========================================================= -->
 
 <section class="explorar">
-
 
 <div class="titulo-seccion">
 
@@ -1687,7 +1330,6 @@ title="Música"
 
     </span>
 
-
     <h2>
 
         Hay algunas cosas por aquí...
@@ -1695,7 +1337,6 @@ title="Música"
     </h2>
 
 </div>
-
 
 
 <div class="grid-opciones">
@@ -1714,13 +1355,11 @@ title="Música"
 
         </div>
 
-
         <h3>
 
             THE FLOWER
 
         </h3>
-
 
         <p>
 
@@ -1730,7 +1369,6 @@ title="Música"
         </p>
 
     </article>
-
 
 
     <!-- 2 - ABRAZO -->
@@ -1746,13 +1384,11 @@ title="Música"
 
         </div>
 
-
         <h3>
 
             A LITTLE HUG
 
         </h3>
-
 
         <p>
 
@@ -1762,7 +1398,6 @@ title="Música"
         </p>
 
     </article>
-
 
 
     <!-- 3 - NOTA -->
@@ -1778,13 +1413,11 @@ title="Música"
 
         </div>
 
-
         <h3>
 
             A LITTLE REMINDER
 
         </h3>
-
 
         <p>
 
@@ -1794,7 +1427,6 @@ title="Música"
         </p>
 
     </article>
-
 
 
     <!-- 4 - ESTADO -->
@@ -1810,13 +1442,11 @@ title="Música"
 
         </div>
 
-
         <h3>
 
             HOW ARE YOU TODAY?
 
         </h3>
-
 
         <p>
 
@@ -1826,7 +1456,6 @@ title="Música"
         </p>
 
     </article>
-
 
 
     <!-- 5 - VIDEO -->
@@ -1842,13 +1471,11 @@ title="Música"
 
         </div>
 
-
         <h3>
 
             30 SECONDS FOR YOU
 
         </h3>
-
 
         <p>
 
@@ -1861,9 +1488,7 @@ title="Música"
 
 </div>
 
-
 </section>
-
 
 
 <!-- =========================================================
@@ -1871,7 +1496,6 @@ title="Música"
 ========================================================= -->
 
 <section class="proxima">
-
 
     <div class="next">
 
@@ -1892,22 +1516,21 @@ title="Música"
         Dios te ama....
 
     </p>
+
     <p>
 
         att.,
-         keven
+        keven
 
     </p>
 
 
     <div class="mini-linea"></div>
 
-
 </section>
 
 
 </main>
-
 
 
 <!-- =========================================================
@@ -1919,9 +1542,7 @@ class="modal"
 id="modalAbrazo"
 >
 
-
 <div class="modal-contenido">
-
 
     <button
     class="cerrar"
@@ -1963,12 +1584,9 @@ id="modalAbrazo"
 
     </button>
 
-
 </div>
 
-
 </div>
-
 
 
 <!-- =========================================================
@@ -1980,9 +1598,7 @@ class="modal"
 id="modalNota"
 >
 
-
 <div class="modal-contenido">
-
 
     <button
     class="cerrar"
@@ -2145,21 +1761,20 @@ id="modalNota"
 
 </div>
 
+</div>
 
-    </div>
 
+<button
+class="boton-cerrar"
+onclick="cerrarModal('modalNota')"
+>
 
-    <button
-    class="boton-cerrar"
-    onclick="cerrarModal('modalNota')"
-    >
+    CLOSE
 
-        CLOSE
-
-    </button>
-
+</button>
 
 </div>
+
 
 <!-- =========================================================
      MODAL CÓMO ESTÁS
@@ -2170,9 +1785,7 @@ class="modal"
 id="modalEstado"
 >
 
-
 <div class="modal-contenido">
-
 
     <button
     class="cerrar"
@@ -2257,9 +1870,7 @@ id="modalEstado"
 
 </div>
 
-
 </div>
-
 
 
 <!-- =========================================================
@@ -2270,7 +1881,6 @@ id="modalEstado"
 class="modal"
 id="modalVideo"
 >
-
 
 <div class="modal-contenido modal-video">
 
@@ -2336,9 +1946,7 @@ id="modalVideo"
 
 </div>
 
-
 </div>
-
 
 
 <!-- =========================================================
@@ -2350,9 +1958,7 @@ class="modal"
 id="modalFlor"
 >
 
-
 <div class="modal-contenido modal-flor">
-
 
     <button
     class="cerrar"
@@ -2379,9 +1985,7 @@ id="modalFlor"
 
 </div>
 
-
 </div>
-
 
 
 <script>
@@ -2394,6 +1998,12 @@ id="modalFlor"
 const musicaFondo =
 document.getElementById(
     "musicaFondo"
+);
+
+
+const musicaNota =
+document.getElementById(
+    "musicaNota"
 );
 
 
@@ -2415,8 +2025,9 @@ let musicaSilenciada = false;
 
 let videoAbierto = false;
 
-let intervaloFade;
+let notaAbierta = false;
 
+let intervaloFade;
 
 
 /* =========================================================
@@ -2425,13 +2036,10 @@ let intervaloFade;
 
 function crearParticulas(){
 
-
     const contenedor =
-
     document.getElementById(
         "particulas"
     );
-
 
     for(
         let i=0;
@@ -2439,68 +2047,46 @@ function crearParticulas(){
         i++
     ){
 
-
         const punto =
-
         document.createElement(
             "span"
         );
 
-
         punto.className =
         "particula";
 
-
         punto.style.left =
-
         Math.random()*100
         +"%";
 
-
         punto.style.animationDuration =
-
         (
             8+
             Math.random()*12
         )
         +"s";
 
-
         punto.style.animationDelay =
-
         Math.random()*10
         +"s";
 
-
         const tamano =
-
         1.5+
         Math.random()*2.7;
 
-
         punto.style.width =
-
         tamano+"px";
-
 
         punto.style.height =
-
         tamano+"px";
-
 
         contenedor.appendChild(
             punto
         );
-
-
     }
-
-
 }
 
-
 crearParticulas();
-
 
 
 /* =========================================================
@@ -2509,60 +2095,49 @@ crearParticulas();
 
 function iniciarMusica(){
 
-
     if(
         musicaSilenciada
         ||
         videoAbierto
+        ||
+        notaAbierta
     ){
-
         return;
-
     }
 
-
     musicaIniciada = true;
-
 
     clearInterval(
         intervaloFade
     );
-
 
     musicaFondo
     .play()
 
     .then(()=>{
 
-
         if(
             musicaFondo.volume
             >
             .28
         ){
-
             musicaFondo.volume=.28;
-
         }
-
 
         if(
             musicaFondo.volume
             ===0
         ){
 
-
             intervaloFade =
 
             setInterval(()=>{
-
 
                 if(
                     musicaFondo.volume
                     <
                     .27
                 ){
-
 
                     musicaFondo.volume =
 
@@ -2572,40 +2147,25 @@ function iniciarMusica(){
                         .28
                     );
 
-
                 }else{
-
 
                     clearInterval(
                         intervaloFade
                     );
-
-
                 }
 
-
             },110);
-
-
         }
-
-
     })
 
     .catch(error=>{
-
 
         console.log(
             "El navegador esperó una interacción para reproducir la música.",
             error
         );
-
-
     });
-
-
 }
-
 
 
 /* =========================================================
@@ -2614,22 +2174,16 @@ function iniciarMusica(){
 
 function primeraInteraccion(){
 
-
     if(
         !musicaIniciada
         &&
         !videoAbierto
     ){
 
-
         musicaFondo.volume=0;
 
         iniciarMusica();
-
-
     }
-
-
 }
 
 
@@ -2643,9 +2197,7 @@ document.addEventListener(
         once:true,
         capture:true
     }
-
 );
-
 
 
 /* =========================================================
@@ -2654,11 +2206,9 @@ document.addEventListener(
 
 function controlarMusica(){
 
-
     if(
         musicaSilenciada
     ){
-
 
         musicaSilenciada=false;
 
@@ -2666,33 +2216,49 @@ function controlarMusica(){
         "🔊";
 
 
+        /* Si estamos dentro de la nota,
+           continuar la música de la nota */
+
+        if(
+            notaAbierta
+        ){
+
+            musicaNota
+            .play()
+
+            .catch(error=>{
+
+                console.log(
+                    "No se pudo reanudar la música de la nota.",
+                    error
+                );
+            });
+
+            return;
+        }
+
+
+        /* De lo contrario vuelve música normal */
+
         if(
             !videoAbierto
         ){
 
-
             iniciarMusica();
-
-
         }
 
-
     }else{
-
 
         musicaSilenciada=true;
 
         musicaFondo.pause();
 
+        musicaNota.pause();
+
         botonMusica.textContent=
         "🔇";
-
-
     }
-
-
 }
-
 
 
 /* =========================================================
@@ -2701,11 +2267,9 @@ function controlarMusica(){
 
 function abrirModal(id){
 
-
     cerrarOtrosModales(
         id
     );
-
 
     document
     .getElementById(id)
@@ -2714,10 +2278,65 @@ function abrirModal(id){
         "activo"
     );
 
-
     document.body.style.overflow=
     "hidden";
 
+
+    /* =====================================================
+       SI ENTRA EN LA NOTA
+
+       1. Pausa la música normal.
+       2. Música de nota vuelve al segundo 0.
+       3. Reproduce musica-nota.mp3.
+    ===================================================== */
+
+    if(
+        id === "modalNota"
+    ){
+
+        notaAbierta = true;
+
+
+        /* PAUSAR MÚSICA PRINCIPAL */
+
+        musicaFondo.pause();
+
+
+        /* REINICIAR MÚSICA DE LA NOTA */
+
+        musicaNota.pause();
+
+        musicaNota.currentTime = 0;
+
+        musicaNota.volume = .70;
+
+
+        /* REPRODUCIRLA */
+
+        if(
+            !musicaSilenciada
+        ){
+
+            musicaNota
+            .play()
+
+            .catch(error=>{
+
+                console.log(
+                    "No se pudo iniciar la música de la nota.",
+                    error
+                );
+            });
+        }
+
+
+        return;
+    }
+
+
+    /* =====================================================
+       RESTO DE MODALES
+    ===================================================== */
 
     if(
         !musicaIniciada
@@ -2725,21 +2344,18 @@ function abrirModal(id){
         !musicaSilenciada
     ){
 
-
         musicaFondo.volume=0;
 
         iniciarMusica();
-
-
     }
-
-
 }
 
 
+/* =========================================================
+   CERRAR MODALES
+========================================================= */
 
 function cerrarModal(id){
-
 
     document
     .getElementById(id)
@@ -2748,19 +2364,53 @@ function cerrarModal(id){
         "activo"
     );
 
-
     document.body.style.overflow=
     "";
 
 
+    /* =====================================================
+       SI SALE DE LA NOTA
+
+       1. Detiene musica-nota.mp3.
+       2. La devuelve al segundo 0.
+       3. Continúa la música principal.
+    ===================================================== */
+
+    if(
+        id === "modalNota"
+    ){
+
+        notaAbierta = false;
+
+
+        /* DETENER MÚSICA DE NOTA */
+
+        musicaNota.pause();
+
+        musicaNota.currentTime = 0;
+
+
+        /* REGRESAR A MÚSICA PRINCIPAL */
+
+        if(
+            !musicaSilenciada
+            &&
+            !videoAbierto
+        ){
+
+            iniciarMusica();
+        }
+    }
 }
 
 
+/* =========================================================
+   CERRAR OTROS MODALES
+========================================================= */
 
 function cerrarOtrosModales(
     excepto
 ){
-
 
     document
     .querySelectorAll(
@@ -2768,13 +2418,11 @@ function cerrarOtrosModales(
     )
     .forEach(modal=>{
 
-
         if(
             modal.id
             !==
             excepto
         ){
-
 
             if(
                 modal.id
@@ -2782,33 +2430,31 @@ function cerrarOtrosModales(
                 "modalVideo"
             ){
 
-
                 cerrarVideo(
                     false
                 );
 
+            }else if(
+                modal.id
+                ===
+                "modalNota"
+            ){
+
+                cerrarModal(
+                    "modalNota"
+                );
 
             }else{
-
 
                 modal
                 .classList
                 .remove(
                     "activo"
                 );
-
-
             }
-
-
         }
-
-
     });
-
-
 }
-
 
 
 /* =========================================================
@@ -2817,14 +2463,10 @@ function cerrarOtrosModales(
 
 function abrirFlor(){
 
-
     abrirModal(
         "modalFlor"
     );
-
-
 }
-
 
 
 /* =========================================================
@@ -2835,13 +2477,10 @@ function seleccionarEstado(
     estado
 ){
 
-
     const respuesta =
-
     document.getElementById(
         "respuestaEstado"
     );
-
 
     let texto = "";
 
@@ -2850,22 +2489,18 @@ function seleccionarEstado(
         estado==="bien"
     ){
 
-
         texto =
 
         `Me alegra saberlo. ✨
 
         Ojalá el resto del día
         siga tratándote bonito.`;
-
-
     }
 
 
     if(
         estado==="vamos"
     ){
-
 
         texto =
 
@@ -2876,15 +2511,12 @@ function seleccionarEstado(
 
         A veces seguir avanzando
         ya es suficiente.`;
-
-
     }
 
 
     if(
         estado==="descanso"
     ){
-
 
         texto =
 
@@ -2895,8 +2527,6 @@ function seleccionarEstado(
         es parte de seguir adelante.
 
         Mañana se continúa.`;
-
-
     }
 
 
@@ -2913,19 +2543,14 @@ function seleccionarEstado(
 
     setTimeout(()=>{
 
-
         respuesta
         .classList
         .add(
             "visible"
         );
 
-
     },50);
-
-
 }
-
 
 
 /* =========================================================
@@ -2934,13 +2559,22 @@ function seleccionarEstado(
 
 function abrirVideo(){
 
-
     cerrarOtrosModales(
         "modalVideo"
     );
 
 
     videoAbierto=true;
+
+
+    /* POR SEGURIDAD DETENER
+       LA MÚSICA DE LA NOTA */
+
+    notaAbierta=false;
+
+    musicaNota.pause();
+
+    musicaNota.currentTime=0;
 
 
     /* PAUSA MÚSICA PRINCIPAL */
@@ -2970,18 +2604,12 @@ function abrirVideo(){
 
     .catch(error=>{
 
-
         console.log(
             "Presiona Play para iniciar el video.",
             error
         );
-
-
     });
-
-
 }
-
 
 
 /* =========================================================
@@ -2991,7 +2619,6 @@ function abrirVideo(){
 function cerrarVideo(
     volverMusica=true
 ){
-
 
     videoJhos.pause();
 
@@ -3023,15 +2650,9 @@ function cerrarVideo(
         !musicaSilenciada
     ){
 
-
         iniciarMusica();
-
-
     }
-
-
 }
-
 
 
 /* =========================================================
@@ -3044,25 +2665,16 @@ videoJhos.addEventListener(
 
     function(){
 
-
         videoAbierto=false;
-
 
         if(
             !musicaSilenciada
         ){
 
-
             iniciarMusica();
-
-
         }
-
-
     }
-
 );
-
 
 
 /* SI EL USUARIO PRESIONA PLAY MANUALMENTE */
@@ -3073,16 +2685,11 @@ videoJhos.addEventListener(
 
     function(){
 
-
         videoAbierto=true;
 
         musicaFondo.pause();
-
-
     }
-
 );
-
 
 
 /* =========================================================
@@ -3095,13 +2702,11 @@ document
 )
 .forEach(modal=>{
 
-
     modal.addEventListener(
 
         "click",
 
         function(event){
-
 
             if(
                 event.target
@@ -3110,7 +2715,6 @@ document
             ){
 
                 return;
-
             }
 
 
@@ -3120,28 +2724,17 @@ document
                 "modalVideo"
             ){
 
-
                 cerrarVideo();
 
-
             }else{
-
 
                 cerrarModal(
                     modal.id
                 );
-
-
             }
-
-
         }
-
     );
-
-
 });
-
 
 
 /* =========================================================
@@ -3154,7 +2747,6 @@ document.addEventListener(
 
     function(event){
 
-
         if(
             event.key
             !==
@@ -3162,7 +2754,6 @@ document.addEventListener(
         ){
 
             return;
-
         }
 
 
@@ -3178,7 +2769,6 @@ document.addEventListener(
         ){
 
             return;
-
         }
 
 
@@ -3188,29 +2778,19 @@ document.addEventListener(
             "modalVideo"
         ){
 
-
             cerrarVideo();
 
-
         }else{
-
 
             cerrarModal(
                 modalActivo.id
             );
-
-
         }
-
-
     }
-
 );
 
 
 </script>
 
-
 </body>
-
 </html>
