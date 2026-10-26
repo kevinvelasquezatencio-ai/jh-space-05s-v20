@@ -1,30 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 <meta charset="UTF-8">
+
 <meta
 name="viewport"
 content="width=device-width, initial-scale=1.0"
 >
-<title>Un espacio para ti, Jhos </title>
 
-<!-- =========================================
-     VISTA PREVIA
-========================================= -->
+<title>Un espacio para ti, Jhos</title>
 
 <meta
-property="og:title"
-content="Un espacio para ti, Jhos "
->
-
-<meta
-property="og:description"
-content="Qué gusto saber que pasaste por aquí."
->
-
-<meta
-property="og:type"
-content="website"
+name="robots"
+content="noindex, nofollow, noarchive"
 >
 
 <meta
@@ -47,7 +36,9 @@ content="#050505"
     --dorado-suave:#b79343;
 
     --blanco:#f7f2e7;
-    --gris:#aaa396;
+    --gris:#99958c;
+
+    --verde:#00df84;
 }
 
 *{
@@ -62,35 +53,36 @@ html{
 
 body{
     min-height:100vh;
-    overflow-x:hidden;
+    overflow:hidden;
 
     color:var(--blanco);
 
     font-family:
-    "Segoe UI",
-    Arial,
-    sans-serif;
+        "Segoe UI",
+        Arial,
+        sans-serif;
 
     background:
-    radial-gradient(
-        circle at 18% 17%,
-        rgba(229,184,70,.10),
-        transparent 27%
-    ),
+        radial-gradient(
+            circle at 18% 15%,
+            rgba(229,184,70,.10),
+            transparent 28%
+        ),
 
-    radial-gradient(
-        circle at 83% 75%,
-        rgba(255,202,56,.07),
-        transparent 30%
-    ),
+        radial-gradient(
+            circle at 82% 78%,
+            rgba(255,202,56,.06),
+            transparent 30%
+        ),
 
-    linear-gradient(
-        145deg,
-        #020202,
-        #090805 48%,
-        #020202
-    );
+        linear-gradient(
+            145deg,
+            #020202,
+            #090805 48%,
+            #020202
+        );
 }
+
 
 /* =========================================================
    FONDO
@@ -99,78 +91,85 @@ body{
 .fondo{
     position:fixed;
     inset:0;
+
     pointer-events:none;
-    z-index:-10;
+
+    overflow:hidden;
 }
 
 .fondo::before{
     content:"";
+
     position:absolute;
     inset:0;
 
     background:
-    radial-gradient(
-        circle at 50% 35%,
-        rgba(228,184,68,.055),
-        transparent 30%
-    );
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(228,184,68,.055),
+            transparent 32%
+        );
 
     animation:
-    respirarFondo
-    6s ease-in-out infinite;
+        respirarFondo
+        6s ease-in-out infinite;
 }
 
 @keyframes respirarFondo{
-    0%,
-    100%{
-        opacity:.45;
+
+    0%,100%{
+        opacity:.4;
     }
 
     50%{
         opacity:1;
     }
+
 }
+
 
 /* =========================================================
    LÍNEAS DECORATIVAS
 ========================================================= */
 
 .linea{
-    position:fixed;
+    position:absolute;
 
-    width:42vw;
-    height:1px;
+    width:760px;
+    height:145px;
+
+    border-radius:50%;
+
+    border-top:
+        1px solid
+        rgba(227,187,82,.18);
 
     pointer-events:none;
-
-    opacity:.55;
-
-    background:
-    linear-gradient(
-        90deg,
-        transparent,
-        rgba(225,187,78,.30),
-        transparent
-    );
-
-    z-index:-5;
 }
 
 .linea.uno{
-    top:16%;
-    left:-10%;
+    top:12%;
+    left:-230px;
 
-    transform:
-    rotate(-18deg);
+    transform:rotate(-25deg);
 }
 
 .linea.dos{
-    bottom:14%;
-    right:-10%;
+    right:-260px;
+    bottom:9%;
 
-    transform:
-    rotate(-18deg);
+    transform:rotate(-29deg);
 }
+
+.linea.tres{
+    top:48%;
+    right:-480px;
+
+    opacity:.45;
+
+    transform:rotate(-20deg);
+}
+
 
 /* =========================================================
    PARTÍCULAS
@@ -181,9 +180,8 @@ body{
     inset:0;
 
     pointer-events:none;
-    overflow:hidden;
 
-    z-index:-2;
+    overflow:hidden;
 }
 
 .particula{
@@ -197,27 +195,28 @@ body{
     background:#f4ce6b;
 
     box-shadow:
-    0 0 7px
-    rgba(255,213,103,.7);
+        0 0 8px
+        rgba(255,213,103,.75);
 
     opacity:0;
 
     animation:
-    flotarParticula
-    linear infinite;
+        flotar
+        linear infinite;
 }
 
-@keyframes flotarParticula{
+@keyframes flotar{
+
     0%{
         transform:
-        translateY(105vh)
-        scale(.5);
+            translateY(105vh)
+            scale(.5);
 
         opacity:0;
     }
 
     15%{
-        opacity:.65;
+        opacity:.55;
     }
 
     80%{
@@ -226,544 +225,1066 @@ body{
 
     100%{
         transform:
-        translateY(-15vh)
-        scale(1.1);
+            translateY(-15vh)
+            scale(1.1);
 
         opacity:0;
     }
+
 }
 
+
 /* =========================================================
-   CONTROL DE MÚSICA
+   PANTALLA DE ACCESO
 ========================================================= */
 
-#botonMusica{
+#pantallaAcceso{
     position:fixed;
 
-    top:20px;
-    right:20px;
+    inset:0;
 
-    width:46px;
-    height:46px;
-
-    border-radius:50%;
-
-    border:
-    1px solid
-    rgba(227,187,82,.37);
-
-    background:
-    rgba(8,8,7,.72);
-
-    color:#efd998;
-
-    cursor:pointer;
-
-    backdrop-filter:
-    blur(12px);
-
-    box-shadow:
-    0 8px 30px
-    rgba(0,0,0,.45);
-
-    transition:.3s ease;
-
-    z-index:200;
-}
-
-#botonMusica:hover{
-    transform:scale(1.07);
-
-    border-color:
-    rgba(241,205,108,.7);
-}
-
-/* =========================================================
-   CONTENEDOR PRINCIPAL
-========================================================= */
-
-.pagina{
-    width:
-    min(
-        1180px,
-        calc(100% - 38px)
-    );
-
-    margin:auto;
-}
-
-/* =========================================================
-   PORTADA
-========================================================= */
-
-.portada{
-    min-height:66vh;
+    z-index:100;
 
     display:flex;
 
+    justify-content:center;
     align-items:center;
-    justify-content:flex-start;
+
+    padding:20px;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+#pantallaAcceso.ocultar{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   NOMBRE SUPERIOR
+========================================================= */
+
+.nombre-fondo{
+    position:absolute;
+
+    top:7%;
+
+    left:0;
+    right:0;
+
+    text-align:center;
+
+    pointer-events:none;
+}
+
+.nombre-fondo small{
+    display:block;
+
+    margin-bottom:10px;
+
+    color:#a28b51;
+
+    font-size:9px;
+
+    letter-spacing:6px;
+}
+
+.nombre-fondo h1{
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            39px,
+            7vw,
+            66px
+        );
+
+    font-weight:400;
+
+    color:#f5f1e8;
+}
+
+.nombre-fondo h1 span{
+    color:#edc75e;
+
+    text-shadow:
+        0 0 32px
+        rgba(237,199,94,.16);
+}
+
+
+/* =========================================================
+   TARJETA GLASS
+========================================================= */
+
+.login-card{
+    position:relative;
+
+    z-index:5;
+
+    width:
+        min(
+            480px,
+            94vw
+        );
+
+    margin-top:75px;
 
     padding:
-    90px 4%
-    60px;
-}
+        36px 30px
+        32px;
 
-.portada-contenido{
-    max-width:720px;
+    border:
+        1px solid
+        rgba(255,255,255,.18);
 
-    text-align:left;
+    border-radius:30px;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(235,193,79,.08),
+            transparent 45%
+        ),
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.085),
+            rgba(255,255,255,.025)
+        );
+
+    backdrop-filter:
+        blur(19px);
+
+    -webkit-backdrop-filter:
+        blur(19px);
+
+    box-shadow:
+        0 35px 95px
+        rgba(0,0,0,.68),
+
+        inset 0 1px 0
+        rgba(255,255,255,.12);
+
+    overflow:hidden;
 
     animation:
-    entradaPortada
-    1.5s ease;
+        entradaTarjeta
+        1s ease;
+
+    transition:
+        border-color .5s ease,
+        box-shadow .5s ease,
+        background .5s ease;
 }
 
-@keyframes entradaPortada{
+.login-card::before{
+    content:"";
+
+    position:absolute;
+
+    top:-120px;
+    left:50%;
+
+    width:290px;
+    height:220px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:50%;
+
+    background:
+        rgba(231,187,68,.10);
+
+    filter:
+        blur(70px);
+
+    pointer-events:none;
+}
+
+@keyframes entradaTarjeta{
+
     from{
         opacity:0;
 
         transform:
-        translateY(25px);
+            translateY(25px)
+            scale(.96);
     }
 
     to{
         opacity:1;
 
         transform:
-        translateY(0);
+            translateY(0)
+            scale(1);
     }
+
 }
 
-.volumen{
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    color:#b79a59;
-
-    font-size:11px;
-
-    font-weight:600;
-
-    letter-spacing:4px;
-
-    margin-bottom:28px;
-}
-
-.volumen::before{
-    content:"";
-
-    width:35px;
-    height:1px;
-
-    background:
-    var(--dorado);
-}
-
-.portada h1{
-    font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-    font-size:
-    clamp(
-        48px,
-        8vw,
-        92px
-    );
-
-    font-weight:400;
-
-    line-height:1;
-
-    letter-spacing:-2px;
-
-    color:#f7f1e5;
-
-    margin-bottom:27px;
-}
-
-.portada h1 span{
-    color:
-    var(--dorado);
-
-    text-shadow:
-    0 0 30px
-    rgba(231,187,68,.15);
-}
-
-.saludo{
-    font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-    font-size:
-    clamp(
-        19px,
-        3vw,
-        27px
-    );
-
-    color:#dbccaa;
-
-    margin-bottom:16px;
-}
-
-.descripcion{
-    max-width:570px;
-
-    color:#989287;
-
-    font-size:
-    clamp(
-        14px,
-        2vw,
-        17px
-    );
-
-    line-height:1.85;
-}
-
-.separador{
-    width:85px;
-    height:1px;
-
-    margin-top:34px;
-
-    background:
-    linear-gradient(
-        90deg,
-        var(--dorado),
-        transparent
-    );
-}
 
 /* =========================================================
-   ZONA DE BOTONES
+   ICONO
 ========================================================= */
 
-.explorar{
-    padding:
-    35px 0
-    75px;
-}
-
-.titulo-seccion{
-    text-align:center;
-
-    margin-bottom:35px;
-}
-
-.titulo-seccion span{
-    color:#aa925d;
-
-    font-size:10px;
-
-    letter-spacing:4px;
-
-    text-transform:uppercase;
-}
-
-.titulo-seccion h2{
-    margin-top:10px;
-
-    font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-    font-size:
-    clamp(
-        25px,
-        4vw,
-        36px
-    );
-
-    font-weight:400;
-
-    color:#eee6d5;
-}
-
-/* =========================================================
-   GRID 5 BOTONES
-========================================================= */
-
-.grid-opciones{
-    display:grid;
-
-    grid-template-columns:
-    repeat(6,1fr);
-
-    gap:16px;
-}
-
-/* tres arriba */
-
-.tarjeta:nth-child(1),
-.tarjeta:nth-child(2),
-.tarjeta:nth-child(3){
-    grid-column:
-    span 2;
-}
-
-/* dos abajo centradas */
-
-.tarjeta:nth-child(4){
-    grid-column:
-    2 / span 2;
-}
-
-.tarjeta:nth-child(5){
-    grid-column:
-    4 / span 2;
-}
-
-/* =========================================================
-   TARJETAS
-========================================================= */
-
-.tarjeta{
+.icono-llave{
     position:relative;
 
-    min-height:205px;
+    z-index:2;
 
-    padding:
-    29px 23px;
+    width:54px;
+    height:54px;
 
-    border:
-    1px solid
-    rgba(225,185,80,.22);
-
-    border-radius:22px;
-
-    background:
-    radial-gradient(
-        circle at 50% 0%,
-        rgba(229,187,75,.075),
-        transparent 48%
-    ),
-
-    linear-gradient(
-        145deg,
-        rgba(18,17,13,.88),
-        rgba(7,7,6,.94)
-    );
+    margin:
+        0 auto
+        17px;
 
     display:flex;
 
-    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:17px;
+
+    border:
+        1px solid
+        rgba(230,190,78,.33);
+
+    background:
+        rgba(223,180,54,.055);
+
+    color:#edc65e;
+
+    font-size:22px;
+
+    box-shadow:
+        0 0 28px
+        rgba(226,184,48,.10);
+
+    transition:.4s ease;
+}
+
+
+/* =========================================================
+   TEXTOS
+========================================================= */
+
+.login-card h2{
+    position:relative;
+
+    z-index:2;
+
+    color:#f4f1e9;
+
+    font-size:
+        clamp(
+            25px,
+            5vw,
+            32px
+        );
+
+    font-weight:650;
+}
+
+.login-card h2 span{
+    color:#e7c24f;
+}
+
+.subtitulo{
+    position:relative;
+
+    z-index:2;
+
+    margin-top:8px;
+
+    color:#8f8a7f;
+
+    font-size:11px;
+
+    line-height:1.7;
+}
+
+.pista{
+    position:relative;
+
+    z-index:2;
+
+    margin-top:8px;
+
+    color:#aa9154;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:11px;
+
+    font-style:italic;
+}
+
+
+/* =========================================================
+   OTP 4 CUADROS
+========================================================= */
+
+.otp{
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
 
     justify-content:center;
 
-    align-items:center;
+    gap:12px;
+
+    margin-top:30px;
+
+    min-height:74px;
+}
+
+.otp input{
+    width:61px;
+    height:68px;
+
+    border:
+        1px solid
+        rgba(225,187,78,.38);
+
+    border-radius:16px;
+
+    outline:none;
+
+    background:
+        rgba(5,5,5,.68);
+
+    color:#fff;
 
     text-align:center;
 
-    cursor:pointer;
+    font-size:24px;
 
-    overflow:hidden;
+    font-weight:650;
 
-    transition:
-    transform .35s ease,
-    border-color .35s ease,
-    box-shadow .35s ease;
-}
-
-.tarjeta::before{
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    opacity:0;
-
-    transition:.4s;
-
-    background:
-    radial-gradient(
-        circle at 50% 45%,
-        rgba(239,197,91,.10),
-        transparent 55%
-    );
-}
-
-.tarjeta:hover{
-    transform:
-    translateY(-7px);
-
-    border-color:
-    rgba(233,197,102,.55);
+    caret-color:#edc65e;
 
     box-shadow:
-    0 22px 60px
-    rgba(0,0,0,.48),
+        inset 0 0 20px
+        rgba(0,0,0,.40);
 
-    0 0 25px
-    rgba(224,176,55,.055);
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        transform .25s ease;
 }
 
-.tarjeta:hover::before{
-    opacity:1;
+.otp input:focus{
+    border-color:#efc95d;
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 0 22px
+        rgba(239,201,93,.13),
+
+        inset 0 0 20px
+        rgba(0,0,0,.45);
 }
 
-.icono{
-    position:relative;
 
-    font-size:34px;
+/* =========================================================
+   BOTÓN VERIFICAR
+========================================================= */
 
-    margin-bottom:18px;
-
-    z-index:2;
-}
-
-.tarjeta h3{
-    position:relative;
-
-    z-index:2;
-
-    color:#ead79b;
-
-    font-size:13px;
-
-    letter-spacing:2px;
-
-    font-weight:600;
-
-    margin-bottom:10px;
-}
-
-.tarjeta p{
+.verificar{
     position:relative;
 
     z-index:2;
 
-    color:#8e897e;
+    width:
+        min(
+            310px,
+            100%
+        );
 
-    font-size:13px;
+    height:50px;
+
+    margin-top:28px;
+
+    border:0;
+
+    border-radius:13px;
+
+    cursor:pointer;
+
+    color:#171207;
+
+    font-size:11px;
+
+    font-weight:750;
+
+    letter-spacing:.9px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #c9a51d,
+            #efd336
+        );
+
+    box-shadow:
+        0 10px 32px
+        rgba(205,170,25,.13);
+
+    transition:.3s ease;
+}
+
+.verificar:hover{
+    transform:
+        translateY(-2px);
+
+    filter:
+        brightness(1.07);
+}
+
+.verificar:disabled{
+    cursor:default;
+    transform:none;
+}
+
+
+/* =========================================================
+   MENSAJE ESTADO
+========================================================= */
+
+.estado{
+    position:relative;
+
+    z-index:2;
+
+    min-height:25px;
+
+    margin-top:17px;
+
+    color:#757168;
+
+    font-size:10px;
 
     line-height:1.6;
 }
 
+
 /* =========================================================
-   PRÓXIMA ACTUALIZACIÓN
+   ANIMACIÓN DE VERIFICACIÓN
 ========================================================= */
 
-.proxima{
-    margin:
-    15px 0
-    90px;
-
-    padding:
-    75px 20px;
-
-    border-top:
-    1px solid
-    rgba(222,183,78,.16);
-
-    text-align:center;
+.verificando .otp{
+    height:115px;
 }
 
-.proxima .next{
-    color:#ae9250;
 
-    letter-spacing:4px;
+/* CUADRO 1 */
 
-    font-size:10px;
-}
-
-.proxima h2{
-    margin-top:17px;
-
-    font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-    font-size:
-    clamp(
-        39px,
-        7vw,
-        66px
-    );
-
-    font-weight:400;
-
-    color:#e5ca79;
-}
-
-.proxima p{
-    margin-top:12px;
-
-    color:#78746c;
-
-    font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-    font-style:italic;
-
-    font-size:16px;
-}
-
-.mini-linea{
-    width:100px;
-    height:1px;
-
-    margin:
-    30px auto
-    0;
-
-    background:
-    linear-gradient(
-        90deg,
-        transparent,
-        #c9a348,
-        transparent
-    );
+.verificando
+.otp input:nth-child(1){
 
     animation:
-    brilloLinea
-    2.5s ease-in-out infinite;
+        girarUno
+        1.25s
+        ease-in-out
+        infinite;
 }
 
-@keyframes brilloLinea{
-    50%{
-        width:145px;
 
-        opacity:.45;
+/* CUADRO 2 */
+
+.verificando
+.otp input:nth-child(2){
+
+    animation:
+        girarDos
+        1.25s
+        ease-in-out
+        infinite;
+}
+
+
+/* CUADRO 3 */
+
+.verificando
+.otp input:nth-child(3){
+
+    animation:
+        girarTres
+        1.25s
+        ease-in-out
+        infinite;
+}
+
+
+/* CUADRO 4 */
+
+.verificando
+.otp input:nth-child(4){
+
+    animation:
+        girarCuatro
+        1.25s
+        ease-in-out
+        infinite;
+}
+
+
+/* MOVIMIENTO PARECIDO A LA REFERENCIA */
+
+@keyframes girarUno{
+
+    0%{
+        transform:
+            translate(0,0)
+            rotate(0deg);
     }
+
+    25%{
+        transform:
+            translate(32px,-13px)
+            rotate(90deg);
+    }
+
+    50%{
+        transform:
+            translate(51px,27px)
+            rotate(180deg);
+    }
+
+    75%{
+        transform:
+            translate(20px,49px)
+            rotate(270deg);
+    }
+
+    100%{
+        transform:
+            translate(0,0)
+            rotate(360deg);
+    }
+
 }
+
+
+@keyframes girarDos{
+
+    0%{
+        transform:
+            translate(0,0)
+            rotate(0deg);
+    }
+
+    25%{
+        transform:
+            translate(18px,39px)
+            rotate(90deg);
+    }
+
+    50%{
+        transform:
+            translate(-18px,54px)
+            rotate(180deg);
+    }
+
+    75%{
+        transform:
+            translate(-47px,22px)
+            rotate(270deg);
+    }
+
+    100%{
+        transform:
+            translate(0,0)
+            rotate(360deg);
+    }
+
+}
+
+
+@keyframes girarTres{
+
+    0%{
+        transform:
+            translate(0,0)
+            rotate(0deg);
+    }
+
+    25%{
+        transform:
+            translate(-31px,14px)
+            rotate(90deg);
+    }
+
+    50%{
+        transform:
+            translate(-50px,-27px)
+            rotate(180deg);
+    }
+
+    75%{
+        transform:
+            translate(-17px,-48px)
+            rotate(270deg);
+    }
+
+    100%{
+        transform:
+            translate(0,0)
+            rotate(360deg);
+    }
+
+}
+
+
+@keyframes girarCuatro{
+
+    0%{
+        transform:
+            translate(0,0)
+            rotate(0deg);
+    }
+
+    25%{
+        transform:
+            translate(-17px,-38px)
+            rotate(90deg);
+    }
+
+    50%{
+        transform:
+            translate(18px,-53px)
+            rotate(180deg);
+    }
+
+    75%{
+        transform:
+            translate(47px,-20px)
+            rotate(270deg);
+    }
+
+    100%{
+        transform:
+            translate(0,0)
+            rotate(360deg);
+    }
+
+}
+
 
 /* =========================================================
-   MODALES
+   SPINNER
 ========================================================= */
 
-.modal{
-    position:fixed;
+.spinner{
+    width:16px;
+    height:16px;
 
-    inset:0;
+    display:inline-block;
 
-    z-index:500;
+    margin-right:8px;
+
+    vertical-align:middle;
+
+    border-radius:50%;
+
+    border:
+        2px solid
+        rgba(20,20,20,.25);
+
+    border-top-color:#171307;
+
+    animation:
+        spinner
+        .7s linear infinite;
+}
+
+@keyframes spinner{
+
+    to{
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.login-card.error{
+    border-color:
+        rgba(255,75,75,.48);
+
+    animation:
+        errorShake
+        .45s ease;
+}
+
+.login-card.error
+.otp input{
+    border-color:#d64e4e;
+
+    color:#ff8181;
+}
+
+.login-card.error
+.icono-llave{
+    color:#ff6565;
+
+    border-color:
+        rgba(255,70,70,.38);
+}
+
+@keyframes errorShake{
+
+    0%,100%{
+        transform:translateX(0);
+    }
+
+    25%{
+        transform:translateX(-8px);
+    }
+
+    50%{
+        transform:translateX(8px);
+    }
+
+    75%{
+        transform:translateX(-4px);
+    }
+
+}
+
+
+/* =========================================================
+   ÉXITO VERDE
+========================================================= */
+
+.login-card.correcto{
+    border-color:
+        rgba(0,230,135,.42);
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(0,215,125,.14),
+            transparent 48%
+        ),
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.022)
+        );
+
+    box-shadow:
+        0 35px 95px
+        rgba(0,0,0,.68),
+
+        0 0 60px
+        rgba(0,220,125,.09);
+}
+
+
+/* =========================================================
+   PANTALLA SUCCESS
+========================================================= */
+
+#exito{
+    display:none;
+
+    position:relative;
+
+    z-index:3;
+
+    padding:
+        5px 0
+        8px;
+}
+
+#exito.visible{
+    display:block;
+
+    animation:
+        aparecerExito
+        .6s ease;
+}
+
+@keyframes aparecerExito{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(12px)
+            scale(.93);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+.icono-seguro{
+    width:48px;
+    height:48px;
+
+    margin:
+        0 auto
+        15px;
 
     display:flex;
 
     justify-content:center;
     align-items:center;
 
-    padding:24px;
+    border-radius:15px;
+
+    border:
+        1px solid
+        rgba(0,220,125,.50);
 
     background:
-    rgba(0,0,0,.86);
+        rgba(0,210,120,.06);
 
-    backdrop-filter:
-    blur(14px);
+    color:#00e186;
+
+    font-size:22px;
+
+    box-shadow:
+        0 0 27px
+        rgba(0,220,125,.15);
+}
+
+
+#exito h3{
+    font-size:
+        clamp(
+            23px,
+            5vw,
+            29px
+        );
+
+    color:#f1f1f1;
+
+    font-weight:650;
+}
+
+#exito h3 span{
+    color:#00df84;
+}
+
+#exito .sub-exito{
+    margin-top:7px;
+
+    color:#737a74;
+
+    font-size:10px;
+}
+
+
+/* =========================================================
+   CÍRCULO VERDE
+========================================================= */
+
+.circulo-check{
+    position:relative;
+
+    width:145px;
+    height:145px;
+
+    margin:
+        27px auto
+        24px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    border:
+        2px solid
+        rgba(0,220,125,.48);
+
+    box-shadow:
+        0 0 35px
+        rgba(0,220,125,.08),
+
+        inset 0 0 35px
+        rgba(0,220,125,.035);
+
+    animation:
+        expandirCirculo
+        .75s ease;
+}
+
+.circulo-check::before{
+    content:"";
+
+    position:absolute;
+
+    width:105px;
+    height:105px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(0,220,125,.13);
+}
+
+@keyframes expandirCirculo{
+
+    0%{
+        opacity:0;
+        transform:scale(.45);
+    }
+
+    65%{
+        transform:scale(1.08);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+
+.check-cuadro{
+    width:58px;
+    height:58px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:16px;
+
+    border:
+        3px solid
+        #19d77f;
+
+    background:
+        #080b09;
+
+    color:white;
+
+    font-size:29px;
+
+    box-shadow:
+        0 0 25px
+        rgba(0,220,125,.23);
+
+    animation:
+        aparecerCheck
+        .55s .2s both;
+}
+
+@keyframes aparecerCheck{
+
+    from{
+        opacity:0;
+
+        transform:
+            rotate(-25deg)
+            scale(.5);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            rotate(0deg)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   BOTÓN VERDE
+========================================================= */
+
+.verificado{
+    width:min(
+        300px,
+        100%
+    );
+
+    height:48px;
+
+    border:0;
+
+    border-radius:13px;
+
+    color:#062b1a;
+
+    font-size:11px;
+
+    font-weight:750;
+
+    letter-spacing:.6px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00dd81,
+            #32e59a
+        );
+
+    box-shadow:
+        0 10px 32px
+        rgba(0,220,125,.15);
+}
+
+
+/* =========================================================
+   PÁGINA DESPUÉS DE ENTRAR
+========================================================= */
+
+#contenido{
+    position:fixed;
+
+    inset:0;
+
+    z-index:50;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:25px;
 
     opacity:0;
 
@@ -771,10 +1292,12 @@ body{
 
     pointer-events:none;
 
-    transition:.4s ease;
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
 }
 
-.modal.activo{
+#contenido.visible{
     opacity:1;
 
     visibility:visible;
@@ -782,1264 +1305,810 @@ body{
     pointer-events:auto;
 }
 
-.modal-contenido{
-    position:relative;
 
-    width:
-    min(
-        570px,
-        96vw
+.bienvenida{
+    width:min(
+        700px,
+        100%
     );
-
-    max-height:90vh;
-
-    overflow:auto;
-
-    padding:
-    48px 35px
-    38px;
-
-    border-radius:27px;
-
-    border:
-    1px solid
-    rgba(230,189,78,.40);
-
-    background:
-    radial-gradient(
-        circle at 50% 0%,
-        rgba(224,179,65,.11),
-        transparent 43%
-    ),
-
-    linear-gradient(
-        145deg,
-        #17140c,
-        #070706
-    );
-
-    box-shadow:
-    0 40px 110px
-    rgba(0,0,0,.9),
-
-    0 0 55px
-    rgba(216,169,48,.07);
 
     text-align:center;
 
-    transform:
-    translateY(28px)
-    scale(.94);
-
-    transition:.45s ease;
+    animation:
+        aparecerBienvenida
+        1.2s ease;
 }
 
-.modal.activo
-.modal-contenido{
-    transform:
-    translateY(0)
-    scale(1);
+
+@keyframes aparecerBienvenida{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
+
 }
 
-.cerrar{
-    position:absolute;
 
-    top:15px;
-    right:19px;
+.bienvenida .mini{
+    color:#a58c50;
 
-    width:35px;
-    height:35px;
+    font-size:9px;
 
-    border:0;
-
-    background:none;
-
-    color:#d8bd70;
-
-    font-size:29px;
-
-    cursor:pointer;
-}
-
-.modal-icono{
-    font-size:42px;
-
-    margin-bottom:17px;
-}
-
-.modal h2{
-    font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-    color:#ecd58d;
-
-    font-size:
-    clamp(
-        27px,
-        5vw,
-        39px
-    );
-
-    font-weight:400;
+    letter-spacing:6px;
 
     margin-bottom:20px;
 }
 
-.modal-texto{
-    color:#beb8ac;
 
-    font-size:15px;
+.bienvenida h1{
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            50px,
+            10vw,
+            90px
+        );
+
+    line-height:1;
+
+    font-weight:400;
+
+    color:#f5f1e7;
+}
+
+
+.bienvenida h1 span{
+    color:#e8bf55;
+
+    text-shadow:
+        0 0 35px
+        rgba(232,191,85,.15);
+}
+
+
+.bienvenida p{
+    max-width:560px;
+
+    margin:
+        30px auto
+        0;
+
+    color:#a29c91;
+
+    font-size:
+        clamp(
+            14px,
+            2vw,
+            17px
+        );
 
     line-height:1.9;
 }
 
-.modal-texto strong{
-    color:#f1d989;
+
+.bienvenida p strong{
+    color:#ddd0ac;
+
+    font-weight:400;
 }
 
-.modal-texto em{
-    color:#ddc67e;
-}
 
-/* =========================================================
-   IMAGEN DEL ABRAZO
-========================================================= */
-
-.imagen-abrazo{
-    display:block;
-
-    width:100%;
-
-    max-width:430px;
+.separador{
+    width:90px;
+    height:1px;
 
     margin:
-    10px auto
-    20px;
-
-    border-radius:21px;
-
-    border:
-    1px solid
-    rgba(230,190,83,.26);
-
-    box-shadow:
-    0 20px 55px
-    rgba(0,0,0,.6);
-}
-
-/* =========================================================
-   HOW ARE YOU
-========================================================= */
-
-.estados{
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:10px;
-
-    margin-top:25px;
-}
-
-.estado{
-    border:
-    1px solid
-    rgba(226,187,82,.32);
-
-    border-radius:100px;
-
-    padding:
-    11px 17px;
+        35px auto
+        0;
 
     background:
-    rgba(255,255,255,.025);
-
-    color:#d5c9a8;
-
-    font-size:12px;
-
-    cursor:pointer;
-
-    transition:.3s;
+        linear-gradient(
+            90deg,
+            transparent,
+            #d4ae50,
+            transparent
+        );
 }
 
-.estado:hover{
-    transform:
-    translateY(-2px);
-
-    color:#ffe399;
-
-    border-color:
-    rgba(241,205,107,.65);
-}
-
-#respuestaEstado{
-    min-height:75px;
-
-    margin-top:25px;
-
-    padding-top:20px;
-
-    border-top:
-    1px solid
-    rgba(224,184,79,.13);
-
-    color:#c2baaa;
-
-    line-height:1.8;
-
-    opacity:0;
-
-    transition:.5s;
-}
-
-#respuestaEstado.visible{
-    opacity:1;
-}
-
-/* =========================================================
-   VIDEO
-========================================================= */
-
-.modal-video{
-    width:
-    min(
-        760px,
-        96vw
-    );
-}
-
-#videoJhos{
-    display:block;
-
-    width:100%;
-
-    max-height:68vh;
-
-    margin-top:15px;
-
-    border-radius:18px;
-
-    background:#000;
-
-    box-shadow:
-    0 20px 60px
-    rgba(0,0,0,.7);
-}
-
-/* =========================================================
-   MODAL FLOR
-========================================================= */
-
-.modal-flor{
-    width:
-    min(
-        950px,
-        98vw
-    );
-
-    height:
-    min(
-        88vh,
-        900px
-    );
-
-    padding:12px;
-}
-
-#iframeFlor{
-    width:100%;
-    height:100%;
-
-    border:0;
-
-    border-radius:18px;
-
-    background:#020202;
-}
-
-/* =========================================================
-   BOTÓN CERRAR NORMAL
-========================================================= */
-
-.boton-cerrar{
-    margin-top:28px;
-
-    border:
-    1px solid
-    rgba(225,186,80,.38);
-
-    border-radius:100px;
-
-    padding:
-    11px 24px;
-
-    background:
-    rgba(15,14,10,.7);
-
-    color:#d9c68f;
-
-    cursor:pointer;
-
-    letter-spacing:2px;
-
-    font-size:10px;
-
-    transition:.3s;
-}
-
-.boton-cerrar:hover{
-    border-color:#d8b657;
-
-    color:#f3dc99;
-}
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
 
-@media(
-    max-width:800px
-){
-    .portada{
-        min-height:62vh;
+@media(max-width:520px){
+
+    .nombre-fondo{
+        top:6%;
+    }
+
+    .login-card{
+        margin-top:75px;
 
         padding:
-        95px 10px
-        50px;
+            32px 17px
+            28px;
     }
 
-    .grid-opciones{
-        grid-template-columns:
-        repeat(2,1fr);
+    .otp{
+        gap:8px;
     }
 
-    .tarjeta:nth-child(n){
-        grid-column:auto;
+    .otp input{
+        width:54px;
+        height:62px;
+
+        border-radius:14px;
+
+        font-size:22px;
     }
 
-    .tarjeta:nth-child(5){
-        grid-column:
-        1 / -1;
-
-        width:calc(50% - 8px);
-
-        justify-self:center;
-    }
-}
-
-@media(
-    max-width:560px
-){
-    .pagina{
-        width:
-        min(
-            100% - 26px,
-            1180px
-        );
+    .verificando .otp{
+        transform:scale(.90);
     }
 
-    .portada{
-        min-height:60vh;
-
-        align-items:center;
-
-        padding:
-        90px 5px
-        40px;
+    .circulo-check{
+        width:135px;
+        height:135px;
     }
 
-    .portada h1{
-        font-size:
-        clamp(
-            46px,
-            15vw,
-            67px
-        );
-    }
-
-    .grid-opciones{
-        grid-template-columns:1fr;
-    }
-
-    .tarjeta:nth-child(n){
-        grid-column:auto;
-
-        width:100%;
-    }
-
-    .tarjeta{
-        min-height:155px;
-    }
-
-    .modal{
-        padding:15px;
-    }
-
-    .modal-contenido{
-        padding:
-        45px 22px
-        30px;
-    }
-
-    .modal-flor{
-        width:98vw;
-
-        height:92vh;
-
-        padding:8px;
-    }
-
-    .proxima{
-        padding:
-        60px 15px;
-    }
 }
 
 </style>
 </head>
 
+
 <body>
 
-<div class="fondo"></div>
 
-<div class="linea uno"></div>
+<!-- =========================================================
+     FONDO
+========================================================= -->
 
-<div class="linea dos"></div>
+<div class="fondo">
+
+    <div class="linea uno"></div>
+    <div class="linea dos"></div>
+    <div class="linea tres"></div>
+
+</div>
+
 
 <div id="particulas"></div>
 
 
-<!-- =========================================================
-     MÚSICA DE FONDO
-========================================================= -->
-
-<audio
-id="musicaFondo"
-loop
-preload="auto"
->
-
-    <source
-    src="./musica-mp3.mpeg"
-    type="audio/mpeg"
-    >
-
-</audio>
-
 
 <!-- =========================================================
-     MÚSICA ESPECIAL DE LA NOTA
+     ACCESO
 ========================================================= -->
 
-<audio
-id="musicaNota"
-preload="auto"
->
-
-    <source
-    src="./musicanota.mpeg"
-    type="audio/mpeg"
-    >
-
-</audio>
+<section id="pantallaAcceso">
 
 
-<button
-id="botonMusica"
-onclick="controlarMusica()"
-title="Música"
->
+    <div class="nombre-fondo">
 
-🔊
+        <small>
+            A LITTLE SPACE ✦
+        </small>
 
-</button>
-
-
-<main class="pagina">
-
-
-<!-- =========================================================
-     PORTADA
-========================================================= -->
-
-<section class="portada">
-
-<div class="portada-contenido">
-
-    <div class="volumen">
-
-        25/09&#x20;
+        <h1>
+            Hola, <span>Jhoselin</span>
+        </h1>
 
     </div>
 
 
-    <h1>
 
-        Hola,
-
-        <span>Jhoselin</span>
-
-    </h1>
+    <div
+    class="login-card"
+    id="loginCard"
+    >
 
 
-    <div class="saludo">
+        <!-- FORMULARIO -->
 
-        Qué gusto saber
-        que pasaste por aquí.
+        <div id="formulario">
+
+
+            <div class="icono-llave">
+                🔑
+            </div>
+
+
+            <h2>
+                Verify <span>Code</span>
+            </h2>
+
+
+            <p class="subtitulo">
+
+                Ingresa el código
+                para continuar.
+
+            </p>
+
+
+            <div class="pista">
+
+                Hay fechas que no se olvidan.
+
+            </div>
+
+
+
+            <div class="otp">
+
+
+                <input
+                id="d1"
+                type="tel"
+                inputmode="numeric"
+                maxlength="1"
+                autocomplete="off"
+                >
+
+
+                <input
+                id="d2"
+                type="tel"
+                inputmode="numeric"
+                maxlength="1"
+                autocomplete="off"
+                >
+
+
+                <input
+                id="d3"
+                type="tel"
+                inputmode="numeric"
+                maxlength="1"
+                autocomplete="off"
+                >
+
+
+                <input
+                id="d4"
+                type="tel"
+                inputmode="numeric"
+                maxlength="1"
+                autocomplete="off"
+                >
+
+
+            </div>
+
+
+
+            <button
+            class="verificar"
+            id="btnVerificar"
+            onclick="verificarCodigo()"
+            >
+
+                VERIFY CODE
+
+            </button>
+
+
+
+            <div
+            class="estado"
+            id="estado"
+            >
+
+                Ingresa los 4 números.
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- SUCCESS -->
+
+        <div id="exito">
+
+
+            <div class="icono-seguro">
+                ♡
+            </div>
+
+
+            <h3>
+
+                Verified
+                <span>Successfully</span>
+
+            </h3>
+
+
+            <div class="sub-exito">
+
+                El código ha sido confirmado.
+
+            </div>
+
+
+
+            <div class="circulo-check">
+
+                <div class="check-cuadro">
+                    ✓
+                </div>
+
+            </div>
+
+
+
+            <button
+            class="verificado"
+            >
+
+                ✓ VERIFIED & SECURED
+
+            </button>
+
+
+        </div>
+
 
     </div>
 
-
-    <p class="descripcion">
-
-        Estamos preparando algo nuevo
-        para este espacio.
-
-        <br><br>
-
-        Mientras tanto,
-        hay algunas pequeñas cosas
-        que puedes encontrar por aquí.
-
-    </p>
-
-
-    <div class="separador"></div>
-
-</div>
 
 </section>
 
 
+
 <!-- =========================================================
-     5 BOTONES
+     CONTENIDO TEMPORAL
 ========================================================= -->
 
-<section class="explorar">
-
-<div class="titulo-seccion">
-
-    <span>
-
-        EXPLORE THIS SPACE
-
-    </span>
-
-    <h2>
-
-        Hay algunas cosas por aquí...
-
-    </h2>
-
-</div>
+<section id="contenido">
 
 
-<div class="grid-opciones">
+    <div class="bienvenida">
 
 
-    <!-- 1 - FLOR -->
+        <div class="mini">
 
-    <article
-    class="tarjeta"
-    onclick="abrirFlor()"
-    >
-
-        <div class="icono">
-
-            🌻
+            A LITTLE SPACE ✦
 
         </div>
 
-        <h3>
 
-            THE FLOWER
+        <h1>
 
-        </h3>
+            Hola,
+            <span>Jhoselin</span>
+
+        </h1>
+
 
         <p>
 
-            La flor sigue
-            guardada por aquí.
+            <strong>
+                Qué bien que sigas pasando por aquí.
+            </strong>
+
+            <br><br>
+
+            Espero que estés muy bien.
 
         </p>
 
-    </article>
+
+        <div class="separador"></div>
 
 
-    <!-- 2 - ABRAZO -->
+    </div>
 
-    <article
-    class="tarjeta"
-    onclick="abrirModal('modalAbrazo')"
-    >
-
-        <div class="icono">
-
-            🤗
-
-        </div>
-
-        <h3>
-
-            A LITTLE HUG
-
-        </h3>
-
-        <p>
-
-            Un abrazito
-            guardado para ti.
-
-        </p>
-
-    </article>
-
-
-    <!-- 3 - NOTA -->
-
-    <article
-    class="tarjeta"
-    onclick="abrirModal('modalNota')"
-    >
-
-        <div class="icono">
-
-            📝
-
-        </div>
-
-        <h3>
-
-            A LITTLE REMINDER
-
-        </h3>
-
-        <p>
-
-            Una pequeña nota
-            para seguir adelante.
-
-        </p>
-
-    </article>
-
-
-    <!-- 4 - ESTADO -->
-
-    <article
-    class="tarjeta"
-    onclick="abrirModal('modalEstado')"
-    >
-
-        <div class="icono">
-
-            🌤️
-
-        </div>
-
-        <h3>
-
-            HOW ARE YOU TODAY?
-
-        </h3>
-
-        <p>
-
-            ¿Cómo te está
-            tratando el día?
-
-        </p>
-
-    </article>
-
-
-    <!-- 5 - VIDEO -->
-
-    <article
-    class="tarjeta"
-    onclick="abrirVideo()"
-    >
-
-        <div class="icono">
-
-            ⏯️
-
-        </div>
-
-        <h3>
-
-            30 SECONDS FOR YOU
-
-        </h3>
-
-        <p>
-
-            Take a little break.
-
-        </p>
-
-    </article>
-
-
-</div>
 
 </section>
 
-
-<!-- =========================================================
-     PRÓXIMA ACTUALIZACIÓN
-========================================================= -->
-
-<section class="proxima">
-
-    <div class="next">
-
-        Próx. act.
-
-    </div>
-
-
-    <h2>
-
-        SOON
-
-    </h2>
-
-
-    <p>
-
-        Dios te ama....
-
-    </p>
-
-    <p>
-
-        att.,
-        keven
-
-    </p>
-
-
-    <div class="mini-linea"></div>
-
-</section>
-
-
-</main>
-
-
-<!-- =========================================================
-     MODAL ABRAZO
-========================================================= -->
-
-<div
-class="modal"
-id="modalAbrazo"
->
-
-<div class="modal-contenido">
-
-    <button
-    class="cerrar"
-    onclick="cerrarModal('modalAbrazo')"
-    >
-
-        ×
-
-    </button>
-
-
-    <div class="modal-icono">
-
-        🤗🫂😊
-
-    </div>
-
-
-    <h2>
-
-        A little hug
-
-    </h2>
-
-
-    <img
-    class="imagen-abrazo"
-    src="./imagen-portada.png.png"
-    alt="Un pequeño abrazo"
-    >
-
-
-    <button
-    class="boton-cerrar"
-    onclick="cerrarModal('modalAbrazo')"
-    >
-
-        CLOSE
-
-    </button>
-
-</div>
-
-</div>
-
-
-<!-- =========================================================
-     MODAL NOTA
-========================================================= -->
-
-<div
-class="modal"
-id="modalNota"
->
-
-<div class="modal-contenido">
-
-    <button
-    class="cerrar"
-    onclick="cerrarModal('modalNota')"
-    >
-
-        ×
-
-    </button>
-
-
-    <div class="modal-icono">
-
-        📖
-
-    </div>
-
-
-    <h2>
-
-        Jeremias 1:8
-
-    </h2>
-
-
-    <div class="modal-texto">
-
-    <strong>
-        Jhosi, no tengas miedo,
-        porque Dios esta contigo....
-    </strong>
-
-    <br><br>
-
-    Hoy Dios quiere recordarte
-    que no estás caminando sola.
-
-    <br><br>
-
-    Puede haber momentos
-    en los que sientas miedo,
-    cansancio o dudas
-    sobre lo que viene,
-    pero aun en esos días,
-    su presencia permanece contigo.
-
-    <br><br>
-
-    No permitas que las dificultades
-    te hagan perder el enfoque,
-    ni que las palabras negativas
-    te hagan abandonar
-    aquello que Dios puso
-    en tu corazón.
-
-    <br><br>
-
-    Sigue avanzando con fe,
-    incluso cuando el camino
-    se vuelva difícil.
-
-    <br><br>
-
-    Dios conoce tus lágrimas,
-    tus esfuerzos
-    y cada batalla
-    que has enfrentado en silencio.
-
-    <br><br>
-
-    Él conoce aquello
-    que quizá nadie más conoce
-    y es quien puede renovar
-    tus fuerzas
-    cuando sientas
-    que ya no puedes continuar.
-
-    <br><br>
-
-    Mantén tus ojos puestos en Dios.
-
-    <br><br>
-
-    Levántate cada día
-    con determinación
-    y recuerda que
-    no necesitas tener
-    todas las respuestas
-    para seguir avanzando.
-
-    <br><br>
-
-    <strong>
-        Si Dios va contigo,
-        puedes enfrentar
-        cada nuevo día
-        con valentía.
-    </strong>
-
-    <br><br>
-
-    No tengas miedo.
-
-    <br><br>
-
-    Su mano te sostiene,
-    su presencia te acompaña
-    y su fuerza puede impulsarte
-    a seguir adelante.
-
-    <br><br>
-
-    <strong>
-        Confía en Él
-        y no te rindas.
-    </strong>
-
-    <br><br>
-
-    Y si algún día caes,
-    vuelve a levantarte.
-
-    <br><br>
-
-    Si alguna vez sientes
-    que perdiste el rumbo,
-    vuelve a mirar hacia Dios
-    y continúa caminando.
-
-    <br><br>
-
-    <strong>
-        Sigue adelante, Jhos. 🤍
-    </strong>
-
-    <br><br>
-
-    Dios sigue ahí.
-
-    <br><br>
-
-    Tal vez no siempre
-    entiendas el camino,
-    pero no olvides
-    que Él puede acompañarte
-    en cada paso.
-
-    <br><br>
-
-    Mientras tengas fuerzas
-    para volver a levantarte,
-    todavía puedes
-    seguir caminando.
-
-    <br><br>
-
-    <strong>
-        Que Dios vaya contigo siempre. 🤍
-    </strong>
-
-</div>
-
-</div>
-
-
-<button
-class="boton-cerrar"
-onclick="cerrarModal('modalNota')"
->
-
-    CLOSE
-
-</button>
-
-</div>
-
-
-<!-- =========================================================
-     MODAL CÓMO ESTÁS
-========================================================= -->
-
-<div
-class="modal"
-id="modalEstado"
->
-
-<div class="modal-contenido">
-
-    <button
-    class="cerrar"
-    onclick="cerrarModal('modalEstado')"
-    >
-
-        ×
-
-    </button>
-
-
-    <div class="modal-icono">
-
-        ☀️
-
-    </div>
-
-
-    <h2>
-
-        How are you today?
-
-    </h2>
-
-
-    <div class="modal-texto">
-
-        ¿Cómo te está tratando
-        el día de hoy?
-
-    </div>
-
-
-    <div class="estados">
-
-
-        <button
-        class="estado"
-        onclick="seleccionarEstado('bien')"
-        >
-
-            😊 BIEN
-
-        </button>
-
-
-        <button
-        class="estado"
-        onclick="seleccionarEstado('vamos')"
-        >
-
-            😐 AHÍ VAMOS
-
-        </button>
-
-
-        <button
-        class="estado"
-        onclick="seleccionarEstado('descanso')"
-        >
-
-            😴 NECESITO DESCANSAR
-
-        </button>
-
-
-    </div>
-
-
-    <div id="respuestaEstado"></div>
-
-
-    <button
-    class="boton-cerrar"
-    onclick="cerrarModal('modalEstado')"
-    >
-
-        CLOSE
-
-    </button>
-
-
-</div>
-
-</div>
-
-
-<!-- =========================================================
-     MODAL VIDEO
-========================================================= -->
-
-<div
-class="modal"
-id="modalVideo"
->
-
-<div class="modal-contenido modal-video">
-
-
-    <button
-    class="cerrar"
-    onclick="cerrarVideo()"
-    >
-
-        ×
-
-    </button>
-
-
-    <div class="modal-icono">
-
-        🎬
-
-    </div>
-
-
-    <h2>
-
-        30 seconds for you
-
-    </h2>
-
-
-    <div class="modal-texto">
-
-        Take a little break.
-
-    </div>
-
-
-    <video
-    id="videoJhos"
-    controls
-    playsinline
-    preload="metadata"
-    >
-
-        <source
-        src="./video-jhos.mp4"
-        type="video/mp4"
-        >
-
-        Tu navegador no puede
-        reproducir este video.
-
-    </video>
-
-
-    <button
-    class="boton-cerrar"
-    onclick="cerrarVideo()"
-    >
-
-        CLOSE
-
-    </button>
-
-
-</div>
-
-</div>
-
-
-<!-- =========================================================
-     MODAL FLOR
-========================================================= -->
-
-<div
-class="modal"
-id="modalFlor"
->
-
-<div class="modal-contenido modal-flor">
-
-    <button
-    class="cerrar"
-    onclick="cerrarModal('modalFlor')"
-    style="
-        z-index:20;
-        background:rgba(0,0,0,.65);
-        border-radius:50%;
-    "
-    >
-
-        ×
-
-    </button>
-
-
-    <iframe
-    id="iframeFlor"
-    src="./flor.html"
-    title="La flor amarilla"
-    loading="lazy"
-    ></iframe>
-
-
-</div>
-
-</div>
 
 
 <script>
 
-
 /* =========================================================
-   VARIABLES
+   CONTRASEÑA
 ========================================================= */
 
-const musicaFondo =
+const CLAVE = "5362";
+
+
+const inputs = [
+
+    document.getElementById("d1"),
+    document.getElementById("d2"),
+    document.getElementById("d3"),
+    document.getElementById("d4")
+
+];
+
+
+const loginCard =
 document.getElementById(
-    "musicaFondo"
+    "loginCard"
 );
 
 
-const musicaNota =
+const btnVerificar =
 document.getElementById(
-    "musicaNota"
+    "btnVerificar"
 );
 
 
-const botonMusica =
+const estado =
 document.getElementById(
-    "botonMusica"
+    "estado"
 );
 
 
-const videoJhos =
+const formulario =
 document.getElementById(
-    "videoJhos"
+    "formulario"
 );
 
 
-let musicaIniciada = false;
+const exito =
+document.getElementById(
+    "exito"
+);
 
-let musicaSilenciada = false;
-
-let videoAbierto = false;
-
-let notaAbierta = false;
-
-let intervaloFade;
 
 
 /* =========================================================
-   PARTÍCULAS DORADAS
+   INPUTS
+========================================================= */
+
+inputs.forEach(
+(input,index)=>{
+
+
+    input.addEventListener(
+    "input",
+    function(){
+
+
+        this.value =
+        this.value.replace(
+            /\D/g,
+            ""
+        );
+
+
+        if(
+            this.value &&
+            index <
+            inputs.length-1
+        ){
+
+            inputs[
+                index+1
+            ].focus();
+
+        }
+
+
+        if(
+            inputs.every(
+                input =>
+                input.value !== ""
+            )
+        ){
+
+            btnVerificar.focus();
+
+        }
+
+    });
+
+
+
+    input.addEventListener(
+    "keydown",
+    function(event){
+
+
+        if(
+            event.key ===
+            "Backspace"
+            &&
+            this.value === ""
+            &&
+            index > 0
+        ){
+
+            inputs[
+                index-1
+            ].focus();
+
+        }
+
+    });
+
+
+});
+
+
+
+/* =========================================================
+   ENTER
+========================================================= */
+
+document.addEventListener(
+"keydown",
+function(event){
+
+
+    if(
+        event.key === "Enter"
+        &&
+        formulario.style.display
+        !== "none"
+    ){
+
+        verificarCodigo();
+
+    }
+
+
+});
+
+
+
+/* =========================================================
+   VERIFICAR
+========================================================= */
+
+function verificarCodigo(){
+
+
+    const codigo =
+    inputs
+    .map(
+        input =>
+        input.value
+    )
+    .join("");
+
+
+    if(
+        codigo.length < 4
+    ){
+
+        estado.textContent =
+        "Completa los 4 números.";
+
+        return;
+
+    }
+
+
+    /* BLOQUEAR */
+
+    inputs.forEach(
+        input =>
+        input.disabled=true
+    );
+
+
+    btnVerificar.disabled =
+    true;
+
+
+    loginCard
+    .classList
+    .remove(
+        "error"
+    );
+
+
+    loginCard
+    .classList
+    .add(
+        "verificando"
+    );
+
+
+    btnVerificar.innerHTML = `
+
+        <span class="spinner"></span>
+        VERIFYING CODE...
+
+    `;
+
+
+    estado.textContent =
+    "Verificando código...";
+
+
+    /* LOS CUADROS GIRAN */
+
+    setTimeout(()=>{
+
+
+        loginCard
+        .classList
+        .remove(
+            "verificando"
+        );
+
+
+        if(
+            codigo === CLAVE
+        ){
+
+            mostrarCorrecto();
+
+        }
+
+        else{
+
+            mostrarError();
+
+        }
+
+
+    },2600);
+
+
+}
+
+
+
+/* =========================================================
+   CORRECTO
+========================================================= */
+
+function mostrarCorrecto(){
+
+
+    loginCard
+    .classList
+    .add(
+        "correcto"
+    );
+
+
+    formulario.style.display =
+    "none";
+
+
+    exito
+    .classList
+    .add(
+        "visible"
+    );
+
+
+    /* ESPERA PARA VER EL CHECK */
+
+    setTimeout(()=>{
+
+
+        document
+        .getElementById(
+            "pantallaAcceso"
+        )
+        .classList
+        .add(
+            "ocultar"
+        );
+
+
+        document
+        .getElementById(
+            "contenido"
+        )
+        .classList
+        .add(
+            "visible"
+        );
+
+
+    },2800);
+
+
+}
+
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+function mostrarError(){
+
+
+    loginCard
+    .classList
+    .add(
+        "error"
+    );
+
+
+    estado.innerHTML = `
+
+        Código incorrecto.
+        <br>
+        Inténtalo nuevamente.
+
+    `;
+
+
+    btnVerificar.textContent =
+    "TRY AGAIN";
+
+
+    inputs.forEach(
+        input =>
+        input.disabled=false
+    );
+
+
+    btnVerificar.disabled =
+    false;
+
+
+    setTimeout(()=>{
+
+
+        inputs.forEach(
+            input =>
+            input.value=""
+        );
+
+
+        inputs[0].focus();
+
+
+    },350);
+
+
+    setTimeout(()=>{
+
+
+        loginCard
+        .classList
+        .remove(
+            "error"
+        );
+
+
+    },900);
+
+
+}
+
+
+
+/* =========================================================
+   PARTÍCULAS
 ========================================================= */
 
 function crearParticulas(){
+
 
     const contenedor =
     document.getElementById(
         "particulas"
     );
+
 
     for(
         let i=0;
@@ -2047,17 +2116,21 @@ function crearParticulas(){
         i++
     ){
 
+
         const punto =
         document.createElement(
             "span"
         );
 
+
         punto.className =
         "particula";
+
 
         punto.style.left =
         Math.random()*100
         +"%";
+
 
         punto.style.animationDuration =
         (
@@ -2066,731 +2139,60 @@ function crearParticulas(){
         )
         +"s";
 
+
         punto.style.animationDelay =
         Math.random()*10
         +"s";
+
 
         const tamano =
         1.5+
         Math.random()*2.7;
 
+
         punto.style.width =
         tamano+"px";
+
 
         punto.style.height =
         tamano+"px";
 
+
         contenedor.appendChild(
             punto
         );
+
+
     }
+
+
 }
+
 
 crearParticulas();
 
 
-/* =========================================================
-   INICIAR MÚSICA SUAVE
-========================================================= */
-
-function iniciarMusica(){
-
-    if(
-        musicaSilenciada
-        ||
-        videoAbierto
-        ||
-        notaAbierta
-    ){
-        return;
-    }
-
-    musicaIniciada = true;
-
-    clearInterval(
-        intervaloFade
-    );
-
-    musicaFondo
-    .play()
-
-    .then(()=>{
-
-        if(
-            musicaFondo.volume
-            >
-            .28
-        ){
-            musicaFondo.volume=.28;
-        }
-
-        if(
-            musicaFondo.volume
-            ===0
-        ){
-
-            intervaloFade =
-
-            setInterval(()=>{
-
-                if(
-                    musicaFondo.volume
-                    <
-                    .27
-                ){
-
-                    musicaFondo.volume =
-
-                    Math.min(
-                        musicaFondo.volume
-                        +.02,
-                        .28
-                    );
-
-                }else{
-
-                    clearInterval(
-                        intervaloFade
-                    );
-                }
-
-            },110);
-        }
-    })
-
-    .catch(error=>{
-
-        console.log(
-            "El navegador esperó una interacción para reproducir la música.",
-            error
-        );
-    });
-}
-
 
 /* =========================================================
-   PRIMERA INTERACCIÓN = MÚSICA
+   FOCUS
 ========================================================= */
 
-function primeraInteraccion(){
-
-    if(
-        !musicaIniciada
-        &&
-        !videoAbierto
-    ){
-
-        musicaFondo.volume=0;
-
-        iniciarMusica();
-    }
-}
-
-
-document.addEventListener(
-
-    "pointerdown",
-
-    primeraInteraccion,
-
-    {
-        once:true,
-        capture:true
-    }
-);
-
-
-/* =========================================================
-   CONTROL DE MÚSICA
-========================================================= */
-
-function controlarMusica(){
-
-    if(
-        musicaSilenciada
-    ){
-
-        musicaSilenciada=false;
-
-        botonMusica.textContent=
-        "🔊";
-
-
-        /* Si estamos dentro de la nota,
-           continuar la música de la nota */
-
-        if(
-            notaAbierta
-        ){
-
-            musicaNota
-            .play()
-
-            .catch(error=>{
-
-                console.log(
-                    "No se pudo reanudar la música de la nota.",
-                    error
-                );
-            });
-
-            return;
-        }
-
-
-        /* De lo contrario vuelve música normal */
-
-        if(
-            !videoAbierto
-        ){
-
-            iniciarMusica();
-        }
-
-    }else{
-
-        musicaSilenciada=true;
-
-        musicaFondo.pause();
-
-        musicaNota.pause();
-
-        botonMusica.textContent=
-        "🔇";
-    }
-}
-
-
-/* =========================================================
-   MODALES NORMALES
-========================================================= */
-
-function abrirModal(id){
-
-    cerrarOtrosModales(
-        id
-    );
-
-    document
-    .getElementById(id)
-    .classList
-    .add(
-        "activo"
-    );
-
-    document.body.style.overflow=
-    "hidden";
-
-
-    /* =====================================================
-       SI ENTRA EN LA NOTA
-
-       1. Pausa la música normal.
-       2. Música de nota vuelve al segundo 0.
-       3. Reproduce musica-nota.mp3.
-    ===================================================== */
-
-    if(
-        id === "modalNota"
-    ){
-
-        notaAbierta = true;
-
-
-        /* PAUSAR MÚSICA PRINCIPAL */
-
-        musicaFondo.pause();
-
-
-        /* REINICIAR MÚSICA DE LA NOTA */
-
-        musicaNota.pause();
-
-        musicaNota.currentTime = 0;
-
-        musicaNota.volume = .70;
-
-
-        /* REPRODUCIRLA */
-
-        if(
-            !musicaSilenciada
-        ){
-
-            musicaNota
-            .play()
-
-            .catch(error=>{
-
-                console.log(
-                    "No se pudo iniciar la música de la nota.",
-                    error
-                );
-            });
-        }
-
-
-        return;
-    }
-
-
-    /* =====================================================
-       RESTO DE MODALES
-    ===================================================== */
-
-    if(
-        !musicaIniciada
-        &&
-        !musicaSilenciada
-    ){
-
-        musicaFondo.volume=0;
-
-        iniciarMusica();
-    }
-}
-
-
-/* =========================================================
-   CERRAR MODALES
-========================================================= */
-
-function cerrarModal(id){
-
-    document
-    .getElementById(id)
-    .classList
-    .remove(
-        "activo"
-    );
-
-    document.body.style.overflow=
-    "";
-
-
-    /* =====================================================
-       SI SALE DE LA NOTA
-
-       1. Detiene musica-nota.mp3.
-       2. La devuelve al segundo 0.
-       3. Continúa la música principal.
-    ===================================================== */
-
-    if(
-        id === "modalNota"
-    ){
-
-        notaAbierta = false;
-
-
-        /* DETENER MÚSICA DE NOTA */
-
-        musicaNota.pause();
-
-        musicaNota.currentTime = 0;
-
-
-        /* REGRESAR A MÚSICA PRINCIPAL */
-
-        if(
-            !musicaSilenciada
-            &&
-            !videoAbierto
-        ){
-
-            iniciarMusica();
-        }
-    }
-}
-
-
-/* =========================================================
-   CERRAR OTROS MODALES
-========================================================= */
-
-function cerrarOtrosModales(
-    excepto
-){
-
-    document
-    .querySelectorAll(
-        ".modal.activo"
-    )
-    .forEach(modal=>{
-
-        if(
-            modal.id
-            !==
-            excepto
-        ){
-
-            if(
-                modal.id
-                ===
-                "modalVideo"
-            ){
-
-                cerrarVideo(
-                    false
-                );
-
-            }else if(
-                modal.id
-                ===
-                "modalNota"
-            ){
-
-                cerrarModal(
-                    "modalNota"
-                );
-
-            }else{
-
-                modal
-                .classList
-                .remove(
-                    "activo"
-                );
-            }
-        }
-    });
-}
-
-
-/* =========================================================
-   FLOR
-========================================================= */
-
-function abrirFlor(){
-
-    abrirModal(
-        "modalFlor"
-    );
-}
-
-
-/* =========================================================
-   HOW ARE YOU TODAY
-========================================================= */
-
-function seleccionarEstado(
-    estado
-){
-
-    const respuesta =
-    document.getElementById(
-        "respuestaEstado"
-    );
-
-    let texto = "";
-
-
-    if(
-        estado==="bien"
-    ){
-
-        texto =
-
-        `Me alegra saberlo. ✨
-
-        Ojalá el resto del día
-        siga tratándote bonito.`;
-    }
-
-
-    if(
-        estado==="vamos"
-    ){
-
-        texto =
-
-        `Y eso también cuenta. 🌻
-
-        No todos los días
-        tienen que ser perfectos.
-
-        A veces seguir avanzando
-        ya es suficiente.`;
-    }
-
-
-    if(
-        estado==="descanso"
-    ){
-
-        texto =
-
-        `Entonces date
-        un pequeño respiro. 🤍
-
-        Descansar también
-        es parte de seguir adelante.
-
-        Mañana se continúa.`;
-    }
-
-
-    respuesta.innerText =
-    texto;
-
-
-    respuesta
-    .classList
-    .remove(
-        "visible"
-    );
+window.addEventListener(
+"load",
+()=>{
 
 
     setTimeout(()=>{
 
-        respuesta
-        .classList
-        .add(
-            "visible"
-        );
+        inputs[0].focus();
 
-    },50);
-}
+    },700);
 
 
-/* =========================================================
-   VIDEO
-========================================================= */
-
-function abrirVideo(){
-
-    cerrarOtrosModales(
-        "modalVideo"
-    );
-
-
-    videoAbierto=true;
-
-
-    /* POR SEGURIDAD DETENER
-       LA MÚSICA DE LA NOTA */
-
-    notaAbierta=false;
-
-    musicaNota.pause();
-
-    musicaNota.currentTime=0;
-
-
-    /* PAUSA MÚSICA PRINCIPAL */
-
-    musicaFondo.pause();
-
-
-    document
-    .getElementById(
-        "modalVideo"
-    )
-    .classList
-    .add(
-        "activo"
-    );
-
-
-    document.body.style.overflow=
-    "hidden";
-
-
-    videoJhos.currentTime=0;
-
-
-    videoJhos
-    .play()
-
-    .catch(error=>{
-
-        console.log(
-            "Presiona Play para iniciar el video.",
-            error
-        );
-    });
-}
-
-
-/* =========================================================
-   CERRAR VIDEO
-========================================================= */
-
-function cerrarVideo(
-    volverMusica=true
-){
-
-    videoJhos.pause();
-
-    videoJhos.currentTime=0;
-
-
-    videoAbierto=false;
-
-
-    document
-    .getElementById(
-        "modalVideo"
-    )
-    .classList
-    .remove(
-        "activo"
-    );
-
-
-    document.body.style.overflow=
-    "";
-
-
-    /* VOLVER A MÚSICA PRINCIPAL */
-
-    if(
-        volverMusica
-        &&
-        !musicaSilenciada
-    ){
-
-        iniciarMusica();
-    }
-}
-
-
-/* =========================================================
-   CUANDO TERMINA EL VIDEO
-========================================================= */
-
-videoJhos.addEventListener(
-
-    "ended",
-
-    function(){
-
-        videoAbierto=false;
-
-        if(
-            !musicaSilenciada
-        ){
-
-            iniciarMusica();
-        }
-    }
-);
-
-
-/* SI EL USUARIO PRESIONA PLAY MANUALMENTE */
-
-videoJhos.addEventListener(
-
-    "play",
-
-    function(){
-
-        videoAbierto=true;
-
-        musicaFondo.pause();
-    }
-);
-
-
-/* =========================================================
-   CERRAR MODALES TOCANDO AFUERA
-========================================================= */
-
-document
-.querySelectorAll(
-    ".modal"
-)
-.forEach(modal=>{
-
-    modal.addEventListener(
-
-        "click",
-
-        function(event){
-
-            if(
-                event.target
-                !==
-                modal
-            ){
-
-                return;
-            }
-
-
-            if(
-                modal.id
-                ===
-                "modalVideo"
-            ){
-
-                cerrarVideo();
-
-            }else{
-
-                cerrarModal(
-                    modal.id
-                );
-            }
-        }
-    );
 });
 
-
-/* =========================================================
-   TECLA ESC
-========================================================= */
-
-document.addEventListener(
-
-    "keydown",
-
-    function(event){
-
-        if(
-            event.key
-            !==
-            "Escape"
-        ){
-
-            return;
-        }
-
-
-        const modalActivo =
-
-        document.querySelector(
-            ".modal.activo"
-        );
-
-
-        if(
-            !modalActivo
-        ){
-
-            return;
-        }
-
-
-        if(
-            modalActivo.id
-            ===
-            "modalVideo"
-        ){
-
-            cerrarVideo();
-
-        }else{
-
-            cerrarModal(
-                modalActivo.id
-            );
-        }
-    }
-);
-
-
 </script>
+
 
 </body>
 </html>
