@@ -1,0 +1,1021 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Starry Night | Jhoss</title>
+
+<style>
+
+/* ==========================================
+   STARRY NIGHT - JHOSS
+   NEGRO · AZUL · DORADO
+========================================== */
+
+:root {
+  --negro:#050507;
+  --dorado:#e8c76a;
+  --dorado2:#ffe5a1;
+  --azul:#75c5ee;
+  --blanco:#f7f3e9;
+  --gris:#aaa69d;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
+body {
+  min-height:100vh;
+  overflow-x:hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 30%,
+      rgba(61,60,35,.12),
+      transparent 60%
+    ),
+    #050505;
+
+  color:var(--blanco);
+
+  font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+}
+
+/* ==========================================
+   CONTENIDO
+========================================== */
+
+.pagina {
+  width:min(1100px,100%);
+  margin:auto;
+  padding:40px 17px 70px;
+  text-align:center;
+}
+
+.etiqueta {
+  color:#b49b5f;
+  letter-spacing:5px;
+  font-size:10px;
+}
+
+h1 {
+  margin:15px auto 0;
+  font-family:Georgia,serif;
+  font-weight:400;
+  font-size:clamp(40px,7vw,65px);
+}
+
+h1 span {
+  color:var(--dorado);
+}
+
+.intro {
+  max-width:540px;
+  margin:18px auto 29px;
+
+  color:#bdb7ab;
+  font-size:13px;
+  line-height:1.9;
+}
+
+/* ==========================================
+   CUADRO PRINCIPAL
+========================================== */
+
+.cuadro {
+  position:relative;
+
+  width:100%;
+  aspect-ratio:16/9;
+
+  margin:0 auto;
+  overflow:hidden;
+
+  border-radius:9px;
+
+  border:
+    1px solid rgba(228,190,91,.58);
+
+  background:#03050a;
+
+  box-shadow:
+    0 30px 75px rgba(0,0,0,.5),
+    0 0 45px rgba(232,181,61,.07);
+}
+
+/* IMAGEN ORIGINAL */
+
+.imagen-estrellada {
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:contain;
+
+  opacity:0;
+  transition:
+    opacity 1s ease,
+    filter 1.5s ease,
+    transform 2s ease;
+
+  transform:scale(1);
+}
+
+.imagen-estrellada.cargada {
+  opacity:1;
+}
+
+/* MOVIMIENTO DE LA IMAGEN */
+
+.cuadro.animado .imagen-estrellada {
+  animation:
+    cieloVivo 15s ease-in-out infinite alternate;
+
+  filter:
+    brightness(1.08)
+    saturate(1.15);
+}
+
+@keyframes cieloVivo {
+
+  0% {
+    transform:
+      scale(1)
+      translate(0,0);
+  }
+
+  25% {
+    transform:
+      scale(1.025)
+      translate(-.4%,.3%);
+  }
+
+  50% {
+    transform:
+      scale(1.045)
+      translate(.3%,-.5%);
+  }
+
+  75% {
+    transform:
+      scale(1.025)
+      translate(.4%,.2%);
+  }
+
+  100% {
+    transform:
+      scale(1)
+      translate(0,0);
+  }
+
+}
+
+/* ==========================================
+   BRILLO SUAVE
+========================================== */
+
+.brillo-lunar {
+  position:absolute;
+
+  width:28%;
+  aspect-ratio:1;
+
+  top:7%;
+  right:1%;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,218,105,.24),
+      rgba(255,198,73,.08) 43%,
+      transparent 75%
+    );
+
+  filter:blur(27px);
+
+  opacity:0;
+  pointer-events:none;
+
+  mix-blend-mode:screen;
+}
+
+.cuadro.animado .brillo-lunar {
+  animation:
+    pulsoLunar 5s ease-in-out infinite;
+}
+
+@keyframes pulsoLunar {
+
+  0%,100% {
+    opacity:.25;
+    transform:scale(.9);
+  }
+
+  50% {
+    opacity:.85;
+    transform:scale(1.2);
+  }
+
+}
+
+/* ==========================================
+   ESTRELLAS LUMINOSAS
+========================================== */
+
+.estrellas {
+  position:absolute;
+  inset:0;
+
+  overflow:hidden;
+  pointer-events:none;
+}
+
+.estrella {
+  position:absolute;
+
+  width:5px;
+  height:5px;
+
+  border-radius:50%;
+
+  background:#fff3c3;
+
+  box-shadow:
+    0 0 9px #ffe5a1,
+    0 0 20px rgba(255,217,99,.8);
+
+  opacity:0;
+}
+
+.cuadro.animado .estrella {
+  animation:
+    parpadear 3s ease-in-out infinite;
+}
+
+@keyframes parpadear {
+
+  0%,100% {
+    opacity:.05;
+    transform:scale(.6);
+  }
+
+  50% {
+    opacity:.85;
+    transform:scale(1.5);
+  }
+
+}
+
+/* ==========================================
+   ESTRELLAS FUGACES
+========================================== */
+
+.meteoros {
+  position:absolute;
+  inset:0;
+
+  overflow:hidden;
+  pointer-events:none;
+}
+
+.meteoro {
+  position:absolute;
+
+  width:145px;
+  height:2px;
+
+  opacity:0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(174,222,255,.25),
+      rgba(240,249,255,.95)
+    );
+
+  border-radius:999px;
+
+  box-shadow:
+    0 0 8px rgba(174,222,255,.6);
+
+  transform:rotate(-30deg);
+}
+
+.meteoro::after {
+  content:"";
+
+  position:absolute;
+  right:0;
+  top:50%;
+
+  width:5px;
+  height:5px;
+
+  transform:translateY(-50%);
+
+  border-radius:50%;
+  background:#ffffff;
+
+  box-shadow:
+    0 0 12px #ffffff,
+    0 0 22px #8bd9ff;
+}
+
+/* POSICIONES */
+
+.m1 {
+  top:12%;
+  left:72%;
+}
+
+.m2 {
+  top:34%;
+  left:95%;
+}
+
+.m3 {
+  top:6%;
+  left:48%;
+}
+
+/* SOLO APARECEN EN MODO MOVIMIENTO */
+
+.cuadro.animado .m1 {
+  animation:
+    estrellaFugaz 8s linear infinite;
+  animation-delay:1s;
+}
+
+.cuadro.animado .m2 {
+  animation:
+    estrellaFugaz 11s linear infinite;
+  animation-delay:5s;
+}
+
+.cuadro.animado .m3 {
+  animation:
+    estrellaFugaz 14s linear infinite;
+  animation-delay:9s;
+}
+
+@keyframes estrellaFugaz {
+
+  0%,72% {
+    opacity:0;
+
+    transform:
+      translate(0,0)
+      rotate(-30deg);
+  }
+
+  74% {
+    opacity:1;
+  }
+
+  81% {
+    opacity:.9;
+
+    transform:
+      translate(-220px,130px)
+      rotate(-30deg);
+  }
+
+  85%,100% {
+    opacity:0;
+
+    transform:
+      translate(-340px,200px)
+      rotate(-30deg);
+  }
+
+}
+
+/* ==========================================
+   ERROR DE IMAGEN
+========================================== */
+
+#errorImagen {
+  position:absolute;
+  inset:0;
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+
+  padding:25px;
+
+  background:#03050a;
+  color:#e8c76a;
+
+  font-family:Georgia,serif;
+  font-size:16px;
+  line-height:1.8;
+}
+
+/* ==========================================
+   TEXTO BAJO EL CUADRO
+========================================== */
+
+.descripcion-cuadro {
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:15px;
+  margin-top:17px;
+
+  color:#b49a56;
+
+  font-size:10px;
+  letter-spacing:1.6px;
+}
+
+.descripcion-cuadro span:last-child {
+  text-align:right;
+}
+
+/* ==========================================
+   BOTONES
+========================================== */
+
+.controles {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+
+  gap:13px;
+  margin:34px auto 0;
+}
+
+.boton {
+  min-width:175px;
+
+  padding:14px 20px;
+
+  border-radius:14px;
+
+  border:
+    1px solid rgba(231,198,109,.3);
+
+  background:
+    rgba(27,25,19,.95);
+
+  color:#e4d6b4;
+
+  font-size:12px;
+  font-weight:500;
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+.boton:hover {
+  transform:translateY(-2px);
+
+  border-color:#e5c87d;
+
+  background:#302a1d;
+}
+
+.boton.principal {
+  background:
+    linear-gradient(
+      100deg,
+      #c7a451,
+      #f2d782
+    );
+
+  color:#16120a;
+
+  border-color:#e3c36d;
+}
+
+.boton:disabled {
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.estado {
+  margin-top:20px;
+
+  color:#a8a99d;
+  font-size:12px;
+  line-height:1.8;
+}
+
+.estado strong {
+  color:#e5cc87;
+}
+
+/* ==========================================
+   MENSAJE PARA JHOSS
+========================================== */
+
+.mensaje {
+  max-width:540px;
+  margin:46px auto 0;
+}
+
+.mensaje h2 {
+  color:#e3c779;
+
+  font-family:Georgia,serif;
+
+  font-size:clamp(23px,4vw,28px);
+  font-weight:400;
+}
+
+.mensaje p {
+  margin-top:20px;
+
+  color:#c9c0ac;
+
+  font-size:14px;
+  line-height:2;
+}
+
+.corazon {
+  margin-top:26px;
+
+  color:#e2c575;
+  font-size:25px;
+}
+
+.firma {
+  margin-top:19px;
+
+  color:#998253;
+
+  font-size:10px;
+  letter-spacing:4px;
+}
+
+/* ==========================================
+   CELULAR
+========================================== */
+
+@media(max-width:600px) {
+
+  .pagina {
+    padding:30px 12px 55px;
+  }
+
+  .intro {
+    font-size:12px;
+  }
+
+  .descripcion-cuadro {
+    font-size:8px;
+    letter-spacing:.5px;
+  }
+
+  .boton {
+    min-width:145px;
+    font-size:11px;
+  }
+
+  .mensaje p {
+    font-size:13px;
+  }
+
+  .meteoro {
+    width:85px;
+  }
+
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+  *,*::before,*::after {
+    animation:none!important;
+    transition:none!important;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<main class="pagina">
+
+  <div class="etiqueta">
+    ✦ A LITTLE MOMENT FOR JHOSS ✦
+  </div>
+
+  <h1>
+    Starry <span>Night</span>
+  </h1>
+
+  <p class="intro">
+    Hay noches en las que solo necesitamos
+    mirar el cielo y encontrar un poquito de calma.
+  </p>
+
+
+  <!-- =====================================
+       IMAGEN PRINCIPAL
+  ===================================== -->
+
+  <section class="cuadro" id="cuadro">
+
+    <!-- ÚNICA IMAGEN -->
+
+    <img
+      src="estrellada.png"
+      alt="Noche estrellada de números luminosos azules y dorados"
+      class="imagen-estrellada"
+      id="imagenEstrellada"
+    >
+
+
+    <!-- BRILLO DE LA LUNA -->
+
+    <div class="brillo-lunar"></div>
+
+
+    <!-- ESTRELLAS PEQUEÑAS -->
+
+    <div class="estrellas" id="estrellas"></div>
+
+
+    <!-- ESTRELLAS FUGACES -->
+
+    <div class="meteoros">
+
+      <span class="meteoro m1"></span>
+
+      <span class="meteoro m2"></span>
+
+      <span class="meteoro m3"></span>
+
+    </div>
+
+
+    <!-- ERROR -->
+
+    <div id="errorImagen">
+
+      No se encontró la imagen estrellada.png.
+      Comprueba que esté guardada
+      en la misma carpeta que este archivo.
+
+    </div>
+
+  </section>
+
+
+  <!-- TEXTO INFERIOR -->
+
+  <div class="descripcion-cuadro">
+
+    <span>RECUÉRDALO...</span>
+
+    <span>
+      Incluso en la oscuridad,
+      las estrellas brillan.
+    </span>
+
+  </div>
+
+
+  <!-- =====================================
+       CONTROLES
+  ===================================== -->
+
+  <div class="controles">
+
+    <button
+      class="boton principal"
+      id="botonMovimiento">
+
+      ✦ Dar vida al cielo
+
+    </button>
+
+    <button
+      class="boton"
+      id="botonReiniciar">
+
+      ↻ Dejarlo como antes
+
+    </button>
+
+  </div>
+
+
+  <p class="estado" id="estado">
+
+    <strong>Cielo tranquilo</strong>
+    · La noche está en calma.
+
+  </p>
+
+
+  <!-- =====================================
+       MENSAJE
+  ===================================== -->
+
+  <section class="mensaje">
+
+    <h2>
+      Un momento para ti, Jhoss.
+    </h2>
+
+    <p>
+      Si algún día sientes que todo va
+      demasiado rápido, recuerda que
+      también puedes detenerte un momento,
+      respirar y descansar.
+    </p>
+
+    <p>
+      No tienes que resolverlo todo hoy. ♡
+    </p>
+
+  </section>
+
+
+  <div class="corazon">
+    ♡
+  </div>
+
+  <div class="firma">
+    JUST FOR JHOSS
+  </div>
+
+</main>
+
+
+<script>
+
+/* ==========================================
+   ELEMENTOS
+========================================== */
+
+const cuadro = document.getElementById(
+  "cuadro"
+);
+
+const imagen = document.getElementById(
+  "imagenEstrellada"
+);
+
+const botonMovimiento = document.getElementById(
+  "botonMovimiento"
+);
+
+const botonReiniciar = document.getElementById(
+  "botonReiniciar"
+);
+
+const estado = document.getElementById(
+  "estado"
+);
+
+const errorImagen = document.getElementById(
+  "errorImagen"
+);
+
+const estrellas = document.getElementById(
+  "estrellas"
+);
+
+
+/* ==========================================
+   CARGAR IMAGEN
+========================================== */
+
+function imagenCargada() {
+
+  imagen.classList.add("cargada");
+
+  errorImagen.style.display = "none";
+
+  avisarAltura();
+
+}
+
+function imagenError() {
+
+  imagen.classList.remove("cargada");
+
+  errorImagen.style.display = "flex";
+
+  botonMovimiento.disabled = true;
+
+}
+
+imagen.addEventListener(
+  "load",
+  imagenCargada
+);
+
+imagen.addEventListener(
+  "error",
+  imagenError
+);
+
+if(imagen.complete) {
+
+  if(imagen.naturalWidth > 0) {
+
+    imagenCargada();
+
+  } else {
+
+    imagenError();
+
+  }
+
+}
+
+
+/* ==========================================
+   CREAR ESTRELLAS LUMINOSAS
+========================================== */
+
+const posiciones = [
+
+  [8,16],
+  [16,32],
+  [27,12],
+  [38,23],
+  [48,8],
+  [59,29],
+  [68,13],
+  [79,24],
+  [88,11],
+  [92,39],
+  [13,63],
+  [29,48],
+  [44,61],
+  [56,45],
+  [73,57],
+  [84,71],
+  [40,83],
+  [64,79]
+
+];
+
+posiciones.forEach((posicion,i) => {
+
+  const estrella = document.createElement(
+    "span"
+  );
+
+  estrella.className = "estrella";
+
+  estrella.style.left = posicion[0] + "%";
+
+  estrella.style.top = posicion[1] + "%";
+
+  estrella.style.animationDelay =
+    (i * .37) + "s";
+
+  estrella.style.animationDuration =
+    (2.5 + (i % 5) * .6) + "s";
+
+  estrellas.appendChild(estrella);
+
+});
+
+
+/* ==========================================
+   ACTIVAR MOVIMIENTO
+========================================== */
+
+function activarMovimiento() {
+
+  if(!imagen.naturalWidth) return;
+
+  cuadro.classList.add("animado");
+
+  botonMovimiento.textContent =
+    "☾ Dejar el cielo tranquilo";
+
+  estado.innerHTML =
+    "<strong>Cielo en movimiento</strong> " +
+    "· Las estrellas están brillando.";
+
+}
+
+
+/* ==========================================
+   DETENER MOVIMIENTO
+========================================== */
+
+function detenerMovimiento() {
+
+  cuadro.classList.remove("animado");
+
+  botonMovimiento.textContent =
+    "✦ Dar vida al cielo";
+
+  estado.innerHTML =
+    "<strong>Cielo tranquilo</strong> " +
+    "· La noche está en calma.";
+
+}
+
+
+/* ==========================================
+   BOTONES
+========================================== */
+
+botonMovimiento.addEventListener(
+  "click",
+  () => {
+
+    if(cuadro.classList.contains("animado")) {
+
+      detenerMovimiento();
+
+    } else {
+
+      activarMovimiento();
+
+    }
+
+  }
+);
+
+botonReiniciar.addEventListener(
+  "click",
+  detenerMovimiento
+);
+
+
+/* ==========================================
+   RESPETAR MOVIMIENTO REDUCIDO
+========================================== */
+
+const movimientoReducido = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+);
+
+if(movimientoReducido.matches) {
+
+  detenerMovimiento();
+
+}
+
+
+/* ==========================================
+   AJUSTAR ALTURA EN INDEX
+========================================== */
+
+function avisarAltura() {
+
+  requestAnimationFrame(() => {
+
+    if(window.parent !== window) {
+
+      window.parent.postMessage({
+
+        tipo:"alturaPagina",
+
+        altura:document.documentElement.scrollHeight
+
+      },window.location.origin);
+
+    }
+
+  });
+
+}
+
+window.addEventListener(
+  "load",
+  avisarAltura
+);
+
+window.addEventListener(
+  "resize",
+  avisarAltura
+);
+
+</script>
+
+</body>
+</html>
+
