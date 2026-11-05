@@ -1,0 +1,763 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aprende algo nuevo | Jhoss AI</title>
+
+<style>
+:root{
+  --bg:#050c16;
+  --panel:#10263b;
+  --line:rgba(136,205,229,.19);
+  --blue:#8bd9ed;
+  --white:#f5faff;
+  --muted:#a8bfd0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;
+  font-family:"Segoe UI",Arial,sans-serif;
+  color:var(--white);
+  background:
+    radial-gradient(ellipse at 50% 10%,#123a57 0%,transparent 48%),
+    linear-gradient(160deg,#050b14,#0b1e32 65%,#050b14);
+}
+button{font:inherit}
+main{
+  max-width:790px;
+  margin:auto;
+  padding:44px 17px 75px;
+}
+header{text-align:center}
+.eyebrow{
+  font-size:10px;
+  letter-spacing:3px;
+  color:var(--blue);
+}
+h1,h2,h3{font-family:Georgia,serif;font-weight:400}
+h1{font-size:clamp(32px,5vw,46px);margin:17px 0}
+h1 span,h2 span{color:var(--blue)}
+.intro{
+  max-width:550px;
+  margin:0 auto;
+  font-size:14px;
+  line-height:1.9;
+  color:var(--muted);
+}
+.assistant{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin:35px auto 25px;
+  padding:17px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:rgba(15,45,69,.64);
+}
+.avatar{
+  width:54px;
+  height:54px;
+  flex-shrink:0;
+  display:grid;
+  place-items:center;
+  border-radius:17px;
+  color:#b0edfb;
+  background:#1a4b6b;
+  font-size:25px;
+}
+.assistant strong{color:#e9faff}
+.assistant p{
+  margin-top:5px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6;
+}
+.topic{
+  text-align:center;
+  margin:28px 0;
+}
+.topic h2{font-size:30px;margin:12px 0}
+.topic p{color:var(--muted);font-size:13px;line-height:1.8}
+.tabs{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:7px;
+  padding:7px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:#08192a;
+}
+.tab{
+  border:0;
+  border-radius:14px;
+  padding:13px 5px;
+  color:#a5bdce;
+  background:transparent;
+  cursor:pointer;
+  font-size:11px;
+  line-height:1.5;
+}
+.tab span{display:block;font-size:21px;margin-bottom:6px}
+.tab.active{
+  color:#fff;
+  background:linear-gradient(135deg,#135983,#278bb6);
+  box-shadow:0 5px 20px #1287b126;
+}
+.section{
+  display:none;
+  padding:30px 5px 10px;
+  animation:rise .35s ease;
+}
+.section.active{display:block}
+@keyframes rise{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.section h2{
+  font-size:clamp(25px,4vw,32px);
+  text-align:center;
+  margin-bottom:12px;
+}
+.lead{
+  max-width:620px;
+  margin:0 auto 25px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.85;
+  text-align:center;
+}
+.lesson{
+  border-bottom:1px solid var(--line);
+  padding:22px 8px;
+}
+.lesson h3{
+  color:#c4ebf6;
+  font-size:20px;
+  margin-bottom:12px;
+}
+.lesson p{
+  color:#c6d6e2;
+  font-size:14px;
+  line-height:1.9;
+}
+.tip{
+  margin-top:13px;
+  padding:13px 15px;
+  border-left:2px solid #77d6ed;
+  background:rgba(32,108,146,.12);
+  border-radius:0 12px 12px 0;
+  color:#a9d9e9;
+  font-size:13px;
+  line-height:1.8;
+}
+.reveal{
+  display:block;
+  margin-top:14px;
+  border:1px solid #367996;
+  color:#caeffb;
+  background:#14364c;
+  padding:11px 15px;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:12px;
+}
+.explain{
+  display:none;
+  margin-top:13px;
+  color:#dcebf3;
+  font-size:13px;
+  line-height:1.9;
+}
+.explain.visible{display:block}
+.question{
+  padding:23px 0;
+  border-bottom:1px solid var(--line);
+}
+.question h3{
+  font-family:"Segoe UI",Arial,sans-serif;
+  font-size:15px;
+  line-height:1.8;
+  margin-bottom:14px;
+}
+.option{
+  display:block;
+  width:100%;
+  padding:13px 15px;
+  margin:8px 0;
+  text-align:left;
+  border:1px solid var(--line);
+  border-radius:13px;
+  color:#d4e4f0;
+  background:#10273b;
+  cursor:pointer;
+  font-size:13px;
+  line-height:1.6;
+}
+.option:hover{border-color:#78c7e3}
+.option.correct{border-color:#5ed9ad;background:#123a34}
+.option.wrong{border-color:#e48a9b;background:#402333}
+.feedback{
+  min-height:25px;
+  margin-top:12px;
+  font-size:13px;
+  line-height:1.8;
+  color:#b7dcf0;
+}
+.score{
+  margin-top:20px;
+  text-align:center;
+  color:#a3dfee;
+  font-size:14px;
+}
+.foot{
+  text-align:center;
+  margin-top:40px;
+  padding:17px;
+  color:#7f9cb0;
+  font-size:11px;
+  line-height:1.8;
+}
+@media(max-width:540px){
+  main{padding:32px 12px 65px}
+  .tabs{gap:3px;padding:5px}
+  .tab{font-size:9px;padding:12px 3px}
+  .tab span{font-size:19px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+
+<body>
+
+<main>
+
+  <header>
+    <div class="eyebrow">
+      ✦ LEARN SOMETHING NEW ✦
+    </div>
+
+    <h1>
+      Aprende algo <span>nuevo.</span>
+    </h1>
+
+    <p class="intro">
+      Hola, Jhoss. Este pequeño espacio está
+      pensado para ayudarte a comprender,
+      repasar y descubrir cosas nuevas
+      mientras avanzas en Medicina.
+    </p>
+  </header>
+
+  <div class="assistant">
+    <div class="avatar">✧</div>
+    <div>
+      <strong>Jhoss AI</strong>
+      <p>
+        ¡Holiii! ♡ Hoy vamos a estudiar juntas.
+        Avancemos paso a paso, sin apurarnos.
+      </p>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="eyebrow">CLASE 001 · MEDICINA</div>
+    <h2>Rubéola</h2>
+    <p>
+      Fisiopatología, clínica y semiología.
+    </p>
+  </div>
+
+  <nav class="tabs" aria-label="Secciones de estudio">
+    <button class="tab active" data-tab="fisiopatologia">
+      <span>🧬</span>Fisiopatología
+    </button>
+    <button class="tab" data-tab="clinica">
+      <span>🩺</span>Clínica
+    </button>
+    <button class="tab" data-tab="semiologia">
+      <span>🔎</span>Semiología
+    </button>
+    <button class="tab" data-tab="quiz">
+      <span>✦</span>Practicar
+    </button>
+  </nav>
+
+  <!-- ===================================
+       FISIOPATOLOGÍA
+  ==================================== -->
+
+  <section class="section active" id="fisiopatologia">
+
+    <h2>¿Cómo actúa el <span>virus?</span></h2>
+
+    <p class="lead">
+      La rubéola es causada por un virus del
+      género Rubivirus, familia Matonaviridae.
+      Conoce su recorrido por el organismo.
+    </p>
+
+    <div class="lesson">
+      <h3>01 · Entrada y replicación</h3>
+      <p>
+        El virus se transmite mediante partículas
+        respiratorias. Inicialmente se replica
+        en la nasofaringe y en tejido linfoide
+        regional.
+      </p>
+      <button class="reveal">✧ Explícamelo fácil</button>
+      <div class="explain">
+        Imagina que el virus entra por las vías
+        respiratorias y comienza a multiplicarse.
+        Después puede alcanzar los ganglios
+        linfáticos cercanos.
+      </div>
+    </div>
+
+    <div class="lesson">
+      <h3>02 · Viremia</h3>
+      <p>
+        Posteriormente, el virus pasa a la sangre
+        y puede distribuirse hacia otros tejidos,
+        como la piel y las articulaciones.
+      </p>
+      <button class="reveal">✧ Explícamelo fácil</button>
+      <div class="explain">
+        Viremia significa presencia del virus
+        en la sangre. La circulación sanguínea
+        facilita su diseminación.
+      </div>
+    </div>
+
+    <div class="lesson">
+      <h3>03 · Respuesta inmunitaria</h3>
+      <p>
+        La aparición del exantema está relacionada
+        con la respuesta inmunitaria frente
+        a la infección.
+      </p>
+      <button class="reveal">✧ ¿Qué es un exantema?</button>
+      <div class="explain">
+        Es una erupción que aparece en la piel.
+        En la rubéola suele ser maculopapular,
+        es decir, combina manchas y pequeñas
+        elevaciones.
+      </div>
+    </div>
+
+    <div class="lesson">
+      <h3>04 · Rubéola congénita</h3>
+      <p>
+        Si una embarazada susceptible se infecta,
+        el virus puede atravesar la placenta y
+        afectar el desarrollo fetal, especialmente
+        durante las primeras etapas del embarazo.
+      </p>
+      <div class="tip">
+        Recuerda: el síndrome de rubéola congénita
+        puede producir alteraciones auditivas,
+        oculares y cardíacas.
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===================================
+       CLÍNICA
+  ==================================== -->
+
+  <section class="section" id="clinica">
+
+    <h2>Manifestaciones <span>clínicas.</span></h2>
+
+    <p class="lead">
+      Ahora repasemos cómo puede presentarse
+      la enfermedad.
+    </p>
+
+    <div class="lesson">
+      <h3>01 · Incubación</h3>
+      <p>
+        Generalmente dura entre 14 y 21 días,
+        con un promedio aproximado de 16 a 18 días.
+      </p>
+      <div class="tip">
+        La incubación es el tiempo que transcurre
+        entre la infección y la aparición
+        de los síntomas.
+      </div>
+    </div>
+
+    <div class="lesson">
+      <h3>02 · Fase prodrómica</h3>
+      <p>
+        Puede presentarse fiebre baja,
+        malestar general, cefalea, molestias
+        faríngeas, coriza leve y conjuntivitis
+        no purulenta.
+      </p>
+      <button class="reveal">✧ Explícamelo fácil</button>
+      <div class="explain">
+        Son manifestaciones que pueden aparecer
+        antes de la erupción cutánea. Esta fase
+        suele ser menos evidente en niños.
+      </div>
+    </div>
+
+    <div class="lesson">
+      <h3>03 · Fase exantemática</h3>
+      <p>
+        El exantema suele durar aproximadamente
+        tres días. Comienza en la cara y se
+        extiende hacia el tronco y las extremidades.
+      </p>
+      <div class="tip">
+        Pista de estudio: recuerda la progresión
+        cefalocaudal, desde la cabeza hacia
+        las partes inferiores del cuerpo.
+      </div>
+    </div>
+
+    <div class="lesson">
+      <h3>04 · Complicaciones</h3>
+      <p>
+        Pueden presentarse artralgias o artritis,
+        especialmente en mujeres adultas.
+        Entre las complicaciones infrecuentes
+        están la trombocitopenia y la encefalitis.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- ===================================
+       SEMIOLOGÍA
+  ==================================== -->
+
+  <section class="section" id="semiologia">
+
+    <h2>Aprendamos <span>semiología.</span></h2>
+
+    <p class="lead">
+      La semiología estudia los signos y síntomas
+      que permiten reconocer y orientar
+      el diagnóstico de enfermedades.
+    </p>
+
+    <div class="lesson">
+      <h3>01 · Adenopatías</h3>
+      <p>
+        Puede observarse aumento de tamaño
+        de ganglios retroauriculares,
+        suboccipitales y cervicales posteriores.
+      </p>
+      <button class="reveal">✧ ¿Cómo recordarlo?</button>
+      <div class="explain">
+        Retroauricular: detrás de la oreja.
+        Suboccipital: debajo de la región posterior
+        del cráneo. Cervical posterior: detrás
+        del cuello.
+      </div>
+    </div>
+
+    <div class="lesson">
+      <h3>02 · Exantema</h3>
+      <p>
+        Generalmente es maculopapular, rosado
+        y de progresión cefalocaudal.
+        Suele resolverse sin dejar
+        pigmentación marcada.
+      </p>
+    </div>
+
+    <div class="lesson">
+      <h3>03 · Manchas de Forchheimer</h3>
+      <p>
+        Son pequeñas máculas o petequias rojizas
+        que pueden observarse en el paladar blando.
+      </p>
+      <div class="tip">
+        Importante: no son exclusivas de la rubéola,
+        por lo que no permiten confirmar
+        por sí solas el diagnóstico.
+      </div>
+    </div>
+
+    <div class="lesson">
+      <h3>Una pista clínica importante</h3>
+      <p>
+        La combinación de adenopatías
+        características y un exantema de corta
+        duración ayuda a sospechar rubéola.
+      </p>
+      <div class="tip">
+        La sospecha clínica debe complementarse
+        con evaluación profesional y pruebas
+        de laboratorio cuando corresponda.
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===================================
+       PREGUNTAS INTERACTIVAS
+  ==================================== -->
+
+  <section class="section" id="quiz">
+
+    <h2>Pongamos a prueba <span>lo aprendido.</span></h2>
+
+    <p class="lead">
+      Jhoss, responde sin miedo a equivocarte.
+      Cada pregunta es una oportunidad
+      para aprender un poquito más. ♡
+    </p>
+
+    <div id="preguntas"></div>
+
+    <div class="score" id="resultadoFinal"></div>
+
+    <div style="text-align:center;margin-top:22px">
+      <button class="reveal" id="reiniciar"
+        style="margin:0 auto">
+        ↻ Volver a practicar
+      </button>
+    </div>
+
+  </section>
+
+  <footer class="foot">
+    JHOSS AI · APRENDE A TU RITMO ♡
+    <p style="margin-top:9px">
+      Estara pronto tu Asiste personal 
+    </p>
+  </footer>
+
+</main>
+
+<script>
+
+/* =====================================
+   NAVEGACIÓN DE LAS CLASES
+===================================== */
+
+const tabs=document.querySelectorAll(".tab");
+const sections=document.querySelectorAll(".section");
+
+tabs.forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    tabs.forEach(b=>b.classList.remove("active"));
+    sections.forEach(s=>s.classList.remove("active"));
+
+    btn.classList.add("active");
+
+    document.getElementById(
+      btn.dataset.tab
+    ).classList.add("active");
+
+    avisarAltura();
+  });
+});
+
+/* =====================================
+   EXPLICACIONES ADICIONALES
+===================================== */
+
+document.querySelectorAll(".reveal").forEach(btn=>{
+  if(!btn.nextElementSibling?.classList.contains("explain")){
+    return;
+  }
+
+  btn.addEventListener("click",()=>{
+    const texto=btn.nextElementSibling;
+    const abierto=texto.classList.toggle("visible");
+
+    btn.textContent=abierto
+      ?"✕ Ocultar explicación"
+      :"✧ Explícamelo fácil";
+
+    avisarAltura();
+  });
+});
+
+/* =====================================
+   PREGUNTAS DE REPASO
+   AQUÍ PODRÁS AGREGAR MÁS
+===================================== */
+
+const CUESTIONARIO=[
+  {
+    pregunta:"¿Qué virus produce la rubéola?",
+    opciones:[
+      "Virus del sarampión",
+      "Rubivirus",
+      "Virus varicela-zóster"
+    ],
+    correcta:1,
+    explicacion:
+      "La rubéola es causada por un virus " +
+      "del género Rubivirus."
+  },
+  {
+    pregunta:"¿Cuánto suele durar el exantema?",
+    opciones:[
+      "Aproximadamente 3 días",
+      "15 días",
+      "Un mes"
+    ],
+    correcta:0,
+    explicacion:
+      "La erupción típica suele durar " +
+      "alrededor de tres días."
+  },
+  {
+    pregunta:"¿Dónde suelen aparecer adenopatías?",
+    opciones:[
+      "Solo en la región inguinal",
+      "Detrás de la oreja y en la zona posterior del cuello",
+      "Únicamente en las axilas"
+    ],
+    correcta:1,
+    explicacion:
+      "Las adenopatías retroauriculares, " +
+      "suboccipitales y cervicales posteriores " +
+      "son características."
+  },
+  {
+    pregunta:"¿Qué significa viremia?",
+    opciones:[
+      "Presencia del virus en la sangre",
+      "Inflamación de la piel",
+      "Dolor muscular"
+    ],
+    correcta:0,
+    explicacion:
+      "La viremia es la presencia de virus " +
+      "en el torrente sanguíneo."
+  },
+  {
+    pregunta:"¿Las manchas de Forchheimer son exclusivas de rubéola?",
+    opciones:[
+      "Sí, siempre",
+      "No, pueden aparecer en otras enfermedades",
+      "Solo aparecen en adultos"
+    ],
+    correcta:1,
+    explicacion:
+      "No son patognomónicas. Pueden aparecer " +
+      "en otros cuadros infecciosos."
+  }
+];
+
+const respuestas=new Map();
+
+function crearPreguntas(){
+  const contenedor=document.getElementById("preguntas");
+  contenedor.replaceChildren();
+  respuestas.clear();
+
+  CUESTIONARIO.forEach((pregunta,indice)=>{
+    const bloque=document.createElement("div");
+    bloque.className="question";
+
+    const titulo=document.createElement("h3");
+    titulo.textContent=(indice+1)+". "+pregunta.pregunta;
+    bloque.appendChild(titulo);
+
+    const aviso=document.createElement("div");
+    aviso.className="feedback";
+    aviso.setAttribute("aria-live","polite");
+
+    const opciones=[];
+
+    pregunta.opciones.forEach((opcion,opcionIndex)=>{
+      const boton=document.createElement("button");
+      boton.className="option";
+      boton.type="button";
+      boton.textContent=String.fromCharCode(65+opcionIndex)+". "+opcion;
+
+      boton.addEventListener("click",()=>{
+        if(respuestas.has(indice)) return;
+
+        respuestas.set(indice,opcionIndex);
+
+        opciones.forEach(b=>b.disabled=true);
+
+        opciones[pregunta.correcta].classList.add("correct");
+
+        if(opcionIndex!==pregunta.correcta){
+          boton.classList.add("wrong");
+          aviso.textContent="Sigue intentando en la siguiente ♡ "+
+            pregunta.explicacion;
+        }else{
+          aviso.textContent="¡Muy bien, Jhoss! ♡ "+
+            pregunta.explicacion;
+        }
+
+        mostrarPuntaje();
+        avisarAltura();
+      });
+
+      opciones.push(boton);
+      bloque.appendChild(boton);
+    });
+
+    bloque.appendChild(aviso);
+    contenedor.appendChild(bloque);
+  });
+
+  document.getElementById("resultadoFinal").textContent="";
+  avisarAltura();
+}
+
+function mostrarPuntaje(){
+  if(respuestas.size!==CUESTIONARIO.length) return;
+
+  let correctas=0;
+
+  respuestas.forEach((respuesta,i)=>{
+    if(respuesta===CUESTIONARIO[i].correcta){
+      correctas++;
+    }
+  });
+
+  document.getElementById("resultadoFinal").textContent=
+    "Has respondido "+correctas+" de "+
+    CUESTIONARIO.length+" preguntas correctamente. "+
+    "¡Sigue aprendiendo, Jhoss! ♡";
+}
+
+document.getElementById("reiniciar")
+  .addEventListener("click",crearPreguntas);
+
+crearPreguntas();
+
+/* =====================================
+   COMUNICACIÓN CON INDEX
+===================================== */
+
+function avisarAltura(){
+  requestAnimationFrame(()=>{
+    window.parent.postMessage({
+      tipo:"alturaPagina",
+      altura:document.documentElement.scrollHeight
+    },window.location.origin);
+  });
+}
+
+window.addEventListener("load",avisarAltura);
+window.addEventListener("resize",avisarAltura);
+
+if(typeof ResizeObserver!=="undefined"){
+  const observer=new ResizeObserver(avisarAltura);
+  observer.observe(document.body);
+}
+
+</script>
+
+</body>
+</html>

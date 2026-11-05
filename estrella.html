@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Una estrella para ti | My Love</title>
+<link rel="stylesheet" href="estilos.css">
+
+<style>
+/* ==========================================
+   ESTRELLA.HTML
+   CIELO NOCTURNO PROFESIONAL
+========================================== */
+
+body{
+  background:
+    radial-gradient(circle at 50% 80%, rgba(24,52,88,.30), transparent 38%),
+    radial-gradient(circle at 20% 20%, rgba(58,88,130,.15), transparent 28%),
+    radial-gradient(circle at 80% 18%, rgba(80,100,150,.10), transparent 24%),
+    linear-gradient(180deg, #02040a 0%, #050914 38%, #081223 68%, #0b1730 100%);
+  overflow-x:hidden;
+}
+
+.cielo-wrap{
+  position:relative;
+  min-height:100vh;
+  overflow:hidden;
+}
+
+.bruma{
+  position:absolute;
+  inset:auto;
+  border-radius:50%;
+  filter:blur(70px);
+  pointer-events:none;
+  opacity:.45;
+}
+
+.bruma.bruma1{
+  width:320px;
+  height:180px;
+  top:18%;
+  left:10%;
+  background:rgba(61,95,150,.12);
+}
+
+.bruma.bruma2{
+  width:380px;
+  height:220px;
+  top:40%;
+  right:8%;
+  background:rgba(36,64,117,.13);
+}
+
+.bruma.bruma3{
+  width:320px;
+  height:180px;
+  bottom:8%;
+  left:30%;
+  background:rgba(44,84,138,.10);
+}
+
+.luna{
+  position:absolute;
+  top:70px;
+  right:9%;
+  width:92px;
+  height:92px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 35% 35%, #f7fbff 0%, #dfe7f2 38%, #b8c6db 68%, #93a3bc 100%);
+  box-shadow:
+    0 0 30px rgba(214,230,255,.18),
+    0 0 90px rgba(179,211,255,.10);
+  opacity:.95;
+}
+
+.luna::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 62% 38%, rgba(116,132,155,.25) 0 10%, transparent 11%),
+    radial-gradient(circle at 43% 66%, rgba(116,132,155,.20) 0 8%, transparent 9%),
+    radial-gradient(circle at 70% 72%, rgba(116,132,155,.16) 0 6%, transparent 7%);
+  opacity:.6;
+}
+
+.resplandor-luna{
+  position:absolute;
+  top:33px;
+  right:4%;
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(187,214,255,.10), transparent 68%);
+  filter:blur(16px);
+  pointer-events:none;
+}
+
+.campo-estrellas{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+
+.estrellita-fondo{
+  position:absolute;
+  border-radius:50%;
+  background:#eef6ff;
+  box-shadow:0 0 6px rgba(220,235,255,.5);
+  opacity:.8;
+  animation:parpadear ease-in-out infinite alternate;
+}
+
+@keyframes parpadear{
+  from{ opacity:.25; transform:scale(.9); }
+  to{ opacity:1; transform:scale(1.18); }
+}
+
+/* METEOROS */
+
+.meteoros{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+.meteoro{
+  position:absolute;
+  width:160px;
+  height:2px;
+  transform:rotate(-25deg);
+  background:linear-gradient(90deg, rgba(255,255,255,0), rgba(205,235,255,.92), rgba(255,255,255,0));
+  filter:drop-shadow(0 0 8px rgba(196,229,255,.85));
+  opacity:0;
+  animation:caerMeteoro 5.5s linear infinite;
+}
+
+.meteoro::before{
+  content:"";
+  position:absolute;
+  right:0;
+  top:50%;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#f4fbff;
+  transform:translateY(-50%);
+  box-shadow:0 0 12px rgba(236,247,255,.95);
+}
+
+.meteoro.m1{ top:12%; left:58%; animation-delay:0s; }
+.meteoro.m2{ top:22%; left:72%; animation-delay:2.8s; }
+.meteoro.m3{ top:8%; left:24%; animation-delay:6.4s; }
+.meteoro.m4{ top:28%; left:84%; animation-delay:9.8s; }
+
+@keyframes caerMeteoro{
+  0%{
+    opacity:0;
+    transform:translate(0,0) rotate(-25deg) scale(.85);
+  }
+  8%{
+    opacity:1;
+  }
+  20%{
+    opacity:.9;
+    transform:translate(-220px,140px) rotate(-25deg) scale(1);
+  }
+  28%{
+    opacity:0;
+    transform:translate(-340px,220px) rotate(-25deg) scale(1.02);
+  }
+  100%{
+    opacity:0;
+    transform:translate(-340px,220px) rotate(-25deg) scale(1.02);
+  }
+}
+
+/* CONTENIDO PRINCIPAL */
+
+.contenido{
+  position:relative;
+  z-index:2;
+  padding-top:70px;
+}
+
+.etiqueta{
+  color:#98b8d8;
+}
+
+.titulo{
+  color:#f6fbff;
+}
+
+.titulo span{
+  color:#c4ecff;
+  text-shadow:0 0 22px rgba(157,221,255,.14);
+}
+
+.descripcion{
+  color:#b7c8d7;
+}
+
+.decoracion{
+  color:#9fd8ee;
+}
+
+/* ESTRELLAS INTERACTIVAS */
+
+.zona-interactiva{
+  position:relative;
+  width:min(920px, 100%);
+  height:520px;
+  margin:32px auto 0;
+  border-radius:26px;
+  background:
+    radial-gradient(circle at 50% 100%, rgba(26,52,92,.30), transparent 38%),
+    linear-gradient(180deg, rgba(5,10,18,.30), rgba(3,7,14,.14));
+  border:1px solid rgba(145,180,220,.10);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 20px 60px rgba(0,0,0,.28);
+  overflow:hidden;
+}
+
+.estrella{
+  position:absolute;
+  background:none;
+  border:none;
+  cursor:pointer;
+  transform:translate(-50%,-50%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff5d2;
+  text-shadow:
+    0 0 8px rgba(255,244,190,.75),
+    0 0 24px rgba(202,227,255,.20);
+  transition:
+    transform .25s ease,
+    filter .25s ease,
+    color .25s ease;
+  animation:latidoEstrella 2.8s ease-in-out infinite alternate;
+}
+
+.estrella:hover{
+  transform:translate(-50%,-50%) scale(1.16);
+  filter:brightness(1.15);
+}
+
+.estrella:focus-visible{
+  outline:1px solid rgba(186,224,255,.9);
+  border-radius:50%;
+}
+
+.estrella svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.estrella.descubierta{
+  color:#b6ecff;
+  text-shadow:
+    0 0 8px rgba(170,235,255,.9),
+    0 0 26px rgba(122,213,246,.36);
+}
+
+@keyframes latidoEstrella{
+  from{ opacity:.7; }
+  to{ opacity:1; }
+}
+
+/* POSICIONES */
+
+.e1{ left:15%; top:22%; width:34px; height:34px; animation-delay:.2s; }
+.e2{ left:31%; top:39%; width:26px; height:26px; animation-delay:1.1s; }
+.e3{ left:51%; top:18%; width:38px; height:38px; animation-delay:.8s; }
+.e4{ left:74%; top:28%; width:30px; height:30px; animation-delay:1.5s; }
+.e5{ left:85%; top:52%; width:34px; height:34px; animation-delay:2s; }
+.e6{ left:60%; top:63%; width:30px; height:30px; animation-delay:.5s; }
+.e7{ left:40%; top:76%; width:36px; height:36px; animation-delay:1.8s; }
+.e8{ left:18%; top:67%; width:28px; height:28px; animation-delay:.9s; }
+.e9{ left:72%; top:80%; width:24px; height:24px; animation-delay:1.4s; }
+
+/* CONTADOR */
+
+.indicacion{
+  margin-top:20px;
+  text-align:center;
+  color:#9eb4c7;
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+.contador{
+  margin-top:9px;
+  color:#6f8ca8;
+  font-size:11px;
+}
+
+/* MODAL */
+
+.modal-estrella{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(3,6,12,.74);
+  backdrop-filter:blur(10px);
+  z-index:30;
+}
+
+.modal-estrella.activo{
+  display:flex;
+}
+
+.modal-caja{
+  position:relative;
+  width:min(430px, 92vw);
+  padding:30px 24px 26px;
+  border-radius:24px;
+  border:1px solid rgba(155,199,228,.16);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(92,137,182,.12), transparent 42%),
+    linear-gradient(145deg, rgba(16,28,48,.96), rgba(5,11,21,.98));
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.05);
+  text-align:center;
+  animation:subirModal .35s ease both;
+}
+
+@keyframes subirModal{
+  from{ opacity:0; transform:translateY(16px) scale(.96); }
+  to{ opacity:1; transform:translateY(0) scale(1); }
+}
+
+.cerrar-modal{
+  position:absolute;
+  top:10px;
+  right:14px;
+  border:none;
+  background:none;
+  color:#9ab4c9;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.icono-modal{
+  font-size:28px;
+  color:#c6eeff;
+  text-shadow:0 0 18px rgba(155,229,255,.18);
+}
+
+.titulo-modal{
+  margin-top:12px;
+  color:#f4fbff;
+  font-family:Georgia, serif;
+  font-size:28px;
+  font-weight:400;
+}
+
+.texto-modal{
+  margin-top:16px;
+  color:#c4d1dd;
+  line-height:1.9;
+  font-size:14px;
+}
+
+.firma-modal{
+  margin-top:18px;
+  color:#85a8c7;
+  font-size:10px;
+  letter-spacing:2px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:700px){
+  .luna{
+    width:76px;
+    height:76px;
+    top:62px;
+    right:7%;
+  }
+
+  .zona-interactiva{
+    height:470px;
+  }
+
+  .titulo-modal{
+    font-size:24px;
+  }
+
+  .texto-modal{
+    font-size:13px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="cielo-wrap">
+
+  <div class="bruma bruma1"></div>
+  <div class="bruma bruma2"></div>
+  <div class="bruma bruma3"></div>
+
+  <div class="resplandor-luna"></div>
+  <div class="luna"></div>
+
+  <div class="campo-estrellas" id="campoEstrellas"></div>
+
+  <div class="meteoros">
+    <span class="meteoro m1"></span>
+    <span class="meteoro m2"></span>
+    <span class="meteoro m3"></span>
+    <span class="meteoro m4"></span>
+  </div>
+
+  <main class="contenido">
+
+    <div class="etiqueta">
+      ✦ A LITTLE SKY FOR YOU ✦
+    </div>
+
+    <h1 class="titulo">
+      Una estrella
+      <span>para ti.</span>
+    </h1>
+
+    <p class="descripcion">
+      Hay noches en las que el cielo parece guardar
+      pequeñas palabras en silencio.
+      Esta vez, algunas estrellas tienen algo bonito para ti.
+    </p>
+
+    <div class="decoracion">✦ ✦ ✦</div>
+
+    <section class="zona-interactiva">
+
+      <button class="estrella e1" data-id="0" aria-label="Estrella 1">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 1.8l2.4 7.2 7.2 2.4-7.2 2.4L12 21l-2.4-7.2L2.4 11.4l7.2-2.4z"/>
+        </svg>
+      </button>
+
+      <button class="estrella e2" data-id="1" aria-label="Estrella 2">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.2l1.8 5.3 5.3 1.8-5.3 1.8L12 16.4l-1.8-5.3-5.3-1.8 5.3-1.8z"/>
+        </svg>
+      </button>
+
+      <button class="estrella e3" data-id="2" aria-label="Estrella 3">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 1.8l2.4 7.2 7.2 2.4-7.2 2.4L12 21l-2.4-7.2L2.4 11.4l7.2-2.4z"/>
+        </svg>
+      </button>
+
+      <button class="estrella e4" data-id="3" aria-label="Estrella 4">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.2l1.8 5.3 5.3 1.8-5.3 1.8L12 16.4l-1.8-5.3-5.3-1.8 5.3-1.8z"/>
+        </svg>
+      </button>
+
+      <button class="estrella e5" data-id="4" aria-label="Estrella 5">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 1.8l2.4 7.2 7.2 2.4-7.2 2.4L12 21l-2.4-7.2L2.4 11.4l7.2-2.4z"/>
+        </svg>
+      </button>
+
+      <button class="estrella e6" data-id="5" aria-label="Estrella 6">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.2l1.8 5.3 5.3 1.8-5.3 1.8L12 16.4l-1.8-5.3-5.3-1.8 5.3-1.8z"/>
+        </svg>
+      </button>
+
+      <button class="estrella e7" data-id="6" aria-label="Estrella 7">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 1.8l2.4 7.2 7.2 2.4-7.2 2.4L12 21l-2.4-7.2L2.4 11.4l7.2-2.4z"/>
+        </svg>
+      </button>
+
+      <button class="estrella e8" data-id="7" aria-label="Estrella 8">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.2l1.8 5.3 5.3 1.8-5.3 1.8L12 16.4l-1.8-5.3-5.3-1.8 5.3-1.8z"/>
+        </svg>
+      </button>
+
+      <button class="estrella e9" data-id="8" aria-label="Estrella 9">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 1.8l2.4 7.2 7.2 2.4-7.2 2.4L12 21l-2.4-7.2L2.4 11.4l7.2-2.4z"/>
+        </svg>
+      </button>
+
+    </section>
+
+    <div class="indicacion">
+      ✦ TOCA UNA ESTRELLA ✦
+      <div class="contador" id="contadorEstrellas">
+        0 de 9 estrellas descubiertas
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- MODAL -->
+<div class="modal-estrella" id="modalEstrella">
+  <div class="modal-caja">
+    <button class="cerrar-modal" id="cerrarModal" aria-label="Cerrar">×</button>
+    <div class="icono-modal">✦</div>
+    <h2 class="titulo-modal" id="tituloModal">Una pequeña luz</h2>
+    <p class="texto-modal" id="textoModal"></p>
+    <div class="firma-modal">JUST FOR YOU ♡</div>
+  </div>
+</div>
+
+<script>
+/* ==========================================
+   FONDO DE ESTRELLAS PEQUEÑAS
+========================================== */
+
+const campoEstrellas = document.getElementById("campoEstrellas");
+
+for(let i=0; i<140; i++){
+  const punto = document.createElement("span");
+  punto.className = "estrellita-fondo";
+
+  const size = Math.random() < 0.18 ? 3 : (Math.random() < 0.35 ? 2 : 1.4);
+
+  punto.style.width = size + "px";
+  punto.style.height = size + "px";
+  punto.style.left = Math.random() * 100 + "%";
+  punto.style.top = Math.random() * 100 + "%";
+  punto.style.animationDuration = (1.8 + Math.random() * 3.6) + "s";
+  punto.style.animationDelay = (-Math.random() * 5) + "s";
+  punto.style.opacity = (0.15 + Math.random() * 0.85).toFixed(2);
+
+  campoEstrellas.appendChild(punto);
+}
+
+/* ==========================================
+   MENSAJES DE LAS ESTRELLAS
+========================================== */
+
+const mensajes = [
+  {
+    titulo: "Nunca dejes de brillar",
+    texto: "Incluso en las noches más oscuras, siempre hay una luz en ti que merece seguir brillando."
+  },
+  {
+    titulo: "A tu propio ritmo",
+    texto: "No necesitas correr. Cada estrella tiene su momento para iluminar el cielo."
+  },
+  {
+    titulo: "Una sonrisa para hoy",
+    texto: "Ojalá hoy encuentres una pequeña razón para sonreír y recordar que aún hay cosas bonitas esperándote."
+  },
+  {
+    titulo: "Confía en ti",
+    texto: "Tienes dentro de ti más fuerza, más ternura y más luz de la que a veces imaginas."
+  },
+  {
+    titulo: "Para tus sueños",
+    texto: "Que nunca te falten valentía, ilusión y paciencia para seguir construyendo eso que deseas."
+  },
+  {
+    titulo: "Un poquito de calma",
+    texto: "Si el día fue pesado, respira despacio. El cielo también se vuelve hermoso después del silencio."
+  },
+  {
+    titulo: "Sigue floreciendo",
+    texto: "No importa si vas despacio. Lo importante es que sigues creciendo y eso ya es algo valioso."
+  },
+  {
+    titulo: "Un deseo bonito",
+    texto: "De todas las estrellas de este pequeño cielo, esta guarda un deseo: que la vida te regale momentos muy felices."
+  },
+  {
+    titulo: "Una estrella especial",
+    texto: "Si hoy miraste este cielo, quiero que recuerdes algo: hay detalles pequeños que también nacen desde el cariño. ♡"
+  }
+];
+
+const estrellas = document.querySelectorAll(".estrella");
+const modal = document.getElementById("modalEstrella");
+const cerrarModal = document.getElementById("cerrarModal");
+const tituloModal = document.getElementById("tituloModal");
+const textoModal = document.getElementById("textoModal");
+const contador = document.getElementById("contadorEstrellas");
+
+const descubiertas = new Set();
+
+estrellas.forEach((estrella) => {
+  estrella.addEventListener("click", () => {
+    const id = Number(estrella.dataset.id);
+    const data = mensajes[id];
+
+    tituloModal.textContent = data.titulo;
+    textoModal.textContent = data.texto;
+
+    modal.classList.add("activo");
+    estrella.classList.add("descubierta");
+
+    descubiertas.add(id);
+    contador.textContent = `${descubiertas.size} de 9 estrellas descubiertas`;
+  });
+});
+
+cerrarModal.addEventListener("click", () => {
+  modal.classList.remove("activo");
+});
+
+modal.addEventListener("click", (e) => {
+  if(e.target === modal){
+    modal.classList.remove("activo");
+  }
+});
+
+/* ==========================================
+   AJUSTAR ALTURA PARA EL IFRAME DE INDEX
+========================================== */
+
+function avisarAltura(){
+  requestAnimationFrame(() => {
+    window.parent.postMessage({
+      tipo: "alturaPagina",
+      altura: document.documentElement.scrollHeight
+    }, window.location.origin);
+  });
+}
+
+window.addEventListener("load", avisarAltura);
+window.addEventListener("resize", avisarAltura);
+</script>
+
+</body>
+</html>

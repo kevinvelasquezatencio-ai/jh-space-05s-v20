@@ -1,0 +1,925 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mi agenda | Jhoss</title>
+
+<style>
+:root {
+  --fondo:#050b14;
+  --marino:#10283e;
+  --azul:#176a97;
+  --celeste:#8bdced;
+  --blanco:#f4f9fd;
+  --gris:#a4bacb;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body {
+  min-height:100vh;
+  color:var(--blanco);
+  font-family:"Segoe UI",Arial,sans-serif;
+  overflow-x:hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 30%,
+      rgba(32,100,151,.18),
+      transparent 48%
+    ),
+    linear-gradient(
+      150deg,
+      #040914,
+      #10253c 55%,
+      #050b14
+    );
+}
+
+/* FONDO */
+
+.fondo {
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.luz {
+  position:absolute;
+  width:320px;
+  height:320px;
+  border-radius:50%;
+  filter:blur(90px);
+  animation:respirar 8s ease-in-out infinite;
+}
+
+.luz.uno {
+  top:-150px;
+  left:-140px;
+  background:rgba(57,160,209,.15);
+}
+
+.luz.dos {
+  right:-140px;
+  bottom:-150px;
+  background:rgba(38,102,174,.14);
+}
+
+@keyframes respirar {
+  0%,100% {opacity:.3;transform:scale(1)}
+  50% {opacity:.8;transform:scale(1.17)}
+}
+
+/* GENERAL */
+
+.pagina {
+  max-width:760px;
+  margin:0 auto;
+  padding:55px 19px 80px;
+  text-align:center;
+}
+
+.etiqueta {
+  color:#8acde2;
+  font-size:10px;
+  letter-spacing:4px;
+}
+
+h1 {
+  margin-top:19px;
+  font-family:Georgia,serif;
+  font-size:clamp(30px,5vw,43px);
+  font-weight:400;
+  line-height:1.3;
+}
+
+h1 span {
+  color:var(--celeste);
+}
+
+.intro {
+  max-width:540px;
+  margin:17px auto 0;
+  color:var(--gris);
+  font-size:14px;
+  line-height:1.9;
+}
+
+.decoracion {
+  color:#85cde2;
+  font-size:18px;
+  letter-spacing:13px;
+  margin:30px auto;
+}
+
+.separador {
+  width:90px;
+  height:1px;
+  margin:31px auto;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    #86cce0,
+    transparent
+  );
+}
+
+/* PUBLICACIÓN */
+
+.publicacion {
+  animation:aparecer .8s ease both;
+}
+
+@keyframes aparecer {
+  from {
+    opacity:0;
+    transform:translateY(18px);
+  }
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.fecha {
+  color:#8dcfe3;
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+.titulo-frase {
+  margin-top:18px;
+  font-family:Georgia,serif;
+  font-size:clamp(26px,4vw,34px);
+  font-weight:400;
+}
+
+.codigo {
+  margin-top:12px;
+  color:#7e9fb7;
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+.icono {
+  margin:31px auto 17px;
+  color:#9de3f0;
+  font-size:37px;
+}
+
+.rotulo {
+  color:#92d9e9;
+  font-size:10px;
+  letter-spacing:3px;
+}
+
+.nota {
+  max-width:580px;
+  margin:20px auto 0;
+  font-family:Georgia,serif;
+  font-size:clamp(21px,3.5vw,27px);
+  line-height:1.75;
+  font-style:italic;
+  color:#eef9ff;
+}
+
+.explicacion {
+  max-width:570px;
+  margin:35px auto 0;
+}
+
+.explicacion h3 {
+  color:var(--celeste);
+  font-family:Georgia,serif;
+  font-size:23px;
+  font-weight:400;
+}
+
+.explicacion p {
+  margin-top:18px;
+  color:#c2d3df;
+  font-size:14px;
+  line-height:2;
+}
+
+/* CONTADOR */
+
+.contador-zona {
+  margin:38px auto 0;
+  max-width:520px;
+  padding:24px 14px;
+
+  border:1px solid rgba(119,200,225,.16);
+  border-radius:22px;
+
+  background:rgba(6,23,39,.32);
+}
+
+.contador-zona h3 {
+  color:#b3e7f3;
+  font-family:Georgia,serif;
+  font-size:19px;
+  font-weight:400;
+}
+
+.contador-zona p {
+  margin-top:10px;
+  color:#95b3c6;
+  font-size:12px;
+  line-height:1.8;
+}
+
+.reloj {
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:23px;
+}
+
+.tiempo {
+  min-width:75px;
+  padding:12px 8px;
+  border-radius:13px;
+  background:rgba(18,53,78,.58);
+  border:1px solid rgba(121,205,231,.14);
+}
+
+.tiempo strong {
+  display:block;
+  font-size:25px;
+  font-weight:600;
+  color:#e3f8ff;
+  font-variant-numeric:tabular-nums;
+}
+
+.tiempo small {
+  display:block;
+  margin-top:5px;
+  color:#8cacc2;
+  font-size:10px;
+}
+
+/* CERRADO */
+
+.cerrado {
+  padding:30px 10px;
+  animation:aparecer .7s ease both;
+}
+
+.candado {
+  font-size:49px;
+  color:#90d8e9;
+  margin-bottom:21px;
+}
+
+.cerrado h2 {
+  font-family:Georgia,serif;
+  font-weight:400;
+  font-size:clamp(27px,4vw,35px);
+}
+
+.cerrado p {
+  max-width:480px;
+  margin:19px auto 0;
+  color:#acbfd0;
+  line-height:1.9;
+  font-size:14px;
+}
+
+.proxima-fecha {
+  color:#9bdceb!important;
+}
+
+/* FIRMA */
+
+.firma {
+  margin-top:45px;
+  color:#7096ad;
+  letter-spacing:3px;
+  font-size:10px;
+}
+
+@media(max-width:600px) {
+  .pagina {padding:42px 15px 70px}
+  .intro,.explicacion p {font-size:13px}
+  .nota {font-size:22px}
+  .tiempo {min-width:65px}
+  .reloj {gap:8px}
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation:none!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="fondo">
+  <div class="luz uno"></div>
+  <div class="luz dos"></div>
+</div>
+
+<main class="pagina">
+
+  <div class="etiqueta">
+    ✦ LITTLE WORDS TO KEEP ✦
+  </div>
+
+  <h1>
+    Pequeñas palabras,
+    <span>grandes recuerdos.</span>
+  </h1>
+
+  <p class="intro">
+    Hay palabras que merecen quedarse
+    en un lugar especial.
+    Tal vez alguna pueda acompañarte
+    en las páginas de tu agenda.
+  </p>
+
+  <div class="decoracion">
+    ✦ ♡ ✦
+  </div>
+
+  <!-- CONTENIDO AUTOMÁTICO -->
+
+  <div id="contenidoAgenda"></div>
+
+  <div class="firma">
+    JUST FOR JHOSS ♡
+  </div>
+
+</main>
+
+<script>
+
+/* ==========================================
+   CONFIGURACIÓN GENERAL
+
+   2 DÍAS ABIERTA
+   1 DÍA CERRADA
+========================================== */
+
+const DIAS_VISIBLE = 2;
+const DIAS_DESCANSO = 1;
+
+
+// FECHA DE LA PRIMERA PUBLICACIÓN
+
+const FECHA_INICIAL = "2026-11-05";
+
+
+/* ==========================================
+   AQUÍ AGREGARÁS LAS FRASES
+
+   CADA PUBLICACIÓN TIENE:
+   - fecha
+   - código
+   - título
+   - nota para la agenda
+   - explicación alentadora
+
+   NO MODIFIQUES EL RESTO DEL CÓDIGO
+========================================== */
+
+const FRASES = [
+
+  {
+    fecha:"2026-11-05",
+
+    codigo:"JH-001",
+
+    titulo:"Estás construyendo tu futuro",
+
+    nota:
+      "Cada pequeño esfuerzo de hoy me acerca " +
+      "a la médica que sueño ser.",
+
+    explicacion:
+      "Habrá días de cansancio, clases difíciles " +
+      "y momentos en los que extrañes a tu familia. " +
+      "Pero recuerda que cada página que estudias " +
+      "y cada esfuerzo que haces tienen un propósito. " +
+      "Estás construyendo poco a poco tu futuro. " +
+      "Confía en ti y descansa cuando lo necesites."
+  }
+
+  /*
+  SEGUNDA PUBLICACIÓN:
+
+  Cuando tengas la siguiente frase,
+  agrega una coma después de la llave
+  de la primera y escribe:
+
+  ,{
+    fecha:"2026-11-08",
+    codigo:"JH-002",
+    titulo:"Sigue confiando",
+    nota:"Voy a confiar en mi proceso y avanzar a mi ritmo.",
+    explicacion:"No todos los días serán fáciles, pero cada paso tiene valor."
+  }
+
+  */
+
+];
+
+
+/* ==========================================
+   SISTEMA DE FECHAS
+   ZONA HORARIA DE PERÚ
+========================================== */
+
+// Perú utiliza UTC-5 todo el año.
+
+const DIA = 24 * 60 * 60 * 1000;
+const PERU_OFFSET = 5 * 60 * 60 * 1000;
+
+function ahoraPeru() {
+  return Date.now() - PERU_OFFSET;
+}
+
+function fechaEnMilisegundos(fecha) {
+  return Date.parse(fecha + "T00:00:00Z");
+}
+
+function formatoFecha(fecha) {
+  const [anio,mes,dia] = fecha.split("-");
+  return dia + "/" + mes + "/" + anio;
+}
+
+function fechaDesdeMilisegundos(valor) {
+  return new Date(valor).toISOString().slice(0,10);
+}
+
+
+/* ==========================================
+   CALCULAR CICLO
+
+   DÍA 1: ABIERTA
+   DÍA 2: ABIERTA
+   DÍA 3: CERRADA
+========================================== */
+
+function obtenerEstado() {
+
+  const ahora = ahoraPeru();
+
+  const inicio = fechaEnMilisegundos(
+    FECHA_INICIAL
+  );
+
+  if(ahora < inicio) {
+    return {
+      tipo:"esperando",
+      siguiente:inicio
+    };
+  }
+
+  const cicloDias =
+    DIAS_VISIBLE + DIAS_DESCANSO;
+
+  const cicloMs = cicloDias * DIA;
+
+  const numeroCiclo = Math.floor(
+    (ahora-inicio)/cicloMs
+  );
+
+  const inicioCiclo =
+    inicio + numeroCiclo*cicloMs;
+
+  const finVisible =
+    inicioCiclo + DIAS_VISIBLE*DIA;
+
+  const siguiente =
+    inicioCiclo + cicloMs;
+
+  if(ahora >= finVisible) {
+    return {
+      tipo:"cerrado",
+      siguiente:siguiente
+    };
+  }
+
+  const fechaActual =
+    fechaDesdeMilisegundos(inicioCiclo);
+
+  const frase=FRASES.find(
+    item=>item.fecha===fechaActual
+  );
+
+  if(!frase) {
+    return {
+      tipo:"sin-publicacion",
+      siguiente:siguiente,
+      fecha:fechaActual
+    };
+  }
+
+  return {
+    tipo:"abierto",
+    frase:frase,
+    cierre:finVisible,
+    siguiente:siguiente
+  };
+}
+
+
+/* ==========================================
+   CREAR ELEMENTOS
+========================================== */
+
+const contenedor=document.getElementById(
+  "contenidoAgenda"
+);
+
+function crear(tag,clase,texto) {
+
+  const elemento=document.createElement(tag);
+
+  if(clase) elemento.className=clase;
+
+  if(texto!==undefined) {
+    elemento.textContent=texto;
+  }
+
+  return elemento;
+}
+
+
+/* ==========================================
+   CONTADOR
+========================================== */
+
+function crearContador(titulo,destino) {
+
+  const zona=crear("div","contador-zona");
+
+  zona.appendChild(
+    crear("h3","",titulo)
+  );
+
+  const reloj=crear("div","reloj");
+
+  const campos={};
+
+  ["Días","Horas","Minutos","Segundos"].forEach(
+    nombre=>{
+
+      const bloque=crear("div","tiempo");
+
+      const numero=crear("strong","","00");
+
+      const etiqueta=crear("small","",nombre);
+
+      bloque.append(numero,etiqueta);
+
+      reloj.appendChild(bloque);
+
+      campos[nombre]=numero;
+    }
+  );
+
+  zona.appendChild(reloj);
+
+  zona.actualizar=()=>{
+
+    const restante=Math.max(
+      0,
+      destino-ahoraPeru()
+    );
+
+    const segundos=Math.floor(
+      restante/1000
+    );
+
+    const dias=Math.floor(
+      segundos/86400
+    );
+
+    const horas=Math.floor(
+      (segundos%86400)/3600
+    );
+
+    const minutos=Math.floor(
+      (segundos%3600)/60
+    );
+
+    const seg=segundos%60;
+
+    campos["Días"].textContent=
+      String(dias).padStart(2,"0");
+
+    campos["Horas"].textContent=
+      String(horas).padStart(2,"0");
+
+    campos["Minutos"].textContent=
+      String(minutos).padStart(2,"0");
+
+    campos["Segundos"].textContent=
+      String(seg).padStart(2,"0");
+
+  };
+
+  zona.actualizar();
+
+  return zona;
+}
+
+let contadorActual=null;
+let tipoActual="";
+let cicloActual="";
+
+
+/* ==========================================
+   MOSTRAR FRASE ABIERTA
+========================================== */
+
+function mostrarPublicacion(estado) {
+
+  const item=estado.frase;
+
+  const publicacion=crear(
+    "article","publicacion"
+  );
+
+  publicacion.appendChild(
+    crear(
+      "div","fecha",
+      "PUBLICADO EL " + formatoFecha(item.fecha)
+    )
+  );
+
+  publicacion.appendChild(
+    crear(
+      "h2","titulo-frase",
+      item.titulo
+    )
+  );
+
+  publicacion.appendChild(
+    crear(
+      "div","codigo",
+      item.codigo
+    )
+  );
+
+  publicacion.appendChild(
+    crear("div","icono","♡")
+  );
+
+  publicacion.appendChild(
+    crear(
+      "div","rotulo",
+      "✦ ESCRIBE EN TU AGENDA ✦"
+    )
+  );
+
+  publicacion.appendChild(
+    crear(
+      "p","nota",
+      "«"+item.nota+"»"
+    )
+  );
+
+  publicacion.appendChild(
+    crear("div","separador")
+  );
+
+  const reflexion=crear(
+    "div","explicacion"
+  );
+
+  reflexion.appendChild(
+    crear(
+      "h3","",
+      "Un mensaje para ti, Jhoss ♡"
+    )
+  );
+
+  reflexion.appendChild(
+    crear(
+      "p","",
+      item.explicacion
+    )
+  );
+
+  publicacion.appendChild(reflexion);
+
+  publicacion.appendChild(
+    crear("div","decoracion","✦ ♡ ✦")
+  );
+
+  contenedor.appendChild(publicacion);
+
+  contadorActual=crearContador(
+    "Esta publicación se cerrará en:",
+    estado.cierre
+  );
+
+  contenedor.appendChild(contadorActual);
+
+  const fechaSiguiente=
+    fechaDesdeMilisegundos(estado.siguiente);
+
+  contenedor.appendChild(
+    crear(
+      "p","intro",
+      "Próxima fecha: "+
+      formatoFecha(fechaSiguiente)
+    )
+  );
+
+}
+
+
+/* ==========================================
+   MOSTRAR DÍA CERRADO
+========================================== */
+
+function mostrarCerrado(estado) {
+
+  const bloque=crear("section","cerrado");
+
+  bloque.appendChild(
+    crear("div","candado","Te quiero")
+  );
+
+  bloque.appendChild(
+    crear(
+      "h2","",
+      "Un pequeño descanso ♡"
+    )
+  );
+
+  bloque.appendChild(
+    crear(
+      "p","",
+      "La publicación anterior ya terminó. "+
+      "Muy pronto llegará un nuevo mensaje "+
+      "para acompañarte."
+    )
+  );
+
+  const fechaSiguiente=
+    fechaDesdeMilisegundos(estado.siguiente);
+
+  bloque.appendChild(
+    crear(
+      "p","proxima-fecha",
+      "Próxima fecha: "+
+      formatoFecha(fechaSiguiente)
+    )
+  );
+
+  contenedor.appendChild(bloque);
+
+  contadorActual=crearContador(
+    "Falta para la próxima fecha:",
+    estado.siguiente
+  );
+
+  contenedor.appendChild(contadorActual);
+
+}
+
+
+/* ==========================================
+   PUBLICACIÓN AÚN NO PREPARADA
+========================================== */
+
+function mostrarSinPublicacion(estado) {
+
+  const bloque=crear("section","cerrado");
+
+  bloque.appendChild(
+    crear("div","candado","✧")
+  );
+
+  bloque.appendChild(
+    crear(
+      "h2","",
+      "Una nueva frase está esperando su momento"
+    )
+  );
+
+  bloque.appendChild(
+    crear(
+      "p","",
+      "Este pequeño rincón tendrá "+
+      "nuevas palabras para ti. ♡"
+    )
+  );
+
+  contenedor.appendChild(bloque);
+
+  contadorActual=crearContador(
+    "Próxima fecha prevista:",
+    estado.siguiente
+  );
+
+  contenedor.appendChild(contadorActual);
+
+}
+
+
+/* ==========================================
+   ACTUALIZAR AUTOMÁTICAMENTE
+========================================== */
+
+function actualizarAgenda() {
+
+  const estado=obtenerEstado();
+
+  const claveCiclo=[
+    estado.tipo,
+    estado.frase?.fecha||"",
+    estado.siguiente||""
+  ].join("|");
+
+  // Evitar volver a dibujar toda la pantalla
+  // cuando solamente cambia un segundo.
+
+  if(
+    estado.tipo===tipoActual &&
+    claveCiclo===cicloActual
+  ) {
+
+    if(contadorActual?.actualizar) {
+      contadorActual.actualizar();
+    }
+
+    return;
+  }
+
+  tipoActual=estado.tipo;
+  cicloActual=claveCiclo;
+
+  contenedor.replaceChildren();
+  contadorActual=null;
+
+  if(estado.tipo==="abierto") {
+    mostrarPublicacion(estado);
+  }
+
+  else if(
+    estado.tipo==="cerrado" ||
+    estado.tipo==="esperando"
+  ) {
+    mostrarCerrado(estado);
+  }
+
+  else {
+    mostrarSinPublicacion(estado);
+  }
+
+  avisarAltura();
+
+}
+
+actualizarAgenda();
+
+// Revisar cada segundo.
+setInterval(actualizarAgenda,1000);
+
+// Revisar cuando se regresa a la página.
+document.addEventListener(
+  "visibilitychange",
+  actualizarAgenda
+);
+
+
+/* ==========================================
+   AJUSTAR ALTURA EN INDEX.HTML
+========================================== */
+
+function avisarAltura() {
+
+  requestAnimationFrame(()=>{
+
+    window.parent.postMessage({
+      tipo:"alturaPagina",
+      altura:document.documentElement.scrollHeight
+    },window.location.origin);
+
+  });
+
+}
+
+window.addEventListener("load",avisarAltura);
+window.addEventListener("resize",avisarAltura);
+
+</script>
+</body>
+</html>

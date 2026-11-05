@@ -1,0 +1,2981 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>Una flor para ti </title>
+
+<style>
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    background:
+
+    radial-gradient(
+        circle at 50% 30%,
+        rgba(255,204,50,.08),
+        transparent 32%
+    ),
+
+    radial-gradient(
+        circle at 50% 100%,
+        rgba(255,175,30,.08),
+        transparent 35%
+    ),
+
+    linear-gradient(
+        180deg,
+        #020202,
+        #090803 55%,
+        #020202
+    );
+
+    color:white;
+
+    font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+}
+
+
+/* =========================================================
+   FONDO
+========================================================= */
+
+.fondo{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:-10;
+
+}
+
+
+.luz{
+
+    position:fixed;
+
+    border-radius:50%;
+
+    background:#ffd94a;
+
+    pointer-events:none;
+
+    box-shadow:
+
+    0 0 8px
+    rgba(255,217,74,.8),
+
+    0 0 18px
+    rgba(255,217,74,.30);
+
+    opacity:0;
+
+    animation:
+    brillar
+    3s ease-in-out infinite alternate;
+
+}
+
+
+@keyframes brillar{
+
+    from{
+
+        opacity:.08;
+
+        transform:
+        scale(.7);
+
+    }
+
+    to{
+
+        opacity:.65;
+
+        transform:
+        scale(1.3);
+
+    }
+
+}
+
+
+/* =========================================================
+   PÁGINA
+========================================================= */
+
+.pagina{
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:
+
+    36px 18px
+    55px;
+
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.introduccion{
+
+    max-width:760px;
+
+    position:relative;
+
+    z-index:5;
+
+    animation:
+    aparecer
+    1.4s ease;
+
+}
+
+
+@keyframes aparecer{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(-20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+    }
+
+}
+
+
+.mini{
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    color:#ad955a;
+
+    margin-bottom:16px;
+
+}
+
+
+.introduccion h1{
+
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+    font-size:
+    clamp(
+        30px,
+        5vw,
+        50px
+    );
+
+    font-weight:400;
+
+    line-height:1.15;
+
+}
+
+
+.introduccion h1 span{
+
+    color:#ffe477;
+
+    text-shadow:
+
+    0 0 22px
+    rgba(255,216,80,.22);
+
+}
+
+
+.introduccion p{
+
+    margin-top:15px;
+
+    color:#a9a499;
+
+    line-height:1.75;
+
+    font-size:
+    clamp(
+        14px,
+        2vw,
+        17px
+    );
+
+}
+
+
+/* =========================================================
+   ESCENA
+========================================================= */
+
+.escena{
+
+    position:relative;
+
+    width:
+    min(
+        540px,
+        96vw
+    );
+
+    margin-top:10px;
+
+}
+
+
+#jardin{
+
+    width:100%;
+
+    height:auto;
+
+    overflow:visible;
+
+}
+
+
+/* =========================================================
+   MACETA
+========================================================= */
+
+.macetero{
+
+    filter:
+
+    drop-shadow(
+        0 18px 18px
+        rgba(0,0,0,.48)
+    );
+
+}
+
+
+/* =========================================================
+   SEMILLA
+========================================================= */
+
+#semilla{
+
+    cursor:pointer;
+
+    transform-origin:center;
+
+    animation:
+    semillaFlotar
+    2s ease-in-out infinite;
+
+    transition:.3s;
+
+    filter:
+
+    drop-shadow(
+        0 0 10px
+        rgba(255,202,40,.38)
+    );
+
+}
+
+
+#semilla:hover{
+
+    filter:
+
+    drop-shadow(
+        0 0 24px
+        rgba(255,213,60,.85)
+    );
+
+}
+
+
+@keyframes semillaFlotar{
+
+    0%,
+    100%{
+
+        transform:
+        translateY(0);
+
+    }
+
+    50%{
+
+        transform:
+        translateY(-8px);
+
+    }
+
+}
+
+
+#semilla.cayendo{
+
+    animation:
+
+    caerSemilla
+    1.25s
+    cubic-bezier(.5,.05,.85,.2)
+    forwards;
+
+}
+
+
+@keyframes caerSemilla{
+
+    0%{
+
+        transform:
+        translateY(0)
+        rotate(0deg);
+
+    }
+
+    65%{
+
+        transform:
+        translateY(425px)
+        rotate(300deg);
+
+    }
+
+    82%{
+
+        transform:
+        translateY(440px)
+        rotate(350deg);
+
+    }
+
+    92%{
+
+        transform:
+        translateY(431px)
+        rotate(370deg);
+
+    }
+
+    100%{
+
+        transform:
+        translateY(440px)
+        rotate(380deg);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =========================================================
+   INSTRUCCIÓN
+========================================================= */
+
+#instruccionSemilla{
+
+    margin-top:-25px;
+
+    color:#c9bd87;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+    animation:
+    respirarTexto
+    1.8s infinite;
+
+}
+
+
+@keyframes respirarTexto{
+
+    50%{
+
+        opacity:.35;
+
+    }
+
+}
+
+
+/* =========================================================
+   TALLO
+========================================================= */
+
+#tallo{
+
+    stroke:#598b30;
+
+    stroke-width:15;
+
+    stroke-linecap:round;
+
+    fill:none;
+
+    stroke-dasharray:260;
+
+    stroke-dashoffset:260;
+
+    filter:
+
+    drop-shadow(
+        0 0 8px
+        rgba(88,150,45,.25)
+    );
+
+    transition:
+
+    stroke-dashoffset
+    2.5s ease;
+
+}
+
+
+#tallo.crecer{
+
+    stroke-dashoffset:0;
+
+}
+
+
+/* =========================================================
+   HOJAS
+========================================================= */
+
+.hoja{
+
+    opacity:0;
+
+    transform:
+    scale(.15);
+
+    transform-box:
+    fill-box;
+
+    transform-origin:center;
+
+    transition:
+
+    opacity .9s ease,
+
+    transform .9s
+    cubic-bezier(.2,.8,.3,1.4);
+
+    cursor:pointer;
+
+}
+
+
+.hoja.visible{
+
+    opacity:1;
+
+    transform:
+    scale(1);
+
+}
+
+
+.hoja:hover{
+
+    filter:
+
+    drop-shadow(
+        0 0 14px
+        rgba(126,190,70,.55)
+    );
+
+}
+
+
+/* =========================================================
+   PÉTALOS
+========================================================= */
+
+.petalo{
+
+    opacity:0;
+
+    transform:
+    scale(.15);
+
+    transform-box:
+    fill-box;
+
+    transform-origin:center;
+
+    transition:
+
+    opacity .75s ease,
+
+    transform .75s
+    cubic-bezier(.2,.9,.3,1.35),
+
+    filter .3s ease;
+
+    cursor:pointer;
+
+}
+
+
+.petalo.visible{
+
+    opacity:1;
+
+    transform:
+    scale(1);
+
+}
+
+
+.petalo.desbloqueado:hover{
+
+    filter:
+
+    brightness(1.2)
+
+    drop-shadow(
+        0 0 18px
+        #ffd21f
+    );
+
+}
+
+
+.petalo.leido{
+
+    filter:
+
+    brightness(1.18)
+
+    drop-shadow(
+        0 0 11px
+        #ffde55
+    );
+
+}
+
+
+/* =========================================================
+   CENTRO
+========================================================= */
+
+#centroGrupo{
+
+    opacity:0;
+
+    transform:
+    scale(.1);
+
+    transform-origin:
+    250px 220px;
+
+    transition:
+
+    opacity 1s ease,
+
+    transform 1s
+    cubic-bezier(.2,.8,.3,1.4);
+
+    cursor:pointer;
+
+}
+
+
+#centroGrupo.visible{
+
+    opacity:1;
+
+    transform:
+    scale(1);
+
+}
+
+
+#centroGrupo:hover{
+
+    filter:
+
+    drop-shadow(
+        0 0 20px
+        rgba(255,193,0,.65)
+    );
+
+}
+
+
+.texto-centro{
+
+    pointer-events:none;
+
+    text-anchor:middle;
+
+    fill:#f9d56b;
+
+    font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+    font-weight:600;
+
+    letter-spacing:.7px;
+
+}
+
+
+/* =========================================================
+   MENSAJES DEBAJO
+========================================================= */
+
+#mensajeFlorecer{
+
+    opacity:0;
+
+    margin-top:-12px;
+
+    color:#d4c789;
+
+    font-size:
+    clamp(
+        14px,
+        2vw,
+        17px
+    );
+
+    line-height:1.65;
+
+    transition:
+    opacity 1.3s ease;
+
+}
+
+
+#mensajeFlorecer.visible{
+
+    opacity:1;
+
+}
+
+
+#contador{
+
+    opacity:0;
+
+    margin-top:12px;
+
+    color:#67645d;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+
+    transition:.8s;
+
+}
+
+
+#contador.visible{
+
+    opacity:1;
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+#modal{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:100;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    background:
+
+    rgba(0,0,0,.86);
+
+    backdrop-filter:
+    blur(13px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:.4s;
+
+}
+
+
+#modal.activo{
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+
+}
+
+
+.modal-contenido{
+
+    position:relative;
+
+    width:
+    min(
+        510px,
+        94vw
+    );
+
+    padding:
+
+    48px 34px
+    38px;
+
+    border-radius:29px;
+
+    background:
+
+    radial-gradient(
+        circle at 50% 0%,
+        rgba(255,216,65,.13),
+        transparent 45%
+    ),
+
+    linear-gradient(
+        150deg,
+        #17150d,
+        #070706
+    );
+
+    border:
+
+    1px solid
+    rgba(255,222,105,.35);
+
+    box-shadow:
+
+    0 0 70px
+    rgba(255,204,35,.11),
+
+    0 30px 80px
+    rgba(0,0,0,.75);
+
+    text-align:center;
+
+    transform:
+
+    scale(.86)
+    translateY(30px);
+
+    transition:
+
+    transform .45s ease;
+
+}
+
+
+#modal.activo
+.modal-contenido{
+
+    transform:
+
+    scale(1)
+    translateY(0);
+
+}
+
+
+.cerrar{
+
+    position:absolute;
+
+    top:13px;
+    right:18px;
+
+    border:0;
+
+    background:none;
+
+    color:#ffe477;
+
+    font-size:31px;
+
+    cursor:pointer;
+
+}
+
+
+#modalIcono{
+
+    font-size:46px;
+
+}
+
+
+#modalTitulo{
+
+    margin-top:12px;
+
+    color:#ffe477;
+
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+    font-size:
+    clamp(
+        24px,
+        4vw,
+        31px
+    );
+
+    font-weight:400;
+
+}
+
+
+#modalTexto{
+
+    margin-top:20px;
+
+    color:#d0cdc5;
+
+    font-size:
+    clamp(
+        14px,
+        2vw,
+        16px
+    );
+
+    line-height:1.85;
+
+    white-space:pre-line;
+
+}
+
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+#finalEspecial{
+
+    display:none;
+
+    margin:
+
+    22px auto
+    45px;
+
+    max-width:650px;
+
+    padding:25px;
+
+    opacity:0;
+
+    transition:1.2s;
+
+}
+
+
+#finalEspecial.visible{
+
+    opacity:1;
+
+}
+
+
+#finalEspecial h2{
+
+    color:#ffe477;
+
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+    font-weight:400;
+
+    font-size:
+    clamp(
+        26px,
+        4vw,
+        38px
+    );
+
+}
+
+
+#finalEspecial p{
+
+    margin-top:17px;
+
+    line-height:1.85;
+
+    color:#aaa69d;
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media(max-width:600px){
+
+    .pagina{
+
+        padding-top:30px;
+
+    }
+
+
+    .escena{
+
+        width:100%;
+
+    }
+
+
+    .introduccion p{
+
+        max-width:340px;
+
+        margin-left:auto;
+        margin-right:auto;
+
+    }
+
+
+    .modal-contenido{
+
+        padding:
+
+        44px 23px
+        31px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="fondo"></div>
+
+
+<main class="pagina">
+
+
+<!-- =========================================================
+     INTRO
+========================================================= -->
+
+<section class="introduccion">
+
+
+<div class="mini">
+
+A LITTLE FLOWER FOR YOU
+
+</div>
+
+
+<h1>
+
+Hay una pequeña flor
+<span>esperando por ti.</span>
+
+</h1>
+
+
+<p>
+
+Todo empieza con algo pequeño.
+
+<br>
+
+Presiona la semilla
+y deja que la flor haga el resto.
+
+</p>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     ESCENA
+========================================================= -->
+
+<section class="escena">
+
+
+<svg
+id="jardin"
+viewBox="0 0 500 650"
+xmlns="http://www.w3.org/2000/svg"
+>
+
+
+<!-- =========================================================
+     MACETA
+========================================================= -->
+
+<g class="macetero">
+
+
+<ellipse
+
+cx="250"
+cy="625"
+
+rx="100"
+ry="16"
+
+fill="rgba(0,0,0,.38)"
+
+/>
+
+
+<path
+
+d="
+M165 520
+L335 520
+L312 625
+Q250 645 188 625
+Z
+"
+
+fill="url(#macetaGradiente)"
+
+/>
+
+
+<rect
+
+x="151"
+y="505"
+
+width="198"
+height="35"
+
+rx="13"
+
+fill="#bd6d33"
+
+/>
+
+
+<ellipse
+
+cx="250"
+cy="508"
+
+rx="85"
+ry="13"
+
+fill="#29170e"
+
+/>
+
+
+</g>
+
+
+
+<!-- =========================================================
+     TALLO
+========================================================= -->
+
+<path
+
+id="tallo"
+
+d="
+M250 510
+C248 450,
+255 370,
+250 282
+"
+
+/>
+
+
+
+<!-- =========================================================
+     HOJA 1
+========================================================= -->
+
+<g
+class="hoja"
+id="hoja1"
+onclick="abrirHoja(1)"
+>
+
+
+<path
+
+d="
+M246 420
+C205 376,
+150 377,
+135 410
+
+C171 440,
+211 455,
+246 430
+Z
+"
+
+fill="url(#hojaGradiente)"
+
+/>
+
+
+<path
+
+d="
+M240 423
+C204 415,
+175 408,
+145 409
+"
+
+fill="none"
+
+stroke="#37651e"
+
+stroke-width="3"
+
+/>
+
+
+</g>
+
+
+
+<!-- =========================================================
+     HOJA 2
+========================================================= -->
+
+<g
+class="hoja"
+id="hoja2"
+onclick="abrirHoja(2)"
+>
+
+
+<path
+
+d="
+M254 374
+C290 330,
+345 331,
+365 363
+
+C334 400,
+292 411,
+254 389
+Z
+"
+
+fill="url(#hojaGradiente2)"
+
+/>
+
+
+<path
+
+d="
+M260 381
+C297 367,
+329 361,
+356 363
+"
+
+fill="none"
+
+stroke="#37651e"
+
+stroke-width="3"
+
+/>
+
+
+</g>
+
+
+
+<!-- =========================================================
+     FLOR
+========================================================= -->
+
+<g id="florCompleta">
+
+
+<!-- PÉTALO 1 -->
+
+<g transform="rotate(0 250 220)">
+
+<ellipse
+
+class="petalo"
+
+data-petalo="1"
+
+cx="250"
+cy="112"
+
+rx="34"
+ry="93"
+
+fill="url(#petaloGradiente)"
+
+onclick="abrirPetalo(1)"
+
+/>
+
+</g>
+
+
+<!-- PÉTALO 2 -->
+
+<g transform="rotate(30 250 220)">
+
+<ellipse
+
+class="petalo"
+
+data-petalo="2"
+
+cx="250"
+cy="112"
+
+rx="34"
+ry="93"
+
+fill="url(#petaloGradiente)"
+
+onclick="abrirPetalo(2)"
+
+/>
+
+</g>
+
+
+<!-- PÉTALO 3 -->
+
+<g transform="rotate(60 250 220)">
+
+<ellipse
+
+class="petalo"
+
+data-petalo="3"
+
+cx="250"
+cy="112"
+
+rx="34"
+ry="93"
+
+fill="url(#petaloGradiente)"
+
+onclick="abrirPetalo(3)"
+
+/>
+
+</g>
+
+
+<!-- PÉTALO 4 -->
+
+<g transform="rotate(90 250 220)">
+
+<ellipse
+
+class="petalo"
+
+data-petalo="4"
+
+cx="250"
+cy="112"
+
+rx="34"
+ry="93"
+
+fill="url(#petaloGradiente)"
+
+onclick="abrirPetalo(4)"
+
+/>
+
+</g>
+
+
+<!-- PÉTALO 5 -->
+
+<g transform="rotate(120 250 220)">
+
+<ellipse
+
+class="petalo"
+
+data-petalo="5"
+
+cx="250"
+cy="112"
+
+rx="34"
+ry="93"
+
+fill="url(#petaloGradiente)"
+
+onclick="abrirPetalo(5)"
+
+/>
+
+</g>
+
+
+<!-- PÉTALO 6 -->
+
+<g transform="rotate(150 250 220)">
+
+<ellipse
+
+class="petalo"
+
+data-petalo="6"
+
+cx="250"
+cy="112"
+
+rx="34"
+ry="93"
+
+fill="url(#petaloGradiente)"
+
+onclick="abrirPetalo(6)"
+
+/>
+
+</g>
+
+
+<!-- PÉTALO 7 -->
+
+<g transform="rotate(180 250 220)">
+
+<ellipse
+
+class="petalo"
+
+data-petalo="7"
+
+cx="250"
+cy="112"
+
+rx="34"
+ry="93"
+
+fill="url(#petaloGradiente)"
+
+onclick="abrirPetalo(7)"
+
+/>
+
+</g>
+
+
+<!-- PÉTALO 8 -->
+
+<g transform="rotate(210 250 220)">
+
+<ellipse
+
+class="petalo"
+
+data-petalo="8"
+
+cx="250"
+cy="112"
+
+rx="34"
+ry="93"
+
+fill="url(#petaloGradiente)"
+
+onclick="abrirPetalo(8)"
+
+/>
+
+</g>
+
+
+<!-- PÉTALO 9 -->
+
+<g transform="rotate(240 250 220)">
+
+<ellipse
+
+class="petalo"
+
+data-petalo="9"
+
+cx="250"
+cy="112"
+
+rx="34"
+ry="93"
+
+fill="url(#petaloGradiente)"
+
+onclick="abrirPetalo(9)"
+
+/>
+
+</g>
+
+
+<!-- PÉTALO 10 -->
+
+<g transform="rotate(270 250 220)">
+
+<ellipse
+
+class="petalo"
+
+data-petalo="10"
+
+cx="250"
+cy="112"
+
+rx="34"
+ry="93"
+
+fill="url(#petaloGradiente)"
+
+onclick="abrirPetalo(10)"
+
+/>
+
+</g>
+
+
+<!-- PÉTALO 11 -->
+
+<g transform="rotate(300 250 220)">
+
+<ellipse
+
+class="petalo"
+
+data-petalo="11"
+
+cx="250"
+cy="112"
+
+rx="34"
+ry="93"
+
+fill="url(#petaloGradiente)"
+
+onclick="abrirPetalo(11)"
+
+/>
+
+</g>
+
+
+<!-- PÉTALO 12 -->
+
+<g transform="rotate(330 250 220)">
+
+<ellipse
+
+class="petalo"
+
+data-petalo="12"
+
+cx="250"
+cy="112"
+
+rx="34"
+ry="93"
+
+fill="url(#petaloGradiente)"
+
+onclick="abrirPetalo(12)"
+
+/>
+
+</g>
+
+
+
+<!-- =========================================================
+     CENTRO
+========================================================= -->
+
+<g
+id="centroGrupo"
+onclick="abrirCentro()"
+>
+
+
+<circle
+
+cx="250"
+cy="220"
+
+r="91"
+
+fill="url(#centroGradiente)"
+
+stroke="#88500d"
+
+stroke-width="7"
+
+/>
+
+
+<circle
+
+cx="250"
+cy="220"
+
+r="75"
+
+fill="url(#semillasCentro)"
+
+/>
+
+
+<text
+
+class="texto-centro"
+
+x="250"
+y="205"
+
+font-size="16"
+>
+
+PARA TI
+
+</text>
+
+
+<text
+
+class="texto-centro"
+
+x="250"
+y="229"
+
+font-size="14"
+>
+
+JHOS
+
+</text>
+
+
+<text
+
+class="texto-centro"
+
+x="250"
+y="254"
+
+font-size="18"
+>
+
+♥️
+
+</text>
+
+
+</g>
+
+
+</g>
+
+
+
+<!-- =========================================================
+     SEMILLA
+========================================================= -->
+
+<g
+id="semilla"
+onclick="plantarSemilla()"
+>
+
+
+<ellipse
+
+cx="250"
+cy="65"
+
+rx="14"
+ry="23"
+
+fill="url(#semillaGradiente)"
+
+transform="
+rotate(-20 250 65)
+"
+
+/>
+
+
+<path
+
+d="
+M245 49
+C253 56,
+255 68,
+252 82
+"
+
+stroke="
+rgba(255,255,255,.22)
+"
+
+stroke-width="3"
+
+fill="none"
+
+/>
+
+
+</g>
+
+
+
+<!-- =========================================================
+     GRADIENTES
+========================================================= -->
+
+<defs>
+
+
+<linearGradient
+id="petaloGradiente"
+x1="0"
+y1="0"
+x2="0"
+y2="1"
+>
+
+<stop
+offset="0%"
+stop-color="#fff375"
+/>
+
+<stop
+offset="48%"
+stop-color="#ffd326"
+/>
+
+<stop
+offset="100%"
+stop-color="#f29b00"
+/>
+
+</linearGradient>
+
+
+
+<radialGradient id="centroGradiente">
+
+<stop
+offset="0%"
+stop-color="#76430c"
+/>
+
+<stop
+offset="70%"
+stop-color="#4b2507"
+/>
+
+<stop
+offset="100%"
+stop-color="#291102"
+/>
+
+</radialGradient>
+
+
+
+<pattern
+id="semillasCentro"
+
+width="11"
+height="11"
+
+patternUnits="
+userSpaceOnUse
+"
+>
+
+<circle
+
+cx="3"
+cy="3"
+
+r="2.2"
+
+fill="#2b1203"
+
+/>
+
+
+<circle
+
+cx="8"
+cy="8"
+
+r="1.8"
+
+fill="#9b6417"
+
+/>
+
+
+</pattern>
+
+
+
+<linearGradient
+id="hojaGradiente"
+x1="0"
+y1="0"
+x2="1"
+y2="1"
+>
+
+<stop
+offset="0%"
+stop-color="#82b844"
+/>
+
+<stop
+offset="100%"
+stop-color="#275c18"
+/>
+
+</linearGradient>
+
+
+
+<linearGradient
+id="hojaGradiente2"
+x1="1"
+y1="0"
+x2="0"
+y2="1"
+>
+
+<stop
+offset="0%"
+stop-color="#82b844"
+/>
+
+<stop
+offset="100%"
+stop-color="#275c18"
+/>
+
+</linearGradient>
+
+
+
+<linearGradient
+id="macetaGradiente"
+x1="0"
+y1="0"
+x2="1"
+y2="1"
+>
+
+<stop
+offset="0%"
+stop-color="#da8441"
+/>
+
+<stop
+offset="50%"
+stop-color="#a75526"
+/>
+
+<stop
+offset="100%"
+stop-color="#663119"
+/>
+
+</linearGradient>
+
+
+
+<linearGradient
+id="semillaGradiente"
+x1="0"
+y1="0"
+x2="1"
+y2="1"
+>
+
+<stop
+offset="0%"
+stop-color="#dfae58"
+/>
+
+<stop
+offset="50%"
+stop-color="#795125"
+/>
+
+<stop
+offset="100%"
+stop-color="#33200e"
+/>
+
+</linearGradient>
+
+
+</defs>
+
+
+</svg>
+
+
+
+<p id="instruccionSemilla">
+
+✦ PRESIONA LA SEMILLA ✦
+
+</p>
+
+
+
+<p id="mensajeFlorecer">
+
+🌻 Cada pétalo guarda una pequeña nota.
+
+<br>
+
+Presiona cualquiera para descubrirla.
+
+</p>
+
+
+
+<p id="contador">
+
+0 de 12 pétalos descubiertos
+
+</p>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     FINAL
+========================================================= -->
+
+<section id="finalEspecial">
+
+
+<h2>
+
+Gracias por llegar hasta aquí 
+
+</h2>
+
+
+<p>
+
+Si descubriste todos los pétalos,
+espero que al menos uno
+haya logrado dejarte algo bonito.
+
+<br><br>
+
+Sigue adelante,
+un día a la vez.
+
+</p>
+
+
+</section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     MODAL
+========================================================= -->
+
+<div id="modal">
+
+
+<div class="modal-contenido">
+
+
+<button
+class="cerrar"
+onclick="cerrarModal()"
+>
+
+×
+
+</button>
+
+
+<div id="modalIcono">
+
+
+
+</div>
+
+
+<h2 id="modalTitulo">
+
+Para ti
+
+</h2>
+
+
+<p id="modalTexto"></p>
+
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =========================================================
+   MENSAJES DE LOS 12 PÉTALOS
+========================================================= */
+
+const mensajesPetalos = {
+
+
+1:{
+
+icono:"🌻",
+
+titulo:"Un pequeño momento",
+
+texto:
+`Si llegaste hasta aquí,
+tómate unos segundos para respirar.
+
+No tienes que resolver
+todo en un solo día.
+
+A veces avanzar despacio
+también es avanzar.`
+
+},
+
+
+2:{
+
+icono:"",
+
+titulo:"Un paso a la vez",
+
+texto:
+`No importa si todavía
+no tienes todas las respuestas.
+
+Hay caminos que se entienden
+mientras los vamos recorriendo.
+
+Sigue dando un paso más.`
+
+},
+
+
+3:{
+
+icono:"",
+
+titulo:"Tu propia luz",
+
+texto:
+`Así como un girasol
+busca siempre la luz,
+
+espero que tú también
+encuentres aquello
+que te haga sentir en paz.
+
+Incluso en los días
+un poquito más grises.`
+
+},
+
+
+4:{
+
+icono:"",
+
+titulo:"No te apresures",
+
+texto:
+`Hay cosas bonitas
+que simplemente necesitan tiempo.
+
+No te compares
+con el ritmo de los demás.
+
+Tu proceso también
+tiene su propia historia.`
+
+},
+
+
+5:{
+
+icono:"",
+
+titulo:"Para los días difíciles",
+
+texto:
+`Si algún día todo
+se siente un poquito pesado,
+
+recuerda que está bien
+hacer una pausa.
+
+Un mal día
+no significa una mala vida.`
+
+},
+
+
+6:{
+
+icono:"",
+
+titulo:"Tus sueños",
+
+texto:
+`No abandones aquello
+que realmente quieres.
+
+Aunque todavía parezca lejos.
+
+Las cosas importantes
+casi nunca aparecen
+de un momento a otro.
+
+También necesitan crecer.`
+
+},
+
+
+7:{
+
+icono:"",
+
+titulo:"Está bien descansar",
+
+texto:
+`No siempre tienes
+que estar haciendo algo.
+
+Descansar,
+respirar
+y desconectarte un momento
+
+también forma parte
+de seguir adelante.`
+
+},
+
+
+8:{
+
+icono:"",
+
+titulo:"La flor sigue aquí",
+
+texto:
+`Las flores amarillas
+tal vez fueron de un día.
+
+Pero esta pequeña flor
+puede quedarse aquí
+un poquito más.
+
+Por si algún día
+quieres volver a verla.`
+
+},
+
+
+9:{
+
+icono:"",
+
+titulo:"Algo para recordar",
+
+texto:
+`No olvides reconocer
+todo lo que ya has avanzado.
+
+Tal vez todavía
+queden muchas cosas por lograr,
+
+pero también hay caminos
+que ya conseguiste recorrer.`
+
+},
+
+
+10:{
+
+icono:"",
+
+titulo:"Confía en el proceso",
+
+texto:
+`No todo lo que tarda
+significa que está saliendo mal.
+
+A veces simplemente
+está tomando el tiempo
+que necesita.
+
+Sigue adelante.`
+
+},
+
+
+11:{
+
+icono:"",
+
+titulo:"Para cuando dudes",
+
+texto:
+`Si algún día dudas
+de si puedes continuar,
+
+recuerda todas las veces
+que pensaste que no podrías...
+
+y aun así
+seguiste avanzando.`
+
+},
+
+
+12:{
+
+icono:"",
+
+titulo:"El último pétalo",
+
+texto:
+`Llegaste al último pétalo.
+
+Solo quería dejarte
+una última cosa:
+
+cuídate,
+sigue avanzando
+y no dejes de creer
+en las cosas que quieres.
+
+Que tengas días bonitos,
+Jhos. `
+
+}
+
+
+};
+
+
+
+/* =========================================================
+   MENSAJES DE LAS HOJAS
+========================================================= */
+
+const mensajesHojas = {
+
+
+1:{
+
+icono:"",
+
+titulo:"Las raíces también importan",
+
+texto:
+`Una flor no crece
+solamente por sus pétalos.
+
+También necesita raíces,
+tiempo,
+paciencia
+y cuidado.
+
+No olvides cuidar
+también aquello
+que nadie puede ver.`
+
+},
+
+
+2:{
+
+icono:"",
+
+titulo:"Sigue creciendo",
+
+texto:
+`No tienes que tener
+todo resuelto hoy.
+
+Sigue aprendiendo,
+sigue creciendo
+y sigue descubriendo
+qué quieres para ti.
+
+Lo bonito
+también necesita tiempo.`
+
+}
+
+
+};
+
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let plantado=false;
+
+let florecido=false;
+
+const petalosLeidos=
+new Set();
+
+
+
+/* =========================================================
+   PLANTAR SEMILLA
+========================================================= */
+
+function plantarSemilla(){
+
+
+if(
+    plantado
+){
+
+    return;
+
+}
+
+
+plantado=true;
+
+
+const semilla=
+
+document.getElementById(
+    "semilla"
+);
+
+
+const instruccion=
+
+document.getElementById(
+    "instruccionSemilla"
+);
+
+
+semilla
+.classList
+.add(
+    "cayendo"
+);
+
+
+instruccion
+.style
+.opacity=
+"0";
+
+
+/* TALLO */
+
+setTimeout(()=>{
+
+
+document
+.getElementById(
+    "tallo"
+)
+.classList
+.add(
+    "crecer"
+);
+
+
+},1200);
+
+
+
+/* HOJA 1 */
+
+setTimeout(()=>{
+
+
+document
+.getElementById(
+    "hoja1"
+)
+.classList
+.add(
+    "visible"
+);
+
+
+},2350);
+
+
+
+/* HOJA 2 */
+
+setTimeout(()=>{
+
+
+document
+.getElementById(
+    "hoja2"
+)
+.classList
+.add(
+    "visible"
+);
+
+
+},3000);
+
+
+
+/* FLOR */
+
+setTimeout(()=>{
+
+
+florecer();
+
+
+},3750);
+
+
+}
+
+
+
+/* =========================================================
+   FLORECER
+========================================================= */
+
+function florecer(){
+
+
+const petalos=
+
+document.querySelectorAll(
+    ".petalo"
+);
+
+
+petalos.forEach(
+
+(petalo,index)=>{
+
+
+setTimeout(()=>{
+
+
+petalo
+.classList
+.add(
+    "visible"
+);
+
+
+},index*150);
+
+
+});
+
+
+/* CENTRO */
+
+setTimeout(()=>{
+
+
+document
+.getElementById(
+    "centroGrupo"
+)
+.classList
+.add(
+    "visible"
+);
+
+
+},1450);
+
+
+
+/* HABILITAR */
+
+setTimeout(()=>{
+
+
+petalos.forEach(
+
+petalo=>{
+
+
+petalo
+.classList
+.add(
+    "desbloqueado"
+);
+
+
+});
+
+
+florecido=true;
+
+
+document
+.getElementById(
+    "mensajeFlorecer"
+)
+.classList
+.add(
+    "visible"
+);
+
+
+document
+.getElementById(
+    "contador"
+)
+.classList
+.add(
+    "visible"
+);
+
+
+},2200);
+
+
+}
+
+
+
+/* =========================================================
+   PÉTALO
+========================================================= */
+
+function abrirPetalo(
+numero
+){
+
+
+if(
+    !florecido
+){
+
+    return;
+
+}
+
+
+const datos=
+
+mensajesPetalos[
+    numero
+];
+
+
+mostrarModal(
+    datos.icono,
+    datos.titulo,
+    datos.texto
+);
+
+
+/* MARCAR LEÍDO */
+
+petalosLeidos
+.add(
+    numero
+);
+
+
+const petalo=
+
+document.querySelector(
+    `[data-petalo="${numero}"]`
+);
+
+
+petalo
+.classList
+.add(
+    "leido"
+);
+
+
+actualizarContador();
+
+
+}
+
+
+
+/* =========================================================
+   CONTADOR
+========================================================= */
+
+function actualizarContador(){
+
+
+const cantidad=
+
+petalosLeidos.size;
+
+
+document
+.getElementById(
+    "contador"
+)
+.textContent=
+
+cantidad+
+" de 12 pétalos descubiertos";
+
+
+if(
+    cantidad===12
+){
+
+
+setTimeout(()=>{
+
+
+const final=
+
+document.getElementById(
+    "finalEspecial"
+);
+
+
+final.style.display=
+"block";
+
+
+setTimeout(()=>{
+
+
+final
+.classList
+.add(
+    "visible"
+);
+
+
+},100);
+
+
+},450);
+
+
+}
+
+
+}
+
+
+
+/* =========================================================
+   HOJAS
+========================================================= */
+
+function abrirHoja(
+numero
+){
+
+
+if(
+    !florecido
+){
+
+    return;
+
+}
+
+
+const datos=
+
+mensajesHojas[
+    numero
+];
+
+
+mostrarModal(
+    datos.icono,
+    datos.titulo,
+    datos.texto
+);
+
+
+}
+
+
+
+/* =========================================================
+   CENTRO
+========================================================= */
+
+function abrirCentro(){
+
+
+if(
+    !florecido
+){
+
+    return;
+
+}
+
+
+mostrarModal(
+
+"❤️",
+
+"Para ti, Jhoselin",
+
+`Este pequeño espacio
+puede cambiar con el tiempo...
+
+pero espero que cada vez
+que pases por aquí
+encuentres al menos
+una pequeña razón
+para sentirte un poquito mejor.
+
+Cuídate mucho
+y sigue adelante. `
+
+);
+
+
+}
+
+
+
+/* =========================================================
+   MOSTRAR MODAL
+========================================================= */
+
+function mostrarModal(
+icono,
+titulo,
+texto
+){
+
+
+document
+.getElementById(
+    "modalIcono"
+)
+.textContent=
+icono;
+
+
+document
+.getElementById(
+    "modalTitulo"
+)
+.textContent=
+titulo;
+
+
+document
+.getElementById(
+    "modalTexto"
+)
+.textContent=
+texto;
+
+
+document
+.getElementById(
+    "modal"
+)
+.classList
+.add(
+    "activo"
+);
+
+
+}
+
+
+
+/* =========================================================
+   CERRAR MODAL
+========================================================= */
+
+function cerrarModal(){
+
+
+document
+.getElementById(
+    "modal"
+)
+.classList
+.remove(
+    "activo"
+);
+
+
+}
+
+
+
+/* TOCAR FUERA */
+
+document
+.getElementById(
+    "modal"
+)
+.addEventListener(
+
+"click",
+
+function(event){
+
+
+if(
+    event.target===this
+){
+
+    cerrarModal();
+
+}
+
+
+}
+
+);
+
+
+
+/* ESC */
+
+document.addEventListener(
+
+"keydown",
+
+function(event){
+
+
+if(
+    event.key==="Escape"
+){
+
+    cerrarModal();
+
+}
+
+
+}
+
+);
+
+
+
+/* =========================================================
+   LUCES DORADAS
+========================================================= */
+
+for(
+let i=0;
+i<38;
+i++
+){
+
+
+const luz=
+
+document.createElement(
+    "span"
+);
+
+
+luz.className=
+"luz";
+
+
+const tamano=
+
+Math.random()*3+1;
+
+
+luz.style.width=
+tamano+"px";
+
+
+luz.style.height=
+tamano+"px";
+
+
+luz.style.left=
+Math.random()*100+"%";
+
+
+luz.style.top=
+Math.random()*100+"%";
+
+
+luz.style.animationDelay=
+Math.random()*4+"s";
+
+
+luz.style.animationDuration=
+
+(
+    Math.random()*3+2
+)
++"s";
+
+
+document.body
+.appendChild(
+    luz
+);
+
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

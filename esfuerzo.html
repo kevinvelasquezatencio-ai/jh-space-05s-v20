@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Una flor por tu esfuerzo | My Love</title>
+
+<style>
+:root {
+  --fondo:#08090d;
+  --dorado:#ffd77b;
+  --crema:#fff3d8;
+  --gris:#b7ac9d;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body {
+  min-height:100vh;
+  background:
+    radial-gradient(
+      ellipse at 50% 42%,
+      rgba(193,126,40,.11),
+      transparent 55%
+    ),
+    linear-gradient(
+      160deg,
+      #05070c,
+      #15120f 55%,
+      #05070c
+    );
+
+  font-family:"Segoe UI",Arial,sans-serif;
+  color:var(--crema);
+  overflow-x:hidden;
+}
+
+.pagina {
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:42px 18px 55px;
+}
+
+.etiqueta {
+  font-size:10px;
+  letter-spacing:4px;
+  color:#d2b57a;
+  margin-bottom:15px;
+}
+
+h1 {
+  font-family:Georgia,serif;
+  font-size:clamp(30px,6vw,47px);
+  font-weight:400;
+  line-height:1.3;
+}
+
+h1 span {
+  color:var(--dorado);
+}
+
+.subtitulo {
+  margin:15px auto 0;
+  max-width:460px;
+  font-size:13px;
+  color:var(--gris);
+  line-height:1.9;
+}
+
+.imagen-contenedor {
+  position:relative;
+  width:min(365px,90vw);
+  margin:34px auto 0;
+  padding:8px;
+  border:1px solid rgba(255,213,123,.22);
+  border-radius:22px;
+  background:rgba(255,219,150,.035);
+
+  box-shadow:
+    0 28px 65px rgba(0,0,0,.38),
+    0 0 65px rgba(255,177,57,.055);
+
+  animation:aparecer 1.1s ease both;
+}
+
+.imagen-contenedor img {
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:15px;
+}
+
+.brillo {
+  position:absolute;
+  inset:-20px;
+  z-index:-1;
+  border-radius:50%;
+  background:rgba(255,181,51,.1);
+  filter:blur(55px);
+  animation:respirar 5s ease-in-out infinite;
+}
+
+@keyframes respirar {
+  0%,100% {opacity:.3;transform:scale(.9)}
+  50% {opacity:.9;transform:scale(1.08)}
+}
+
+@keyframes aparecer {
+  from {
+    opacity:0;
+    transform:translateY(25px) scale(.96);
+  }
+  to {
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+.mensaje {
+  max-width:490px;
+  margin:32px auto 0;
+  animation:aparecer 1.2s .25s both;
+}
+
+.mensaje h2 {
+  font-family:Georgia,serif;
+  font-size:clamp(22px,4vw,29px);
+  font-weight:400;
+  color:var(--dorado);
+}
+
+.mensaje p {
+  margin-top:17px;
+  color:#d6cab8;
+  font-size:14px;
+  line-height:2;
+}
+
+.corazon {
+  margin-top:28px;
+  color:#ffce70;
+  font-size:27px;
+  animation:latir 2.3s ease-in-out infinite;
+}
+
+@keyframes latir {
+  0%,100% {transform:scale(1)}
+  50% {transform:scale(1.2)}
+}
+
+.firma {
+  margin-top:16px;
+  font-size:10px;
+  letter-spacing:3px;
+  color:#9f8c6b;
+}
+
+/* Pequeñas luces decorativas */
+
+.luces {
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+}
+
+.luz {
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:#ffe5aa;
+  border-radius:50%;
+  box-shadow:0 0 10px #ffd578;
+  opacity:0;
+  animation:flotar linear infinite;
+}
+
+@keyframes flotar {
+  0% {
+    transform:translateY(100vh);
+    opacity:0;
+  }
+  20% {opacity:.55}
+  80% {opacity:.3}
+  100% {
+    transform:translateY(-15vh);
+    opacity:0;
+  }
+}
+
+@media(max-width:600px) {
+  .pagina {padding-top:35px}
+  .imagen-contenedor {width:min(330px,91vw)}
+  .mensaje p {font-size:13px}
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation:none!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="luces" id="luces"></div>
+
+<main class="pagina">
+
+  <div class="etiqueta">
+    ✦ A LITTLE FLOWER FOR YOU ✦
+  </div>
+
+  <h1>
+    Una flor por <span>tu esfuerzo.</span>
+  </h1>
+
+  <p class="subtitulo">
+    Porque incluso los pequeños esfuerzos
+    merecen ser reconocidos.
+  </p>
+
+  <!-- IMAGEN ORIGINAL -->
+
+  <div class="imagen-contenedor">
+
+    <div class="brillo"></div>
+
+    <img
+      src="esforzarte.png"
+      alt="Dibujo de una personita entregando una flor amarilla con el mensaje Para ti, por esforzarte cada día.">
+
+  </div>
+
+  <!-- DEDICATORIA -->
+
+  <div class="mensaje">
+
+    <h2>Esto es para ti, cariño. 🌼</h2>
+
+    <p>
+      Tal vez no todos los días sean fáciles,
+      y quizá algunas veces termines cansada
+      después de tanto esforzarte.
+    </p>
+
+    <p>
+      Pero quiero recordarte que cada pequeño paso
+      que das tiene valor, incluso aquellos
+      que nadie más puede ver.
+    </p>
+
+    <p>
+      Sigue aprendiendo, creciendo y luchando
+      por las cosas que tanto deseas.
+      No olvides también descansar
+      y sentirte orgullosa de lo que vas logrando.
+    </p>
+
+    <p>
+      Esta pequeña flor es para ti,
+      por seguir intentándolo cada día. ♡
+    </p>
+
+  </div>
+
+  <div class="corazon">♡</div>
+
+  <div class="firma">
+    JUST FOR YOU · WITH CARE
+  </div>
+
+</main>
+
+<script>
+/* LUCES SUAVES */
+
+const luces=document.getElementById("luces");
+
+for(let i=0;i<22;i++) {
+  const punto=document.createElement("span");
+
+  punto.className="luz";
+  punto.style.left=Math.random()*100+"%";
+
+  punto.style.animationDuration=
+    (9+Math.random()*10)+"s";
+
+  punto.style.animationDelay=
+    (-Math.random()*20)+"s";
+
+  luces.appendChild(punto);
+}
+
+/* AJUSTAR ALTURA EN MY LOVE */
+
+function avisarAltura(){
+  window.parent.postMessage({
+    tipo:"alturaPagina",
+    altura:document.documentElement.scrollHeight
+  },window.location.origin);
+}
+
+window.addEventListener("load",avisarAltura);
+window.addEventListener("resize",avisarAltura);
+</script>
+
+</body>
+</html>

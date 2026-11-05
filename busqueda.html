@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search | My Love</title>
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<main class="contenido">
+
+  <div id="introduccion">
+
+    <div class="etiqueta">
+      ✦ LITTLE DISCOVERIES ✦
+    </div>
+
+    <h1 class="titulo">
+      ¿Qué necesita hoy
+      <span>tu corazón?</span>
+    </h1>
+
+    <p class="descripcion">
+      A veces las cosas más pequeñas
+      se convierten en recuerdos especiales.
+    </p>
+
+  </div>
+
+  <div class="buscador">
+    <input id="buscar"
+      type="search"
+      placeholder="Escribe lo que quieras encontrar..."
+      autocomplete="off"
+      aria-label="Buscar un detalle">
+
+    <svg viewBox="0 0 24 24">
+      <circle cx="10.5" cy="10.5" r="7"/>
+      <path d="m16 16 5 5"/>
+    </svg>
+  </div>
+
+  <div id="resultados" class="resultados"
+    aria-live="polite"></div>
+
+  <section class="visor" id="visor">
+
+    <div class="visor-arriba">
+      <h3 id="tituloDetalle"></h3>
+      <button class="boton"
+        id="cerrarDetalle">✕ Cerrar</button>
+    </div>
+
+    <iframe id="detalleFrame"
+      title="Detalle especial"
+      loading="lazy"></iframe>
+
+    <a id="pantallaCompleta"
+      class="ver-completo"
+      href="#"
+      target="_blank"
+      rel="noopener">
+      Ver en pantalla completa ↗
+    </a>
+
+  </section>
+
+</main>
+
+<script>
+
+/* ==========================================
+   AÑADIR NUEVOS DETALLES AQUÍ
+========================================== */
+
+const DETALLES = [
+
+  {
+    nombre: "Girasol",
+    icono: "❤️",
+    descripcion: "Una pequeña flor para ti.",
+    archivo: "flor.html",
+    palabras: ["girasol"]
+    
+  },
+  {
+  nombre: "estrella ",
+  icono: "❤️",
+  descripcion: "Un cielo lleno de estrellas y deseos para ti.",
+  archivo: "estrella.html",
+  palabras: ["estrella "]
+},
+{
+    nombre: "Esfuerzo",
+    icono: "❤️",
+    descripcion: "Un pequeño detalle por esforzarte cada día.",
+    archivo: "esfuerzo.html",
+    palabras: ["esfuerzo", "ánimo"]
+  },
+   {
+    nombre: "abrazo para ti",
+    icono: "🤍",
+    descripcion: "Un pequeño espacio que te estará esperando.",
+    archivo: "abrazo.html",
+    palabras: ["abracito"]
+  }
+
+  /*
+  CUANDO HAGAMOS ABRAZO.HTML,
+  AGREGA UNA COMA DESPUÉS DEL
+  DETALLE ANTERIOR Y ESCRIBE:
+
+  {
+    nombre: "Abrazo",
+    icono: "♡",
+    descripcion: "Un abrazo para ti.",
+    archivo: "abrazo.html",
+    palabras: ["abrazo","abrazito"]
+  }
+
+  LO MISMO CON CUENTO.HTML
+  Y LOS PRÓXIMOS DETALLES.
+  */
+
+];
+
+
+/* ==========================================
+   MOTOR DE BÚSQUEDA
+========================================== */
+
+const input=document.getElementById("buscar");
+const resultados=document.getElementById("resultados");
+const introduccion=document.getElementById("introduccion");
+const visor=document.getElementById("visor");
+const frame=document.getElementById("detalleFrame");
+
+function normalizar(texto){
+  return texto
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"")
+    .trim();
+}
+
+function buscarDetalles(){
+
+  const texto=normalizar(input.value);
+
+  resultados.replaceChildren();
+
+  if(!texto){
+    if(visor.style.display!=="block"){
+      introduccion.style.display="block";
+    }
+    avisarAltura();
+    return;
+  }
+
+  introduccion.style.display="none";
+  visor.style.display="none";
+  frame.removeAttribute("src");
+
+  const encontrados=DETALLES.filter(item=>{
+
+    const terminos=[item.nombre,...item.palabras];
+
+    return terminos.some(palabra=>
+      normalizar(palabra).includes(texto)
+    );
+  });
+
+  if(encontrados.length===0){
+
+    const mensaje=document.createElement("p");
+    mensaje.className="descripcion";
+    mensaje.textContent=
+      "Todavía no hay un detalle con ese nombre. ♡";
+
+    resultados.appendChild(mensaje);
+    avisarAltura();
+    return;
+  }
+
+  encontrados.forEach(item=>{
+
+    const boton=document.createElement("button");
+    boton.type="button";
+    boton.className="resultado";
+
+    const icono=document.createElement("span");
+    icono.className="resultado-icono";
+    icono.textContent=item.icono;
+
+    const info=document.createElement("span");
+    info.className="resultado-info";
+
+    const nombre=document.createElement("strong");
+    nombre.textContent=item.nombre;
+
+    const descripcion=document.createElement("small");
+    descripcion.textContent=item.descripcion;
+
+    info.append(nombre,descripcion);
+
+    const flecha=document.createElement("span");
+    flecha.textContent="›";
+    flecha.style.color="#78d7f0";
+
+    boton.append(icono,info,flecha);
+
+    boton.addEventListener("click",()=>{
+      abrirDetalle(item);
+    });
+
+    resultados.appendChild(boton);
+
+  });
+
+  avisarAltura();
+}
+
+function abrirDetalle(item){
+
+  resultados.replaceChildren();
+
+  document.getElementById("tituloDetalle")
+    .textContent=item.nombre;
+
+  document.getElementById("pantallaCompleta")
+    .href=item.archivo;
+
+  frame.src=item.archivo;
+
+  visor.style.display="block";
+  introduccion.style.display="none";
+
+  avisarAltura();
+
+  visor.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+
+document.getElementById("cerrarDetalle")
+  .addEventListener("click",()=>{
+
+    frame.removeAttribute("src");
+    visor.style.display="none";
+    input.value="";
+    resultados.replaceChildren();
+    introduccion.style.display="block";
+    avisarAltura();
+
+  });
+
+input.addEventListener("input",buscarDetalles);
+
+
+/* AYUDA A AJUSTAR LA ALTURA EN INDEX */
+
+function avisarAltura(){
+  requestAnimationFrame(()=>{
+    window.parent.postMessage({
+      tipo:"alturaPagina",
+      altura:document.documentElement.scrollHeight
+    },window.location.origin);
+  });
+}
+
+window.addEventListener("load",avisarAltura);
+
+</script>
+</body>
+</html>
